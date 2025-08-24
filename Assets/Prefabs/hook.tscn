@@ -1,15 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://caw76l0fe5jgy"]
+[gd_scene load_steps=8 format=3 uid="uid://caw76l0fe5jgy"]
 
 [ext_resource type="Script" uid="uid://lko7lslljfce" path="res://Scripts/Hook.cs" id="1_fxb7f"]
 [ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="2_k4ucp"]
 [ext_resource type="Texture2D" uid="uid://cl0tyr4cq8sqg" path="res://Assets/Hooks/Hook1.png" id="3_sx8l4"]
+[ext_resource type="AudioStream" uid="uid://coewbr12q6y3d" path="res://Assets/Audio/SFX/ReelSFX.wav" id="4_heydr"]
+[ext_resource type="AudioStream" uid="uid://d386tydniec1u" path="res://Assets/Audio/SFX/SplashSFX.wav" id="5_wcisy"]
+[ext_resource type="AudioStream" uid="uid://1bqpu2vrpg4c" path="res://Assets/Audio/SFX/BiteSFX.wav" id="6_nuno6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lohlh"]
 radius = 8.0
 
-[node name="Hook" type="Area2D" node_paths=PackedStringArray("baitSprite")]
+[node name="Hook" type="Area2D" node_paths=PackedStringArray("baitSprite", "biteSound", "reelSound")]
 script = ExtResource("1_fxb7f")
 baitSprite = NodePath("Bait")
+biteSound = NodePath("Audio/Bite")
+reelSound = NodePath("Audio/Reel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
@@ -27,3 +32,20 @@ position = Vector2(-1, -11)
 points = PackedVector2Array(0, 0, 0, -1000)
 width = 1.0
 default_color = Color(0, 0, 0, 1)
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="Reel" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("4_heydr")
+volume_db = -10.0
+autoplay = true
+attenuation = 2.0
+
+[node name="Splash" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("5_wcisy")
+volume_db = -5.0
+autoplay = true
+attenuation = 2.0
+
+[node name="Bite" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("6_nuno6")

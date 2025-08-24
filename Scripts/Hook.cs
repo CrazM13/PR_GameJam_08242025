@@ -8,6 +8,8 @@ public partial class Hook : Area2D {
 
 	[Export] private float speed = 100;
 	[Export] private Sprite2D baitSprite;
+	[Export] private AudioStreamPlayer2D biteSound;
+	[Export] private AudioStreamPlayer2D reelSound;
 
 	private float extend = -100;
 	private float maxExtend = 0;
@@ -39,6 +41,7 @@ public partial class Hook : Area2D {
 			timeRemaining -= (float) delta;
 			if (timeRemaining <= 0) {
 				retracting = true;
+				reelSound.Play();
 			}
 		}
 
@@ -46,6 +49,10 @@ public partial class Hook : Area2D {
 			extend += ((float) delta) * speed;
 
 			GlobalPosition = startPos + (Vector2.Down * extend);
+
+			if (extend >= maxExtend) {
+				reelSound.Stop();
+			}
 		} else if (retracting && extend > 0) {
 			extend -= ((float) delta) * speed;
 
@@ -77,7 +84,9 @@ public partial class Hook : Area2D {
 
 	public void ConsumeHook() {
 		this.retracting = true;
+		reelSound.Play();
 		baitSprite.Visible = false;
+		biteSound.Play();
 
 		this.SetDeferred("monitoring", false);
 		this.SetDeferred("monitorable", false);

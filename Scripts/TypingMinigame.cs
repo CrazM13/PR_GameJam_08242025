@@ -69,7 +69,7 @@ public partial class TypingMinigame : CanvasLayer {
 
 		if (wrongAnimTime > -1) {
 			wrongAnimTime += (float) delta * 2;
-			input.Position = preview.Position = new Vector2(Mathf.Sin(wrongAnimTime * 50) * (1f - wrongAnimTime) * 10, 0);
+			input.Position = new Vector2(Mathf.Sin(wrongAnimTime * 50) * (1f - wrongAnimTime) * 10, 0);
 			input.Modulate = Colors.Red.Lerp(Colors.White, wrongAnimTime);
 
 			if (wrongAnimTime >= 1) {

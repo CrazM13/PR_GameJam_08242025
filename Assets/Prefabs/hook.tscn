@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://caw76l0fe5jgy"]
+
+[ext_resource type="Script" uid="uid://lko7lslljfce" path="res://Scripts/Hook.cs" id="1_fxb7f"]
+[ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="2_k4ucp"]
+[ext_resource type="Texture2D" uid="uid://cl0tyr4cq8sqg" path="res://Assets/Hooks/Hook1.png" id="3_sx8l4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lohlh"]
+radius = 8.0
+
+[node name="Hook" type="Area2D" node_paths=PackedStringArray("baitSprite")]
+script = ExtResource("1_fxb7f")
+baitSprite = NodePath("Bait")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_lohlh")
+
+[node name="Bait" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+texture = ExtResource("2_k4ucp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_sx8l4")
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-1, -11)
+points = PackedVector2Array(0, 0, 0, -1000)
+width = 1.0
+default_color = Color(0, 0, 0, 1)

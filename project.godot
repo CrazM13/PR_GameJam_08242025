@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PR_GameJam_08242025"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [dotnet]
@@ -20,5 +20,6 @@ project/assembly_name="PR_GameJam_08242025"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

@@ -51,7 +51,7 @@ public partial class HookManager : Node2D {
 	private Vector2 GetSpawnPosition() {
 		float x = rng.RandfRange(spawnArea.Position.X, spawnArea.End.X);
 
-		return new Vector2(x, 160);
+		return new Vector2(x, 133);
 	}
 
 	private void OnMinigameWin() {

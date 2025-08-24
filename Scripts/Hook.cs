@@ -10,6 +10,7 @@ public partial class Hook : Area2D {
 	[Export] private Sprite2D baitSprite;
 	[Export] private AudioStreamPlayer2D biteSound;
 	[Export] private AudioStreamPlayer2D reelSound;
+	[Export] private GpuParticles2D particles;
 
 	private float extend = -100;
 	private float maxExtend = 0;
@@ -45,7 +46,15 @@ public partial class Hook : Area2D {
 			}
 		}
 
-		if (!retracting && extend < maxExtend) {
+		if (!retracting && extend < 0) {
+			extend += ((float) delta) * speed;
+
+			GlobalPosition = startPos + (Vector2.Down * extend);
+
+			if (extend >= 0) {
+				particles.Emitting = true;
+			}
+		} else if (!retracting && extend < maxExtend) {
 			extend += ((float) delta) * speed;
 
 			GlobalPosition = startPos + (Vector2.Down * extend);
@@ -63,7 +72,7 @@ public partial class Hook : Area2D {
 			}
 		} else if (retracting) {
 			extend -= ((float) delta) * speed;
-			if (extend < -10) {
+			if (extend < -100) {
 				QueueFree();
 			}
 		}

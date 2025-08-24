@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bb4wwthbpaqtj"]
+[gd_scene load_steps=14 format=3 uid="uid://bb4wwthbpaqtj"]
 
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_x6js8"]
 [ext_resource type="LabelSettings" uid="uid://o4wqao5reunh" path="res://Assets/Themes/TypeSettings.tres" id="2_4bvgx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://pewtnbcfr0j8" path="res://Assets/Fish/Player_Fish1.png" id="3_jwv4s"]
 [ext_resource type="PackedScene" uid="uid://caw76l0fe5jgy" path="res://Assets/Prefabs/hook.tscn" id="3_kilg5"]
 [ext_resource type="Script" uid="uid://is3m4i2a0g8t" path="res://Scripts/TypingMinigame.cs" id="4_x6js8"]
+[ext_resource type="Resource" uid="uid://cgd5epl7gditt" path="res://Assets/Data/WordLists/English/EasyList.tres" id="5_lg2j6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lg2j6"]
 shader = ExtResource("1_x6js8")
@@ -60,30 +61,20 @@ shape = SubResource("WorldBoundaryShape2D_4bvgx")
 [node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("preview", "input")]
 process_mode = 3
 script = ExtResource("4_x6js8")
-preview = NodePath("Control/ToType")
+preview = NodePath("Control/Typed/ToType")
 input = NodePath("Control/Typed")
+wordList = ExtResource("5_lg2j6")
 
-[node name="Control" type="Control" parent="HUD"]
+[node name="Control" type="Panel" parent="HUD"]
+visible = false
 custom_minimum_size = Vector2(0, 64)
-layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 64.0
 grow_horizontal = 2
-
-[node name="ToType" type="Label" parent="HUD/Control"]
-self_modulate = Color(0.485703, 0.485704, 0.485703, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Test"
-label_settings = ExtResource("2_4bvgx")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Typed" type="Label" parent="HUD/Control"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,7 +84,21 @@ grow_vertical = 2
 text = "Te__"
 label_settings = ExtResource("2_4bvgx")
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
+
+[node name="ToType" type="Label" parent="HUD/Control/Typed"]
+self_modulate = Color(0.485703, 0.485704, 0.485703, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Test"
+label_settings = ExtResource("2_4bvgx")
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="Player" type="AnimatableBody2D" parent="."]
 z_index = 5

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb5vyrk2kb0ul"]
+
+[ext_resource type="Script" uid="uid://cg6xov4563ddp" path="res://Scripts/CreateWordListResource.cs" id="1_5okkg"]
+
+[node name="WordListBuilders" type="Node"]
+
+[node name="EnglishEasy" type="Node" parent="."]
+script = ExtResource("1_5okkg")
+path = "res://Assets/Data/WordLists/English/EasyList.txt"
+
+[node name="EnglishHard" type="Node" parent="."]
+script = ExtResource("1_5okkg")
+path = "res://Assets/Data/WordLists/English/HardList.txt"

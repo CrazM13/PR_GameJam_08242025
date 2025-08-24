@@ -25,7 +25,7 @@ public partial class Hook : Area2D {
 
 		this.BodyEntered += this.OnBodyEnter;
 
-		maxExtend = rng.RandfRange(256, 512);
+		maxExtend = rng.RandfRange(256, 400);
 		timeRemaining = rng.RandfRange(10, 30);
 
 		startPos = GlobalPosition;
@@ -53,6 +53,11 @@ public partial class Hook : Area2D {
 
 			if (extend <= 0) {
 				EmitSignal(SignalName.OnHookRetracted, this);
+			}
+		} else if (retracting) {
+			extend -= ((float) delta) * speed;
+			if (extend < -10) {
+				QueueFree();
 			}
 		}
 

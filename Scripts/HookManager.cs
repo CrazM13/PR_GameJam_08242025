@@ -39,7 +39,7 @@ public partial class HookManager : Node2D {
 		this.fish = fish;
 		hookWithFish = hook;
 		hook.ConsumeHook();
-		minigame.StartGame("test");
+		minigame.StartGame();
 	}
 
 	private void OnHookRetracted(Hook hook) {

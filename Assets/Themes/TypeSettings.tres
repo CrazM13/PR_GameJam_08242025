@@ -1,4 +1,7 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://o4wqao5reunh"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://o4wqao5reunh"]
+
+[ext_resource type="FontFile" uid="uid://b21unobkoi57b" path="res://Assets/Fonts/Action-Man/Action_Man_Bold.ttf" id="1_50spl"]
 
 [resource]
-font_size = 32
+font = ExtResource("1_50spl")
+font_size = 64

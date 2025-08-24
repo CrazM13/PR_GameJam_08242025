@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR_GameJam_08242025", "PR_GameJam_08242025.csproj", "{68896405-51F6-4FF6-A2E1-5001AC5DD7BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68896405-51F6-4FF6-A2E1-5001AC5DD7BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68896405-51F6-4FF6-A2E1-5001AC5DD7BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68896405-51F6-4FF6-A2E1-5001AC5DD7BD}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{68896405-51F6-4FF6-A2E1-5001AC5DD7BD}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{68896405-51F6-4FF6-A2E1-5001AC5DD7BD}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{68896405-51F6-4FF6-A2E1-5001AC5DD7BD}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

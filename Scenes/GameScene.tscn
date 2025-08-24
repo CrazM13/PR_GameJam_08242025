@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bb4wwthbpaqtj"]
+[gd_scene load_steps=20 format=3 uid="uid://bb4wwthbpaqtj"]
 
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_x6js8"]
 [ext_resource type="LabelSettings" uid="uid://o4wqao5reunh" path="res://Assets/Themes/TypeSettings.tres" id="2_4bvgx"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://caw76l0fe5jgy" path="res://Assets/Prefabs/hook.tscn" id="3_kilg5"]
 [ext_resource type="Script" uid="uid://is3m4i2a0g8t" path="res://Scripts/TypingMinigame.cs" id="4_x6js8"]
 [ext_resource type="Resource" uid="uid://cgd5epl7gditt" path="res://Assets/Data/WordLists/English/EasyList.tres" id="5_lg2j6"]
+[ext_resource type="Texture2D" uid="uid://0atnsvlekldx" path="res://Assets/UI/Depth/DepthGuageUI.png" id="7_xhjei"]
+[ext_resource type="Script" uid="uid://chpuhk3eypsi" path="res://Scripts/DepthGuage.cs" id="8_6vvcf"]
 [ext_resource type="AudioStream" uid="uid://cixnvunrjdmxg" path="res://Assets/Audio/Music/Underwater.wav" id="9_y30xb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lg2j6"]
@@ -25,6 +27,18 @@ fill_to = Vector2(0, 0.105505)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4bvgx"]
 normal = Vector2(0, 1)
 distance = 160.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vvcf"]
+atlas = ExtResource("7_xhjei")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr6v8"]
+atlas = ExtResource("7_xhjei")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhjei"]
+atlas = ExtResource("7_xhjei")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lg2j6"]
 radius = 3.0
@@ -104,9 +118,72 @@ label_settings = ExtResource("2_4bvgx")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="Depth" type="Control" parent="HUD"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD/Depth"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Depth/CenterContainer"]
+custom_minimum_size = Vector2(48, 512)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="BG" type="NinePatchRect" parent="HUD/Depth/CenterContainer/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6vvcf")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Border" type="NinePatchRect" parent="HUD/Depth/CenterContainer/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cr6v8")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Fish" type="TextureRect" parent="HUD/Depth" node_paths=PackedStringArray("guage", "target")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -647.0
+offset_right = 15.0
+offset_bottom = -615.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_xhjei")
+stretch_mode = 2
+script = ExtResource("8_6vvcf")
+guage = NodePath("../CenterContainer/MarginContainer/BG")
+target = NodePath("../../../Player")
+minY = 133.0
+maxY = 600.0
+
 [node name="Player" type="AnimatableBody2D" parent="."]
 z_index = 5
-position = Vector2(504, 392)
+position = Vector2(516, 514)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 z_index = 1

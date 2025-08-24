@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://caw76l0fe5jgy"]
+[gd_scene load_steps=9 format=3 uid="uid://caw76l0fe5jgy"]
 
 [ext_resource type="Script" uid="uid://lko7lslljfce" path="res://Scripts/Hook.cs" id="1_fxb7f"]
 [ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="2_k4ucp"]
@@ -6,15 +6,17 @@
 [ext_resource type="AudioStream" uid="uid://coewbr12q6y3d" path="res://Assets/Audio/SFX/ReelSFX.wav" id="4_heydr"]
 [ext_resource type="AudioStream" uid="uid://d386tydniec1u" path="res://Assets/Audio/SFX/SplashSFX.wav" id="5_wcisy"]
 [ext_resource type="AudioStream" uid="uid://1bqpu2vrpg4c" path="res://Assets/Audio/SFX/BiteSFX.wav" id="6_nuno6"]
+[ext_resource type="PackedScene" uid="uid://c55aw0isqkayr" path="res://Assets/Particle_Effects/water_splash_effect.tscn" id="7_wcisy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lohlh"]
 radius = 8.0
 
-[node name="Hook" type="Area2D" node_paths=PackedStringArray("baitSprite", "biteSound", "reelSound")]
+[node name="Hook" type="Area2D" node_paths=PackedStringArray("baitSprite", "biteSound", "reelSound", "particles")]
 script = ExtResource("1_fxb7f")
 baitSprite = NodePath("Bait")
 biteSound = NodePath("Audio/Bite")
 reelSound = NodePath("Audio/Reel")
+particles = NodePath("Water_Splash_Effect")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
@@ -49,3 +51,8 @@ attenuation = 2.0
 
 [node name="Bite" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("6_nuno6")
+
+[node name="Water_Splash_Effect" parent="." instance=ExtResource("7_wcisy")]
+position = Vector2(0, 16)
+emitting = false
+one_shot = true

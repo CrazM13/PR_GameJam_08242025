@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb4wwthbpaqtj"]
+[gd_scene load_steps=13 format=3 uid="uid://bb4wwthbpaqtj"]
 
-[ext_resource type="Texture2D" uid="uid://b14uxh51622qp" path="res://icon.svg" id="1_2wl7v"]
+[ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_x6js8"]
 [ext_resource type="LabelSettings" uid="uid://o4wqao5reunh" path="res://Assets/Themes/TypeSettings.tres" id="2_4bvgx"]
 [ext_resource type="Script" uid="uid://rxx8dksa6yql" path="res://Scripts/HookManager.cs" id="2_lohlh"]
 [ext_resource type="Script" uid="uid://c8bjh2hs4bv3w" path="res://Scripts/FishController.cs" id="3_3mbwn"]
@@ -8,9 +8,21 @@
 [ext_resource type="PackedScene" uid="uid://caw76l0fe5jgy" path="res://Assets/Prefabs/hook.tscn" id="3_kilg5"]
 [ext_resource type="Script" uid="uid://is3m4i2a0g8t" path="res://Scripts/TypingMinigame.cs" id="4_x6js8"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lg2j6"]
+shader = ExtResource("1_x6js8")
+
+[sub_resource type="Gradient" id="Gradient_x6js8"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lg2j6"]
+gradient = SubResource("Gradient_x6js8")
+width = 100
+height = 100
+fill_from = Vector2(0, 0.229358)
+fill_to = Vector2(0, 0.105505)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4bvgx"]
 normal = Vector2(0, 1)
-distance = 100.0
+distance = 160.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lg2j6"]
 radius = 3.0
@@ -18,15 +30,18 @@ height = 24.0
 
 [node name="GameScene" type="Node2D"]
 
-[node name="Water" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0.776471, 1, 1)
-z_index = -100
-z_as_relative = false
-texture_repeat = 2
-position = Vector2(576, 392)
-texture = ExtResource("1_2wl7v")
-region_enabled = true
-region_rect = Rect2(0, 0, 1152, 512)
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -100
+follow_viewport_enabled = true
+
+[node name="Water" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_lg2j6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lg2j6")
 
 [node name="HookManager" type="Node2D" parent="." node_paths=PackedStringArray("minigame")]
 script = ExtResource("2_lohlh")

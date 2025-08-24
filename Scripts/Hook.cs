@@ -9,7 +9,7 @@ public partial class Hook : Area2D {
 	[Export] private float speed = 100;
 	[Export] private Sprite2D baitSprite;
 
-	private float extend = 0;
+	private float extend = -100;
 	private float maxExtend = 0;
 
 	private bool retracting = false;
@@ -18,18 +18,29 @@ public partial class Hook : Area2D {
 
 	private Vector2 startPos;
 
+	private float timeRemaining;
+
 	public override void _Ready() {
 		base._Ready();
 
 		this.BodyEntered += this.OnBodyEnter;
 
 		maxExtend = rng.RandfRange(256, 512);
+		timeRemaining = rng.RandfRange(10, 30);
 
 		startPos = GlobalPosition;
+		GlobalPosition = startPos + (Vector2.Down * extend);
 	}
 
 	public override void _PhysicsProcess(double delta) {
 		base._PhysicsProcess(delta);
+
+		if (timeRemaining > 0) {
+			timeRemaining -= (float) delta;
+			if (timeRemaining <= 0) {
+				retracting = true;
+			}
+		}
 
 		if (!retracting && extend < maxExtend) {
 			extend += ((float) delta) * speed;
@@ -52,19 +63,18 @@ public partial class Hook : Area2D {
 		if (body is AnimatableBody2D) {
 			foreach (Node node in body.GetChildren()) {
 				if (node is FishController controller) {
-					controller.AllowInput = false;
-					controller.SetAttractor(this);
-
-					this.retracting = true;
-					baitSprite.Visible = false;
-
-					this.SetDeferred("monitoring", false);
-					this.SetDeferred("monitorable", false);
-
 					EmitSignal(SignalName.OnFishHooked, this, controller);
 				}
 			}
 		}
 
+	}
+
+	public void ConsumeHook() {
+		this.retracting = true;
+		baitSprite.Visible = false;
+
+		this.SetDeferred("monitoring", false);
+		this.SetDeferred("monitorable", false);
 	}
 }

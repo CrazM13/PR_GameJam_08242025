@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Text;
 
 public partial class TypingMinigame : CanvasLayer {
 
@@ -25,20 +26,29 @@ public partial class TypingMinigame : CanvasLayer {
 					isPlaying = false;
 					EmitSignal(SignalName.OnWin);
 				} else {
-					input.Text = preview.Text.Substr(0, currentIndex);
+					input.Text = BuildTyped();
 				}
 			} else {
 				currentIndex = 0;
-				input.Text = string.Empty;
+				input.Text = BuildTyped();
 			}
 		}
-
 	}
 
 	public void StartGame(string word) {
 		preview.Text = word.ToUpper();
 		input.Text = string.Empty;
 		isPlaying = true;
+		currentIndex = 0;
+	}
+
+	private string BuildTyped() {
+		StringBuilder sb = new StringBuilder();
+
+		if (currentIndex > 0) sb.Append(preview.Text.Substr(0, currentIndex));
+		sb.Append('_', preview.Text.Length - currentIndex);
+
+		return sb.ToString();
 	}
 
 }

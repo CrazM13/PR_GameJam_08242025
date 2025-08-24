@@ -8,6 +8,7 @@ public partial class HookManager : Node2D {
 	[Export] private TypingMinigame minigame;
 
 	private FishController fish;
+	private Hook hookWithFish = null;
 
 	private RandomNumberGenerator rng = new RandomNumberGenerator();
 
@@ -29,28 +30,34 @@ public partial class HookManager : Node2D {
 	}
 
 	private void OnFishHooked(Hook hook, FishController fish) {
+
+		if (hookWithFish != null) return;
+
+		fish.AllowInput = false;
+		fish.SetAttractor(hook);
+
 		this.fish = fish;
+		hookWithFish = hook;
+		hook.ConsumeHook();
 		minigame.StartGame("test");
 	}
 
 	private void OnHookRetracted(Hook hook) {
-		hook.QueueFree();
-
-		if (fish != null) {
+		if (hook == hookWithFish) {
 			GetTree().ReloadCurrentScene();
 		}
 	}
 
 	private Vector2 GetSpawnPosition() {
 		float x = rng.RandfRange(spawnArea.Position.X, spawnArea.End.X);
-		float y = rng.RandfRange(spawnArea.Position.Y, spawnArea.End.Y);
 
-		return new Vector2(x, y);
+		return new Vector2(x, 160);
 	}
 
 	private void OnMinigameWin() {
 		if (fish == null) return;
 
+		hookWithFish = null;
 		fish.SetAttractor(null);
 		fish.AllowInput = true;
 

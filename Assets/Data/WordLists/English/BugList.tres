@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c2ulgktmq4txd"]
+
+[ext_resource type="Script" uid="uid://dcerjrlssao3f" path="res://Scripts/WordList.cs" id="1_ou6e3"]
+
+[resource]
+script = ExtResource("1_ou6e3")
+words = PackedStringArray("ANT", "APHID", "BEE", "BEETLE", "BUMBLEBEE", "BUTTERFLY", "CADDISFLY", "CATERPILLAR", "CENTIPEDE", "CICADA", "COCKROACH", "CRICKET", "DOBSONFLY", "DRAGONFLY", "EARWIG", "FIREFLY", "FLEA", "FLY", "GNAT", "GRASSHOPPER", "HORNET", "KATYDID", "LADYBUG", "LEAFHOPPER", "LOCUST", "LOUSE", "MANTIS", "MAYFLY", "MIDGE", "MOSQUITO", "MOTH", "PSYLLID", "SAWFLY", "SCORPION", "SCORPIONFLY", "SILVERFISH", "SOWBUG", "SPIDER", "SPRINGTAIL", "STONEFLY", "TERMITE", "TICK", "TREEHOPPER", "WASP", "WORM", "ZORAPTERA", "ZYGENTOMA")

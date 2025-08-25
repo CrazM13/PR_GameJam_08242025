@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bb4wwthbpaqtj"]
+[gd_scene load_steps=24 format=3 uid="uid://bb4wwthbpaqtj"]
 
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_x6js8"]
 [ext_resource type="LabelSettings" uid="uid://o4wqao5reunh" path="res://Assets/Themes/TypeSettings.tres" id="2_4bvgx"]
@@ -6,8 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://caw76l0fe5jgy" path="res://Assets/Prefabs/hook.tscn" id="3_kilg5"]
 [ext_resource type="PackedScene" uid="uid://ddwjaxq02kltx" path="res://Assets/Prefabs/hard_hook.tscn" id="4_7rq2r"]
 [ext_resource type="Script" uid="uid://is3m4i2a0g8t" path="res://Scripts/TypingMinigame.cs" id="4_x6js8"]
+[ext_resource type="PackedScene" uid="uid://cky8cc7gcueag" path="res://Assets/Prefabs/flower_hook.tscn" id="5_qolck"]
+[ext_resource type="PackedScene" uid="uid://bmyoyjf2gctt3" path="res://Assets/Prefabs/fish_hook.tscn" id="6_ry528"]
 [ext_resource type="Texture2D" uid="uid://0atnsvlekldx" path="res://Assets/UI/Depth/DepthGuageUI.png" id="7_xhjei"]
+[ext_resource type="PackedScene" uid="uid://cu2jrhw5o3v7m" path="res://Assets/Prefabs/bug_hook.tscn" id="7_yhlfj"]
 [ext_resource type="Script" uid="uid://chpuhk3eypsi" path="res://Scripts/DepthGuage.cs" id="8_6vvcf"]
+[ext_resource type="PackedScene" uid="uid://bc1fuj8rxlqvu" path="res://Assets/Prefabs/coding_hook.tscn" id="8_ry528"]
 [ext_resource type="PackedScene" uid="uid://iguuwg4jm1m7" path="res://Assets/Prefabs/player1.tscn" id="9_f43ej"]
 [ext_resource type="AudioStream" uid="uid://cixnvunrjdmxg" path="res://Assets/Audio/Music/Underwater.wav" id="9_y30xb"]
 [ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="12_cr6v8"]
@@ -56,7 +60,7 @@ texture = SubResource("GradientTexture2D_lg2j6")
 [node name="HookManager" type="Node2D" parent="." node_paths=PackedStringArray("minigame")]
 script = ExtResource("2_lohlh")
 spawnArea = Rect2(32, 0, 1088, 64)
-hookPrefabs = Array[PackedScene]([ExtResource("3_kilg5"), ExtResource("4_7rq2r")])
+hookPrefabs = Array[PackedScene]([ExtResource("3_kilg5"), ExtResource("4_7rq2r"), ExtResource("5_qolck"), ExtResource("6_ry528"), ExtResource("7_yhlfj"), ExtResource("8_ry528")])
 minigame = NodePath("../HUD")
 
 [node name="Timer" type="Timer" parent="HookManager"]

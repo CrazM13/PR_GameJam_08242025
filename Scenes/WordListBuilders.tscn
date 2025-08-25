@@ -11,3 +11,19 @@ path = "res://Assets/Data/WordLists/English/EasyList.txt"
 [node name="EnglishHard" type="Node" parent="."]
 script = ExtResource("1_5okkg")
 path = "res://Assets/Data/WordLists/English/HardList.txt"
+
+[node name="EnglishBug" type="Node" parent="."]
+script = ExtResource("1_5okkg")
+path = "res://Assets/Data/WordLists/English/BugList.txt"
+
+[node name="EnglishFlower" type="Node" parent="."]
+script = ExtResource("1_5okkg")
+path = "res://Assets/Data/WordLists/English/FlowerList.txt"
+
+[node name="EnglishFish" type="Node" parent="."]
+script = ExtResource("1_5okkg")
+path = "res://Assets/Data/WordLists/English/FishList.txt"
+
+[node name="EnglishCode" type="Node" parent="."]
+script = ExtResource("1_5okkg")
+path = "res://Assets/Data/WordLists/English/CodeList.txt"

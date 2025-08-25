@@ -7,6 +7,9 @@ public partial class Hook : Area2D {
 	[Signal] public delegate void OnHookRetractedEventHandler(Hook hook);
 
 	[Export] private float speed = 100;
+	[Export] public WordList WordList { get; private set; }
+	[Export] public int Value { get; private set; }
+
 	[Export] private Sprite2D baitSprite;
 	[Export] private AudioStreamPlayer2D biteSound;
 	[Export] private AudioStreamPlayer2D reelSound;

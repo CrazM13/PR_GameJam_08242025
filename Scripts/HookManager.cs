@@ -4,7 +4,7 @@ using System;
 public partial class HookManager : Node2D {
 
 	[Export] private Rect2 spawnArea;
-	[Export] private PackedScene hookPrefab;
+	[Export] private PackedScene[] hookPrefabs;
 	[Export] private TypingMinigame minigame;
 
 	private FishController fish;
@@ -20,7 +20,7 @@ public partial class HookManager : Node2D {
 	}
 
 	private void Spawn() {
-		Hook hook = hookPrefab.Instantiate<Hook>();
+		Hook hook = hookPrefabs[rng.RandiRange(0, hookPrefabs.Length - 1)].Instantiate<Hook>();
 		hook.GlobalPosition = GetSpawnPosition();
 
 		hook.OnHookRetracted += this.OnHookRetracted;
@@ -39,7 +39,7 @@ public partial class HookManager : Node2D {
 		this.fish = fish;
 		hookWithFish = hook;
 		hook.ConsumeHook();
-		minigame.StartGame();
+		minigame.StartGame(hook.WordList);
 	}
 
 	private void OnHookRetracted(Hook hook) {
@@ -57,6 +57,7 @@ public partial class HookManager : Node2D {
 	private void OnMinigameWin() {
 		if (fish == null) return;
 
+		// TODO Increase Score
 		hookWithFish = null;
 		fish.SetAttractor(null);
 		fish.AllowInput = true;

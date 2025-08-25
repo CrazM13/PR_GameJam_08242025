@@ -1,15 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://bb4wwthbpaqtj"]
+[gd_scene load_steps=20 format=3 uid="uid://bb4wwthbpaqtj"]
 
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_x6js8"]
 [ext_resource type="LabelSettings" uid="uid://o4wqao5reunh" path="res://Assets/Themes/TypeSettings.tres" id="2_4bvgx"]
 [ext_resource type="Script" uid="uid://rxx8dksa6yql" path="res://Scripts/HookManager.cs" id="2_lohlh"]
-[ext_resource type="Script" uid="uid://c8bjh2hs4bv3w" path="res://Scripts/FishController.cs" id="3_3mbwn"]
-[ext_resource type="Texture2D" uid="uid://pewtnbcfr0j8" path="res://Assets/Fish/Player_Fish1.png" id="3_jwv4s"]
 [ext_resource type="PackedScene" uid="uid://caw76l0fe5jgy" path="res://Assets/Prefabs/hook.tscn" id="3_kilg5"]
+[ext_resource type="PackedScene" uid="uid://ddwjaxq02kltx" path="res://Assets/Prefabs/hard_hook.tscn" id="4_7rq2r"]
 [ext_resource type="Script" uid="uid://is3m4i2a0g8t" path="res://Scripts/TypingMinigame.cs" id="4_x6js8"]
-[ext_resource type="Resource" uid="uid://cgd5epl7gditt" path="res://Assets/Data/WordLists/English/EasyList.tres" id="5_lg2j6"]
 [ext_resource type="Texture2D" uid="uid://0atnsvlekldx" path="res://Assets/UI/Depth/DepthGuageUI.png" id="7_xhjei"]
 [ext_resource type="Script" uid="uid://chpuhk3eypsi" path="res://Scripts/DepthGuage.cs" id="8_6vvcf"]
+[ext_resource type="PackedScene" uid="uid://iguuwg4jm1m7" path="res://Assets/Prefabs/player1.tscn" id="9_f43ej"]
 [ext_resource type="AudioStream" uid="uid://cixnvunrjdmxg" path="res://Assets/Audio/Music/Underwater.wav" id="9_y30xb"]
 [ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="12_cr6v8"]
 [ext_resource type="Script" uid="uid://x4xqn1v2i2i" path="res://Scripts/UI/UIPauseMenu.cs" id="13_7rq2r"]
@@ -27,10 +26,6 @@ height = 100
 fill_from = Vector2(0, 0.229358)
 fill_to = Vector2(0, 0.105505)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4bvgx"]
-normal = Vector2(0, 1)
-distance = 160.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vvcf"]
 atlas = ExtResource("7_xhjei")
 region = Rect2(0, 32, 32, 32)
@@ -42,10 +37,6 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xhjei"]
 atlas = ExtResource("7_xhjei")
 region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lg2j6"]
-radius = 3.0
-height = 24.0
 
 [node name="GameScene" type="Node2D"]
 
@@ -65,16 +56,11 @@ texture = SubResource("GradientTexture2D_lg2j6")
 [node name="HookManager" type="Node2D" parent="." node_paths=PackedStringArray("minigame")]
 script = ExtResource("2_lohlh")
 spawnArea = Rect2(32, 0, 1088, 64)
-hookPrefab = ExtResource("3_kilg5")
+hookPrefabs = Array[PackedScene]([ExtResource("3_kilg5"), ExtResource("4_7rq2r")])
 minigame = NodePath("../HUD")
 
 [node name="Timer" type="Timer" parent="HookManager"]
 autostart = true
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("WorldBoundaryShape2D_4bvgx")
 
 [node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("container", "preview", "input")]
 process_mode = 3
@@ -82,7 +68,6 @@ script = ExtResource("4_x6js8")
 container = NodePath("Control")
 preview = NodePath("Control/Typed/ToType")
 input = NodePath("Control/Typed")
-wordList = ExtResource("5_lg2j6")
 
 [node name="Control" type="Panel" parent="HUD"]
 visible = false
@@ -184,33 +169,8 @@ target = NodePath("../../../Player")
 minY = 133.0
 maxY = 600.0
 
-[node name="Player" type="AnimatableBody2D" parent="."]
-z_index = 5
+[node name="Player" parent="." instance=ExtResource("9_f43ej")]
 position = Vector2(516, 514)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-z_index = 1
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_lg2j6")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("3_jwv4s")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.5
-drag_top_margin = 0.5
-drag_right_margin = 0.5
-drag_bottom_margin = 0.5
-editor_draw_drag_margin = true
-
-[node name="Controller" type="Node" parent="Player" node_paths=PackedStringArray("fish", "sprite")]
-script = ExtResource("3_3mbwn")
-speed = 1000.0
-fish = NodePath("..")
-sprite = NodePath("../Sprite2D")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_y30xb")

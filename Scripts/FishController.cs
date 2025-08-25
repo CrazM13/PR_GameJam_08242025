@@ -6,7 +6,7 @@ public partial class FishController : Node {
 	[Export] private float speed = 100;
 
 	[Export] private Node2D fish;
-	[Export] private Sprite2D sprite;
+	[Export] private AnimatedSprite2D sprite;
 
 	[Export] private Rect2 playArea = new Rect2(32, 160, 1088, 488);
 

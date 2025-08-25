@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_tt5f1"]
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="2_853f1"]
-[ext_resource type="Script" uid="uid://dafuaau17ffiw" path="res://Scripts/UI/BetterButton.cs" id="3_8saeu"]
+[ext_resource type="Script" uid="uid://dafuaau17ffiw" path="res://Scripts/UI/Menu/BetterButton.cs" id="3_8saeu"]
 [ext_resource type="Resource" uid="uid://cqu6bcu3aq1io" path="res://Assets/Data/UI/ButtonClick.tres" id="4_df05h"]
 [ext_resource type="Resource" uid="uid://sp5qrfpotvap" path="res://Assets/Data/UI/ButtonHover.tres" id="5_8um5k"]
 [ext_resource type="AudioStream" uid="uid://d01rwsygaxo23" path="res://Assets/Audio/Music/HarborV2.wav" id="6_8um5k"]
@@ -162,8 +162,10 @@ layout_mode = 2
 stream = ExtResource("6_8um5k")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [node name="SceneManager" parent="." instance=ExtResource("7_xim88")]
 
 [connection signal="pressed" from="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/GameScene.tscn"]]
 [connection signal="pressed" from="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer/Button2" to="SceneManager" method="LoadScene" binds= ["res://Scenes/Options.tscn"]]
+[connection signal="pressed" from="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer/Button4" to="SceneManager" method="Quit"]

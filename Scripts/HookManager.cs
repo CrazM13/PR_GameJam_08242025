@@ -1,4 +1,5 @@
 using Godot;
+using SceneManagement;
 using System;
 
 public partial class HookManager : Node2D {
@@ -7,6 +8,7 @@ public partial class HookManager : Node2D {
 	[Export] private PackedScene[] hookPrefabs;
 	[Export] private PointsSpawner pointSpawner;
 	[Export] private TypingMinigame minigame;
+	[Export] private SceneManager sceneManager;
 
 	private FishController fish;
 	private Hook hookWithFish = null;
@@ -49,7 +51,7 @@ public partial class HookManager : Node2D {
 
 	private void OnHookRetracted(Hook hook) {
 		if (hook == hookWithFish) {
-			GetTree().ReloadCurrentScene();
+			sceneManager.LoadScene("res://Scenes/LoseScreen.tscn");
 		}
 	}
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwqn0ma42jdvi"]
 
-[ext_resource type="Script" uid="uid://djepefex588bi" path="res://Scripts/UI/PointsEffect.cs" id="1_ci70v"]
+[ext_resource type="Script" uid="uid://djepefex588bi" path="res://Scripts/UI/Points/PointsEffect.cs" id="1_ci70v"]
 [ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="1_sbecw"]
 
 [node name="PointEffect" type="VisibleOnScreenNotifier2D"]

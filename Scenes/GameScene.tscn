@@ -14,14 +14,14 @@
 [ext_resource type="Script" uid="uid://chpuhk3eypsi" path="res://Scripts/DepthGuage.cs" id="8_6vvcf"]
 [ext_resource type="PackedScene" uid="uid://bc1fuj8rxlqvu" path="res://Assets/Prefabs/coding_hook.tscn" id="8_ry528"]
 [ext_resource type="PackedScene" uid="uid://iguuwg4jm1m7" path="res://Assets/Prefabs/player1.tscn" id="9_f43ej"]
-[ext_resource type="Script" uid="uid://c2tovs843lih6" path="res://Scripts/UI/PointsSpawner.cs" id="9_v7xhk"]
+[ext_resource type="Script" uid="uid://c2tovs843lih6" path="res://Scripts/UI/Points/PointsSpawner.cs" id="9_v7xhk"]
 [ext_resource type="AudioStream" uid="uid://cixnvunrjdmxg" path="res://Assets/Audio/Music/Underwater.wav" id="9_y30xb"]
 [ext_resource type="PackedScene" uid="uid://cwqn0ma42jdvi" path="res://Assets/Prefabs/point_effect.tscn" id="10_wukv0"]
 [ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="12_cr6v8"]
-[ext_resource type="Script" uid="uid://x4xqn1v2i2i" path="res://Scripts/UI/UIPauseMenu.cs" id="13_7rq2r"]
+[ext_resource type="Script" uid="uid://x4xqn1v2i2i" path="res://Scripts/UI/Menu/UIPauseMenu.cs" id="13_7rq2r"]
 [ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="13_f43ej"]
 [ext_resource type="FontFile" uid="uid://fa48b7ntl10o" path="res://Assets/Fonts/Action-Man/Action_Man.ttf" id="14_gipt1"]
-[ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/PointsLabel.cs" id="17_wukv0"]
+[ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/Points/PointsLabel.cs" id="17_wukv0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lg2j6"]
 shader = ExtResource("1_x6js8")
@@ -66,12 +66,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_lg2j6")
 
-[node name="HookManager" type="Node2D" parent="." node_paths=PackedStringArray("pointSpawner", "minigame")]
+[node name="HookManager" type="Node2D" parent="." node_paths=PackedStringArray("pointSpawner", "minigame", "sceneManager")]
 script = ExtResource("2_lohlh")
 spawnArea = Rect2(32, 0, 1088, 64)
 hookPrefabs = Array[PackedScene]([ExtResource("3_kilg5"), ExtResource("4_7rq2r"), ExtResource("5_qolck"), ExtResource("6_ry528"), ExtResource("7_yhlfj"), ExtResource("8_ry528")])
 pointSpawner = NodePath("PointsSpawner")
 minigame = NodePath("../HUD")
+sceneManager = NodePath("../SceneManager")
 
 [node name="Timer" type="Timer" parent="HookManager"]
 autostart = true
@@ -217,6 +218,7 @@ position = Vector2(516, 514)
 stream = ExtResource("9_y30xb")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [node name="SceneManager" parent="." instance=ExtResource("12_cr6v8")]
 

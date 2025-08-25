@@ -45,15 +45,18 @@ stream = ExtResource("4_heydr")
 volume_db = -10.0
 autoplay = true
 attenuation = 2.0
+bus = &"SFX"
 
 [node name="Splash" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("5_wcisy")
 volume_db = -5.0
 autoplay = true
 attenuation = 2.0
+bus = &"SFX"
 
 [node name="Bite" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("6_nuno6")
+bus = &"SFX"
 
 [node name="Water_Splash_Effect" parent="." instance=ExtResource("7_wcisy")]
 position = Vector2(0, 16)

@@ -1,0 +1,499 @@
+[gd_scene load_steps=18 format=3 uid="uid://bs8784pc6dxq6"]
+
+[ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_5l33y"]
+[ext_resource type="Script" uid="uid://kfp4hf1tc6uo" path="res://Scripts/UI/Menu/LoseScene.cs" id="1_ldcug"]
+[ext_resource type="Texture2D" uid="uid://cvwt3j0kglufj" path="res://Assets/UI/Menu/LoseScreenSet.png" id="1_qdjbu"]
+[ext_resource type="Script" uid="uid://dafuaau17ffiw" path="res://Scripts/UI/Menu/BetterButton.cs" id="4_v6x5m"]
+[ext_resource type="Resource" uid="uid://cqu6bcu3aq1io" path="res://Assets/Data/UI/ButtonClick.tres" id="5_cvw72"]
+[ext_resource type="Resource" uid="uid://sp5qrfpotvap" path="res://Assets/Data/UI/ButtonHover.tres" id="6_rlt30"]
+[ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="7_cvw72"]
+[ext_resource type="AudioStream" uid="uid://27amh84loxhf" path="res://Assets/Audio/Music/Sushi.wav" id="8_rlt30"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1iou"]
+atlas = ExtResource("1_qdjbu")
+region = Rect2(224, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldcug"]
+atlas = ExtResource("1_qdjbu")
+region = Rect2(13, 139, 171, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l33y"]
+atlas = ExtResource("1_qdjbu")
+region = Rect2(0, 7, 256, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6x5m"]
+atlas = ExtResource("1_qdjbu")
+region = Rect2(192, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvw72"]
+atlas = ExtResource("1_qdjbu")
+region = Rect2(208, 128, 7, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yd7v"]
+atlas = ExtResource("1_qdjbu")
+region = Rect2(262, 70, 19, 182)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3frv"]
+atlas = ExtResource("1_qdjbu")
+region = Rect2(293, 65, 17, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdjbu"]
+atlas = ExtResource("1_qdjbu")
+region = Rect2(259, 4, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlt30"]
+atlas = ExtResource("1_qdjbu")
+region = Rect2(195, 196, 56, 56)
+
+[node name="LoseScreen" type="Control" node_paths=PackedStringArray("pupil")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5l33y")
+script = ExtResource("1_ldcug")
+pupil = NodePath("BG/Fish/Pupil")
+pupilSpeed = 50.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.494118, 0.501961, 0.513726, 1)
+
+[node name="BG" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = -18.0
+offset_right = -303.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BG"]
+z_index = -50
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.0
+offset_top = -208.0
+offset_right = 243.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_b1iou")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Cutting Board" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -181.0
+offset_right = 86.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ldcug")
+
+[node name="Fish" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -57.5
+offset_right = 128.0
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_5l33y")
+
+[node name="Sclara" type="TextureRect" parent="BG/Fish"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -7.0
+offset_right = -85.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_v6x5m")
+
+[node name="Pupil" type="TextureRect" parent="BG/Fish"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -2.0
+offset_right = -89.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_cvw72")
+
+[node name="Knife" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 161.0
+offset_top = -81.0
+offset_right = 180.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_7yd7v")
+
+[node name="Chopsticks" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -84.0
+offset_right = -177.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_l3frv")
+
+[node name="Sushi1" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 118.0
+offset_top = -197.0
+offset_right = 174.0
+offset_bottom = -141.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qdjbu")
+
+[node name="Sushi2" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 179.0
+offset_top = -198.0
+offset_right = 235.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qdjbu")
+
+[node name="Sushi3" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 118.0
+offset_top = -140.0
+offset_right = 174.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qdjbu")
+
+[node name="Sushi4" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 180.0
+offset_top = -140.0
+offset_right = 236.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qdjbu")
+
+[node name="Sushi5" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -176.0
+offset_right = -28.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qdjbu")
+
+[node name="Sushi6" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -140.0
+offset_right = 26.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qdjbu")
+
+[node name="Sushi8" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = 78.0
+offset_right = -98.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qdjbu")
+
+[node name="Sushi9" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = 81.0
+offset_right = -30.0
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qdjbu")
+
+[node name="Sushi10" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = 80.0
+offset_right = 37.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qdjbu")
+
+[node name="Sushi11" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 57.0
+offset_top = 81.0
+offset_right = 113.0
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qdjbu")
+
+[node name="Sushi12" type="TextureRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -159.0
+offset_right = -107.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_rlt30")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+bbcode_enabled = true
+text = "[wave freq=8 amp=16]Congrats![/wave]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Control" type="Control" parent="HBoxContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(512, 250)
+layout_mode = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+bbcode_enabled = true
+text = "[wave fre=4 amp=10] It's Sushi 
+night! [/wave]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 256)
+layout_mode = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="HBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(450, 512)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CenterContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CenterContainer2/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Try Again!"
+script = ExtResource("4_v6x5m")
+clickSFX = ExtResource("5_cvw72")
+hoverSFX = ExtResource("6_rlt30")
+clickDisabledSFX = ExtResource("5_cvw72")
+hoverDisabledSFX = ExtResource("6_rlt30")
+
+[node name="Spacer2" type="Control" parent="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Options"
+script = ExtResource("4_v6x5m")
+clickSFX = ExtResource("5_cvw72")
+hoverSFX = ExtResource("6_rlt30")
+clickDisabledSFX = ExtResource("5_cvw72")
+hoverDisabledSFX = ExtResource("6_rlt30")
+
+[node name="Spacer3" type="Control" parent="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Credits"
+script = ExtResource("4_v6x5m")
+clickSFX = ExtResource("5_cvw72")
+hoverSFX = ExtResource("6_rlt30")
+clickDisabledSFX = ExtResource("5_cvw72")
+hoverDisabledSFX = ExtResource("6_rlt30")
+
+[node name="Spacer4" type="Control" parent="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit"
+script = ExtResource("4_v6x5m")
+clickSFX = ExtResource("5_cvw72")
+hoverSFX = ExtResource("6_rlt30")
+clickDisabledSFX = ExtResource("5_cvw72")
+hoverDisabledSFX = ExtResource("6_rlt30")
+
+[node name="Spacer5" type="Control" parent="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="SceneManager" parent="." instance=ExtResource("7_cvw72")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_rlt30")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/GameScene.tscn"]]
+[connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button2" to="SceneManager" method="LoadScene" binds= ["res://Scenes/Options.tscn"]]
+[connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button4" to="SceneManager" method="Quit"]

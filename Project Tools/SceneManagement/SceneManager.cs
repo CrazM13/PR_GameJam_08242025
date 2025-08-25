@@ -35,7 +35,7 @@ namespace SceneManagement {
 			internalColourRect = new ColorRect();
 			internalCanvas.AddChild(internalColourRect);
 			internalColourRect.Color = Colors.Black;
-			internalColourRect.Size = new Vector2(10000, 10000);
+			internalColourRect.Size = new Vector2(float.MaxValue, float.MaxValue);
 
 			internalCanvas.Layer = 100;
 
@@ -47,14 +47,14 @@ namespace SceneManagement {
 			base._EnterTree();
 
 			Instance = this;
-
-			internalColourRect.Size = GetViewport().GetVisibleRect().Size;
 		}
 
 		public override void _ExitTree() {
 			base._ExitTree();
 
 			if (Instance == this) Instance = null;
+
+			internalColourRect.Size = GetViewport().GetVisibleRect().Size;
 		}
 
 		public override void _Process(double delta) {
@@ -141,9 +141,11 @@ namespace SceneManagement {
 
 			switch (sceneLoadingMode) {
 				case SceneLoadingMode.LOADING_OUT:
+					internalColourRect.Size = GetViewport().GetVisibleRect().Size;
 					internalColourRect.Color = TRANSPARENT.Lerp(BLACK, fadeTime / fadeDuration);
 					break;
 				case SceneLoadingMode.LOADING_IN:
+					internalColourRect.Size = GetViewport().GetVisibleRect().Size;
 					internalColourRect.Color = BLACK.Lerp(TRANSPARENT, fadeTime / fadeDuration);
 
 					if (fadeTime >= fadeDuration) {

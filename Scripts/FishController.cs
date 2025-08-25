@@ -35,7 +35,7 @@ public partial class FishController : Node {
 
 			input = fish.GlobalPosition.DirectionTo(mousePos);
 		} else {
-			input = new Vector2(Input.GetAxis("ui_left", "ui_right"), Input.GetAxis("ui_up", "ui_down"));
+			input = new Vector2(Input.GetAxis("move_left", "move_right"), Input.GetAxis("move_up", "move_down"));
 		}
 
 		if (input.X != 0) sprite.FlipH = input.X < 0;

@@ -5,6 +5,7 @@ public partial class HookManager : Node2D {
 
 	[Export] private Rect2 spawnArea;
 	[Export] private PackedScene[] hookPrefabs;
+	[Export] private PointsSpawner pointSpawner;
 	[Export] private TypingMinigame minigame;
 
 	private FishController fish;
@@ -16,7 +17,12 @@ public partial class HookManager : Node2D {
 		base._Ready();
 
 		minigame.OnWin += OnMinigameWin;
+		minigame.OnStart += OnMinigameStart;
 
+	}
+
+	private void OnMinigameStart() {
+		hookWithFish.ConsumeHook();
 	}
 
 	private void Spawn() {
@@ -38,7 +44,6 @@ public partial class HookManager : Node2D {
 
 		this.fish = fish;
 		hookWithFish = hook;
-		hook.ConsumeHook();
 		minigame.StartGame(hook.WordList);
 	}
 
@@ -57,7 +62,7 @@ public partial class HookManager : Node2D {
 	private void OnMinigameWin() {
 		if (fish == null) return;
 
-		// TODO Increase Score
+		pointSpawner.QueueSpawn(hookWithFish.GlobalPosition, hookWithFish.Value);
 		hookWithFish = null;
 		fish.SetAttractor(null);
 		fish.AllowInput = true;

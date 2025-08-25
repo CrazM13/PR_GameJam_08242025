@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://lko7lslljfce" path="res://Scripts/Hook.cs" id="1_fxb7f"]
 [ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="2_k4ucp"]
-[ext_resource type="Resource" uid="uid://cgd5epl7gditt" path="res://Assets/Data/WordLists/English/EasyList.tres" id="2_nuno6"]
+[ext_resource type="Resource" uid="uid://dqrajk164tcka" path="res://Assets/Data/WordLists/English/EasyList.tres" id="2_nuno6"]
 [ext_resource type="Texture2D" uid="uid://cl0tyr4cq8sqg" path="res://Assets/Hooks/Hook1.png" id="3_sx8l4"]
 [ext_resource type="AudioStream" uid="uid://coewbr12q6y3d" path="res://Assets/Audio/SFX/ReelSFX.wav" id="4_heydr"]
 [ext_resource type="AudioStream" uid="uid://d386tydniec1u" path="res://Assets/Audio/SFX/SplashSFX.wav" id="5_wcisy"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bb4wwthbpaqtj"]
+[gd_scene load_steps=30 format=3 uid="uid://bb4wwthbpaqtj"]
 
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_x6js8"]
 [ext_resource type="LabelSettings" uid="uid://o4wqao5reunh" path="res://Assets/Themes/TypeSettings.tres" id="2_4bvgx"]
@@ -8,15 +8,20 @@
 [ext_resource type="Script" uid="uid://is3m4i2a0g8t" path="res://Scripts/TypingMinigame.cs" id="4_x6js8"]
 [ext_resource type="PackedScene" uid="uid://cky8cc7gcueag" path="res://Assets/Prefabs/flower_hook.tscn" id="5_qolck"]
 [ext_resource type="PackedScene" uid="uid://bmyoyjf2gctt3" path="res://Assets/Prefabs/fish_hook.tscn" id="6_ry528"]
+[ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="6_x6js8"]
 [ext_resource type="Texture2D" uid="uid://0atnsvlekldx" path="res://Assets/UI/Depth/DepthGuageUI.png" id="7_xhjei"]
 [ext_resource type="PackedScene" uid="uid://cu2jrhw5o3v7m" path="res://Assets/Prefabs/bug_hook.tscn" id="7_yhlfj"]
 [ext_resource type="Script" uid="uid://chpuhk3eypsi" path="res://Scripts/DepthGuage.cs" id="8_6vvcf"]
 [ext_resource type="PackedScene" uid="uid://bc1fuj8rxlqvu" path="res://Assets/Prefabs/coding_hook.tscn" id="8_ry528"]
 [ext_resource type="PackedScene" uid="uid://iguuwg4jm1m7" path="res://Assets/Prefabs/player1.tscn" id="9_f43ej"]
+[ext_resource type="Script" uid="uid://c2tovs843lih6" path="res://Scripts/UI/PointsSpawner.cs" id="9_v7xhk"]
 [ext_resource type="AudioStream" uid="uid://cixnvunrjdmxg" path="res://Assets/Audio/Music/Underwater.wav" id="9_y30xb"]
+[ext_resource type="PackedScene" uid="uid://cwqn0ma42jdvi" path="res://Assets/Prefabs/point_effect.tscn" id="10_wukv0"]
 [ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="12_cr6v8"]
 [ext_resource type="Script" uid="uid://x4xqn1v2i2i" path="res://Scripts/UI/UIPauseMenu.cs" id="13_7rq2r"]
 [ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="13_f43ej"]
+[ext_resource type="FontFile" uid="uid://fa48b7ntl10o" path="res://Assets/Fonts/Action-Man/Action_Man.ttf" id="14_gipt1"]
+[ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/PointsLabel.cs" id="17_wukv0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lg2j6"]
 shader = ExtResource("1_x6js8")
@@ -42,6 +47,10 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("7_xhjei")
 region = Rect2(32, 32, 32, 32)
 
+[sub_resource type="LabelSettings" id="LabelSettings_pgw7i"]
+font = ExtResource("14_gipt1")
+font_size = 48
+
 [node name="GameScene" type="Node2D"]
 
 [node name="BG" type="CanvasLayer" parent="."]
@@ -57,13 +66,22 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_lg2j6")
 
-[node name="HookManager" type="Node2D" parent="." node_paths=PackedStringArray("minigame")]
+[node name="HookManager" type="Node2D" parent="." node_paths=PackedStringArray("pointSpawner", "minigame")]
 script = ExtResource("2_lohlh")
 spawnArea = Rect2(32, 0, 1088, 64)
 hookPrefabs = Array[PackedScene]([ExtResource("3_kilg5"), ExtResource("4_7rq2r"), ExtResource("5_qolck"), ExtResource("6_ry528"), ExtResource("7_yhlfj"), ExtResource("8_ry528")])
+pointSpawner = NodePath("PointsSpawner")
 minigame = NodePath("../HUD")
 
 [node name="Timer" type="Timer" parent="HookManager"]
+autostart = true
+
+[node name="PointsSpawner" type="Node2D" parent="HookManager"]
+script = ExtResource("9_v7xhk")
+prefab = ExtResource("10_wukv0")
+
+[node name="Timer" type="Timer" parent="HookManager/PointsSpawner"]
+wait_time = 0.1
 autostart = true
 
 [node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("container", "preview", "input")]
@@ -173,6 +191,25 @@ target = NodePath("../../../Player")
 minY = 133.0
 maxY = 600.0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_x6js8")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="HUD/HBoxContainer"]
+layout_mode = 2
+text = "X0"
+label_settings = SubResource("LabelSettings_pgw7i")
+script = ExtResource("17_wukv0")
+
 [node name="Player" parent="." instance=ExtResource("9_f43ej")]
 position = Vector2(516, 514)
 
@@ -237,6 +274,7 @@ theme = ExtResource("13_f43ej")
 text = "||"
 
 [connection signal="timeout" from="HookManager/Timer" to="HookManager" method="Spawn"]
+[connection signal="timeout" from="HookManager/PointsSpawner/Timer" to="HookManager/PointsSpawner" method="AttemptSpawn"]
 [connection signal="pressed" from="PauseMenu/Panel/CenterContainer/HBoxContainer/Button" to="PauseMenu" method="UnPause"]
 [connection signal="pressed" from="PauseMenu/Panel/CenterContainer/HBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]
 [connection signal="pressed" from="PauseMenu/PauseButton/Button" to="PauseMenu" method="TogglePause"]

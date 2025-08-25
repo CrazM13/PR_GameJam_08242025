@@ -5,6 +5,7 @@ using System.Text;
 
 public partial class TypingMinigame : CanvasLayer {
 
+	[Signal] public delegate void OnStartEventHandler();
 	[Signal] public delegate void OnWinEventHandler();
 
 	[Export] private Control container;
@@ -14,6 +15,7 @@ public partial class TypingMinigame : CanvasLayer {
 
 	private int currentIndex = 0;
 	private bool isPlaying = false;
+	private bool isStarted = false;
 
 	private float wrongAnimTime = -1;
 
@@ -25,6 +27,10 @@ public partial class TypingMinigame : CanvasLayer {
 		if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
 			if (keyEvent.AsTextKeyLabel() == preview.Text[currentIndex].ToString()) {
 				currentIndex++;
+				if (!isStarted) {
+					EmitSignal(SignalName.OnStart);
+					isStarted = true;
+				}
 
 				if (currentIndex == preview.Text.Length) {
 					input.Text = preview.Text;
@@ -49,6 +55,7 @@ public partial class TypingMinigame : CanvasLayer {
 		preview.Text = wordList.GetRandom().ToUpper();
 		input.Text = string.Empty;
 		isPlaying = true;
+		isStarted = false;
 		currentIndex = 0;
 
 		container.Visible = true;

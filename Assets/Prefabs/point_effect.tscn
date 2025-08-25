@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwqn0ma42jdvi"]
+
+[ext_resource type="Script" uid="uid://djepefex588bi" path="res://Scripts/UI/PointsEffect.cs" id="1_ci70v"]
+[ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="1_sbecw"]
+
+[node name="PointEffect" type="VisibleOnScreenNotifier2D"]
+rect = Rect2(-32, 16, 16, 16)
+script = ExtResource("1_ci70v")
+speed = 50.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sbecw")

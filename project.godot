@@ -14,6 +14,10 @@ config/name="PR_GameJam_08242025"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://cuitet6xik5w1"
+
 [dotnet]
 
 project/assembly_name="PR_GameJam_08242025"

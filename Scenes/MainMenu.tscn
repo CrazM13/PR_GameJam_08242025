@@ -1,0 +1,169 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4ktvx2mpg8qp"]
+
+[ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_tt5f1"]
+[ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="2_853f1"]
+[ext_resource type="Script" uid="uid://dafuaau17ffiw" path="res://Scripts/UI/BetterButton.cs" id="3_8saeu"]
+[ext_resource type="Resource" uid="uid://cqu6bcu3aq1io" path="res://Assets/Data/UI/ButtonClick.tres" id="4_df05h"]
+[ext_resource type="Resource" uid="uid://sp5qrfpotvap" path="res://Assets/Data/UI/ButtonHover.tres" id="5_8um5k"]
+[ext_resource type="AudioStream" uid="uid://d01rwsygaxo23" path="res://Assets/Audio/Music/HarborV2.wav" id="6_8um5k"]
+[ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="7_xim88"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8saeu"]
+shader = ExtResource("2_853f1")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tt5f1")
+
+[node name="BG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8saeu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(512, 150)
+layout_mode = 2
+bbcode_enabled = true
+text = "[wave freq=2 amp=100]Title[/wave]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(512, 150)
+layout_mode = 2
+bbcode_enabled = true
+text = "[wave freq=2 amp=100]SubTitle[/wave]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(450, 512)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CenterContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Go Fishing!"
+script = ExtResource("3_8saeu")
+clickSFX = ExtResource("4_df05h")
+hoverSFX = ExtResource("5_8um5k")
+clickDisabledSFX = ExtResource("4_df05h")
+hoverDisabledSFX = ExtResource("5_8um5k")
+
+[node name="Spacer2" type="Control" parent="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Options"
+script = ExtResource("3_8saeu")
+clickSFX = ExtResource("4_df05h")
+hoverSFX = ExtResource("5_8um5k")
+clickDisabledSFX = ExtResource("4_df05h")
+hoverDisabledSFX = ExtResource("5_8um5k")
+
+[node name="Spacer3" type="Control" parent="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Credits"
+script = ExtResource("3_8saeu")
+clickSFX = ExtResource("4_df05h")
+hoverSFX = ExtResource("5_8um5k")
+clickDisabledSFX = ExtResource("4_df05h")
+hoverDisabledSFX = ExtResource("5_8um5k")
+
+[node name="Spacer4" type="Control" parent="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit"
+script = ExtResource("3_8saeu")
+clickSFX = ExtResource("4_df05h")
+hoverSFX = ExtResource("5_8um5k")
+clickDisabledSFX = ExtResource("4_df05h")
+hoverDisabledSFX = ExtResource("5_8um5k")
+
+[node name="Spacer5" type="Control" parent="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8um5k")
+volume_db = -10.0
+autoplay = true
+
+[node name="SceneManager" parent="." instance=ExtResource("7_xim88")]
+
+[connection signal="pressed" from="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/GameScene.tscn"]]
+[connection signal="pressed" from="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer/Button2" to="SceneManager" method="LoadScene" binds= ["res://Scenes/Options.tscn"]]

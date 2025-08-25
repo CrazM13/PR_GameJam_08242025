@@ -1,0 +1,66 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dkv4xbcah6ajw"]
+
+[ext_resource type="StyleBox" uid="uid://b8xfpppiolxke" path="res://Assets/Themes/ButtonNormal.tres" id="1_e6jl8"]
+[ext_resource type="FontFile" uid="uid://b21unobkoi57b" path="res://Assets/Fonts/Action-Man/Action_Man_Bold.ttf" id="2_sehqa"]
+[ext_resource type="Texture2D" uid="uid://0atnsvlekldx" path="res://Assets/UI/Depth/DepthGuageUI.png" id="3_r17ud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r17ud"]
+bg_color = Color(0, 0.444333, 0.62, 0.501961)
+border_width_left = 8
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sehqa"]
+bg_color = Color(0.62, 0.848, 1, 1)
+border_width_left = 16
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6jl8"]
+bg_color = Color(0.64, 0.738667, 0.8, 1)
+border_width_left = 8
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r17ud"]
+atlas = ExtResource("3_r17ud")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0gdb"]
+bg_color = Color(0.44, 0.766667, 1, 1)
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6f8m0"]
+bg_color = Color(0.308, 0.4256, 0.56, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhhd7"]
+bg_color = Color(0.0237301, 0.0851445, 0.144517, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.184314, 0.372549, 0.54902, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[resource]
+Button/constants/outline_size = 32
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("2_sehqa")
+Button/styles/disabled = SubResource("StyleBoxFlat_r17ud")
+Button/styles/hover = SubResource("StyleBoxFlat_sehqa")
+Button/styles/normal = ExtResource("1_e6jl8")
+Button/styles/pressed = SubResource("StyleBoxFlat_e6jl8")
+HSlider/icons/grabber = SubResource("AtlasTexture_r17ud")
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_r17ud")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_q0gdb")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_q0gdb")
+HSlider/styles/slider = SubResource("StyleBoxFlat_6f8m0")
+Panel/styles/panel = SubResource("StyleBoxFlat_jhhd7")
+RichTextLabel/constants/outline_size = 48
+RichTextLabel/font_sizes/normal_font_size = 96
+RichTextLabel/fonts/normal_font = ExtResource("2_sehqa")

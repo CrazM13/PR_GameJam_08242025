@@ -1,0 +1,182 @@
+[gd_scene load_steps=11 format=3 uid="uid://yrotnmi5qpo2"]
+
+[ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hg628"]
+[ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_qqnya"]
+[ext_resource type="FontFile" uid="uid://fa48b7ntl10o" path="res://Assets/Fonts/Action-Man/Action_Man.ttf" id="3_5hy3q"]
+[ext_resource type="Script" uid="uid://dafuaau17ffiw" path="res://Scripts/UI/BetterButton.cs" id="4_6f4k2"]
+[ext_resource type="Script" uid="uid://3e674pml188a" path="res://Scripts/UI/VolumeSlider.cs" id="4_cja8r"]
+[ext_resource type="Resource" uid="uid://cqu6bcu3aq1io" path="res://Assets/Data/UI/ButtonClick.tres" id="5_bdxpv"]
+[ext_resource type="Resource" uid="uid://sp5qrfpotvap" path="res://Assets/Data/UI/ButtonHover.tres" id="6_cja8r"]
+[ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="7_bdxpv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hg628"]
+shader = ExtResource("1_qqnya")
+
+[sub_resource type="LabelSettings" id="LabelSettings_cbhj7"]
+font = ExtResource("3_5hy3q")
+font_size = 32
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hg628")
+
+[node name="BG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_hg628")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/normal_font_size = 64
+text = "Options"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="Audio" type="Panel" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/normal_font_size = 32
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Master"
+label_settings = SubResource("LabelSettings_cbhj7")
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+script = ExtResource("4_cja8r")
+bus = "Master"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "- Music"
+label_settings = SubResource("LabelSettings_cbhj7")
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+script = ExtResource("4_cja8r")
+bus = "Music"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "- SFX"
+label_settings = SubResource("LabelSettings_cbhj7")
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+script = ExtResource("4_cja8r")
+bus = "SFX"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 92)
+layout_mode = 2
+text = "Back"
+script = ExtResource("4_6f4k2")
+clickSFX = ExtResource("5_bdxpv")
+hoverSFX = ExtResource("6_cja8r")
+clickDisabledSFX = ExtResource("5_bdxpv")
+hoverDisabledSFX = ExtResource("6_cja8r")
+
+[node name="SceneManager" parent="." instance=ExtResource("7_bdxpv")]
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]

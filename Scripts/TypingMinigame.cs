@@ -10,7 +10,6 @@ public partial class TypingMinigame : CanvasLayer {
 	[Export] private Control container;
 	[Export] private Label preview;
 	[Export] private Label input;
-	[Export] private WordList wordList;
 	[Export] private bool restartOnMistake;
 
 	private int currentIndex = 0;
@@ -46,7 +45,7 @@ public partial class TypingMinigame : CanvasLayer {
 		}
 	}
 
-	public void StartGame() {
+	public void StartGame(WordList wordList) {
 		preview.Text = wordList.GetRandom().ToUpper();
 		input.Text = string.Empty;
 		isPlaying = true;

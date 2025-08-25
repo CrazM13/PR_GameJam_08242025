@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SFXResource" load_steps=3 format=3 uid="uid://cqu6bcu3aq1io"]
+
+[ext_resource type="Script" uid="uid://cvj5j6uvungud" path="res://Scripts/UI/SFXResource.cs" id="1_lq28b"]
+[ext_resource type="AudioStream" uid="uid://1bqpu2vrpg4c" path="res://Assets/Audio/SFX/BiteSFX.wav" id="1_t82a7"]
+
+[resource]
+script = ExtResource("1_lq28b")
+SFX = ExtResource("1_t82a7")
+AudioBus = &"SFX"
+metadata/_custom_type_script = "uid://cvj5j6uvungud"

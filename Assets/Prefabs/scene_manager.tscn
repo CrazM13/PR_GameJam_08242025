@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdp3txe12w2mm"]
+
+[ext_resource type="Script" uid="uid://boloew3rj0vbd" path="res://Project Tools/SceneManagement/SceneManager.cs" id="1_lhv4l"]
+
+[node name="SceneManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_lhv4l")
+fadeDuration = 0.75

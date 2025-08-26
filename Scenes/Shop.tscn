@@ -1,0 +1,280 @@
+[gd_scene load_steps=18 format=3 uid="uid://dwmbssw65iqaw"]
+
+[ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_kjfcx"]
+[ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_wndna"]
+[ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="2_iidq5"]
+[ext_resource type="Script" uid="uid://vve6qdvehof1" path="res://Scripts/UI/Menu/Shop.cs" id="2_m1c0q"]
+[ext_resource type="Script" uid="uid://dafuaau17ffiw" path="res://Scripts/UI/Menu/BetterButton.cs" id="3_ckylj"]
+[ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="3_ct2yw"]
+[ext_resource type="PackedScene" uid="uid://cgohsyfn346ng" path="res://Assets/Prefabs/menu_point_effect.tscn" id="3_m1c0q"]
+[ext_resource type="Resource" uid="uid://cqu6bcu3aq1io" path="res://Assets/Data/UI/ButtonClick.tres" id="4_2aaoe"]
+[ext_resource type="FontFile" uid="uid://fa48b7ntl10o" path="res://Assets/Fonts/Action-Man/Action_Man.ttf" id="4_ccd4q"]
+[ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/Points/PointsLabel.cs" id="5_1mgah"]
+[ext_resource type="Resource" uid="uid://sp5qrfpotvap" path="res://Assets/Data/UI/ButtonHover.tres" id="5_ct2yw"]
+[ext_resource type="PackedScene" uid="uid://bd3ca1ynm0vxo" path="res://Assets/Prefabs/shop_button.tscn" id="6_1mgah"]
+[ext_resource type="SpriteFrames" uid="uid://vb2ubapfgmx3" path="res://Assets/Fish/SkinBank.tres" id="6_ccd4q"]
+[ext_resource type="Script" uid="uid://d8yxpko306a5" path="res://Scripts/UI/Menu/SkinPreview.cs" id="12_gufdo"]
+[ext_resource type="Script" uid="uid://cvv4bu7e2chl7" path="res://Scripts/SetPlayerSkin.cs" id="14_ox0pj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iidq5"]
+shader = ExtResource("1_kjfcx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_r8bg4"]
+font = ExtResource("4_ccd4q")
+font_size = 48
+
+[node name="Shop" type="Control" node_paths=PackedStringArray("pointsSpawnPos", "container", "skinPreview")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wndna")
+script = ExtResource("2_m1c0q")
+pointsSpawnPos = NodePath("VBoxContainer/HBoxContainer2/Control/TextureRect")
+pointEffectPrefab = ExtResource("3_m1c0q")
+container = NodePath("VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer")
+skinPreview = NodePath("VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Panel2/MovingBox/AnimatedSprite2D")
+
+[node name="BG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_iidq5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/normal_font_size = 64
+text = "Shop"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Control" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/Control"]
+layout_mode = 2
+texture = ExtResource("3_ct2yw")
+stretch_mode = 6
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X0"
+label_settings = SubResource("LabelSettings_r8bg4")
+script = ExtResource("5_1mgah")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="Audio" type="Panel" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 10
+
+[node name="Shop Button" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+SkinID = "basic"
+
+[node name="Shop Button2" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+SkinID = "clown"
+Price = 5
+
+[node name="Shop Button3" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+SkinID = "cichlid"
+Price = 25
+
+[node name="Shop Button4" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button5" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button6" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button7" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button8" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button9" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button10" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button11" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button12" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button13" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button14" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button15" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button16" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button17" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button18" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button19" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="Shop Button20" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 92)
+layout_mode = 2
+text = "Back"
+script = ExtResource("3_ckylj")
+clickSFX = ExtResource("4_2aaoe")
+hoverSFX = ExtResource("5_ct2yw")
+clickDisabledSFX = ExtResource("4_2aaoe")
+hoverDisabledSFX = ExtResource("5_ct2yw")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2" node_paths=PackedStringArray("waypointStart", "waypointEnd", "fishBox", "fish")]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("12_gufdo")
+waypointStart = NodePath("Control")
+waypointEnd = NodePath("Control2")
+fishBox = NodePath("MovingBox")
+fish = NodePath("MovingBox/AnimatedSprite2D")
+speed = 0.25
+
+[node name="MovingBox" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Panel2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Panel2/MovingBox"]
+scale = Vector2(2.1875, 2.15625)
+sprite_frames = ExtResource("6_ccd4q")
+animation = &"basic"
+script = ExtResource("14_ox0pj")
+
+[node name="Control" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Panel2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_right = 72.0
+offset_bottom = 8.0
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Panel2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_right = -56.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="SceneManager" parent="." instance=ExtResource("2_iidq5")]
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]

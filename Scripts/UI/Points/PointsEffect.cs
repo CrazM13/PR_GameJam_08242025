@@ -7,6 +7,8 @@ public partial class PointsEffect : VisibleOnScreenNotifier2D {
 
 	private Vector2 velocity;
 
+	public int Value { get; set; }
+
 	public override void _Ready() {
 		base._Ready();
 
@@ -17,7 +19,7 @@ public partial class PointsEffect : VisibleOnScreenNotifier2D {
 	}
 
 	private void OnScreenExited() {
-		GameManager.Instance.Points++;
+		GameManager.Instance.Points += Value;
 		QueueFree();
 	}
 

@@ -461,7 +461,7 @@ layout_mode = 2
 [node name="Button3" type="Button" parent="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Credits"
+text = "Bait Shop"
 script = ExtResource("4_v6x5m")
 clickSFX = ExtResource("5_cvw72")
 hoverSFX = ExtResource("6_rlt30")
@@ -496,4 +496,5 @@ bus = &"Music"
 
 [connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/GameScene.tscn"]]
 [connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button2" to="SceneManager" method="LoadScene" binds= ["res://Scenes/Options.tscn"]]
+[connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button3" to="SceneManager" method="LoadScene" binds= ["res://Scenes/Shop.tscn"]]
 [connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button4" to="SceneManager" method="Quit"]

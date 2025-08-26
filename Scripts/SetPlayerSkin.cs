@@ -10,4 +10,8 @@ public partial class SetPlayerSkin : AnimatedSprite2D {
 
 	}
 
+	public void Reload() {
+		this.Play(GameManager.Instance.Skin);
+	}
+
 }

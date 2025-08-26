@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public partial class PointsSpawner : Node2D {
 
 	[Export] private PackedScene prefab;
+	[Export] private int value = 1;
 
 	private Queue<Vector2> remainingSpawns = [];
 
@@ -18,7 +19,8 @@ public partial class PointsSpawner : Node2D {
 		if (remainingSpawns.Count > 0) {
 
 			PointsEffect pointEffect = prefab.Instantiate<PointsEffect>();
-			GetTree().CurrentScene.AddChild(pointEffect);
+			pointEffect.Value = value;
+			AddChild(pointEffect);
 			pointEffect.GlobalPosition = remainingSpawns.Dequeue();
 		}
 	}

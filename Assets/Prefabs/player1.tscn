@@ -1,117 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://iguuwg4jm1m7"]
+[gd_scene load_steps=9 format=3 uid="uid://iguuwg4jm1m7"]
 
-[ext_resource type="Texture2D" uid="uid://pewtnbcfr0j8" path="res://Assets/Fish/Player_Fish1.png" id="1_qjp4w"]
+[ext_resource type="SpriteFrames" uid="uid://vb2ubapfgmx3" path="res://Assets/Fish/SkinBank.tres" id="1_hl7u2"]
 [ext_resource type="Script" uid="uid://c8bjh2hs4bv3w" path="res://Scripts/FishController.cs" id="2_s5xoi"]
-[ext_resource type="Texture2D" uid="uid://dalb0gvetr7mr" path="res://Assets/Fish/cichlid.png" id="2_x5fe2"]
-[ext_resource type="Texture2D" uid="uid://cm6lxxxcexrct" path="res://Assets/Fish/clown.png" id="3_haovq"]
 [ext_resource type="Texture2D" uid="uid://c7u5opgog2sf2" path="res://Assets/Particle_Effects/Bubble.png" id="3_s5xoi"]
 [ext_resource type="Script" uid="uid://cvv4bu7e2chl7" path="res://Scripts/SetPlayerSkin.cs" id="4_haovq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lg2j6"]
 radius = 3.0
 height = 24.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qjp4w"]
-atlas = ExtResource("1_qjp4w")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s5xoi"]
-atlas = ExtResource("1_qjp4w")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hl7u2"]
-atlas = ExtResource("1_qjp4w")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x5fe2"]
-atlas = ExtResource("1_qjp4w")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ej66u"]
-atlas = ExtResource("2_x5fe2")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wkjl0"]
-atlas = ExtResource("2_x5fe2")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fqqti"]
-atlas = ExtResource("2_x5fe2")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jd6xt"]
-atlas = ExtResource("2_x5fe2")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_epmet"]
-atlas = ExtResource("3_haovq")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6a7ns"]
-atlas = ExtResource("3_haovq")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_24t4s"]
-atlas = ExtResource("3_haovq")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rlcwy"]
-atlas = ExtResource("3_haovq")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_haovq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qjp4w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s5xoi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hl7u2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x5fe2")
-}],
-"loop": true,
-"name": &"basic",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ej66u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wkjl0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fqqti")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jd6xt")
-}],
-"loop": true,
-"name": &"cichlid",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_epmet")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6a7ns")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_24t4s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rlcwy")
-}],
-"loop": true,
-"name": &"clown",
-"speed": 5.0
-}]
 
 [sub_resource type="Curve" id="Curve_s5xoi"]
 _data = [Vector2(0, 0.52809), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -139,7 +35,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_lg2j6")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_haovq")
+sprite_frames = ExtResource("1_hl7u2")
 animation = &"basic"
 script = ExtResource("4_haovq")
 

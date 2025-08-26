@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgohsyfn346ng"]
+
+[ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="1_q75li"]
+[ext_resource type="Script" uid="uid://78wc3i1y21bv" path="res://Scripts/UI/Points/MenuPointEffect.cs" id="2_44d1y"]
+
+[node name="MenuPointEffect" type="TextureRect"]
+z_index = 100
+z_as_relative = false
+custom_minimum_size = Vector2(32, 64)
+offset_right = 32.0
+offset_bottom = 64.0
+texture = ExtResource("1_q75li")
+stretch_mode = 6
+script = ExtResource("2_44d1y")

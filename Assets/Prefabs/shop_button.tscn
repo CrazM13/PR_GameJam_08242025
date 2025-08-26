@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd3ca1ynm0vxo"]
+
+[ext_resource type="Theme" uid="uid://dbsnju52ybu5e" path="res://Assets/Themes/Shop.tres" id="1_h40oe"]
+[ext_resource type="SpriteFrames" uid="uid://vb2ubapfgmx3" path="res://Assets/Fish/SkinBank.tres" id="1_x0udj"]
+[ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="2_h40oe"]
+[ext_resource type="Script" uid="uid://crihlgnp1pbh" path="res://Scripts/UI/Menu/ShopButton.cs" id="2_o3fh1"]
+[ext_resource type="Resource" uid="uid://cqu6bcu3aq1io" path="res://Assets/Data/UI/ButtonClick.tres" id="3_ssoif"]
+[ext_resource type="Resource" uid="uid://sp5qrfpotvap" path="res://Assets/Data/UI/ButtonHover.tres" id="4_e4u81"]
+
+[node name="Shop Button" type="Button" node_paths=PackedStringArray("display", "priceIcon", "priceTag")]
+custom_minimum_size = Vector2(96, 160)
+theme = ExtResource("1_h40oe")
+script = ExtResource("2_o3fh1")
+display = NodePath("VBoxContainer/Panel/AnimatedSprite2D")
+priceIcon = NodePath("VBoxContainer/Panel2/MarginContainer/HBoxContainer/TextureRect")
+priceTag = NodePath("VBoxContainer/Panel2/MarginContainer/HBoxContainer/Label")
+clickSFX = ExtResource("3_ssoif")
+hoverSFX = ExtResource("4_e4u81")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/Panel"]
+position = Vector2(48, 48)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("1_x0udj")
+animation = &"basic"
+autoplay = "basic"
+
+[node name="Panel2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(96, 64)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Panel2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_h40oe")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "x0"
+vertical_alignment = 1

@@ -46,7 +46,7 @@ namespace BetterUISuite {
 			}
 
 			// Disabled Hover SFX
-			if (hoverSFX != null) {
+			if (hoverDisabledSFX != null) {
 				AudioStreamPlayer audio = UIHelper.AddSFX(this, hoverDisabledSFX);
 				this.MouseEntered += () => {
 					if (Disabled) audio.Play();

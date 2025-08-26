@@ -53,6 +53,7 @@ public partial class HookManager : Node2D {
 
 	private void OnHookRetracted(Hook hook) {
 		if (hook == hookWithFish) {
+			GameManager.Instance.SaveGame();
 			sceneManager.LoadScene("res://Scenes/LoseScreen.tscn");
 		}
 	}

@@ -10,7 +10,7 @@ public partial class Hook : Area2D {
 	[Export] public WordList WordList { get; private set; }
 	[Export] public int Value { get; private set; }
 
-	[Export] private Sprite2D baitSprite;
+	[Export] private Node2D baitSprite;
 	[Export] private AudioStreamPlayer2D biteSound;
 	[Export] private AudioStreamPlayer2D reelSound;
 	[Export] private GpuParticles2D particles;

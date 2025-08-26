@@ -17,7 +17,7 @@ public partial class PointsEffect : VisibleOnScreenNotifier2D {
 	}
 
 	private void OnScreenExited() {
-		PointsManager.Instance.Points++;
+		GameManager.Instance.Points++;
 		QueueFree();
 	}
 

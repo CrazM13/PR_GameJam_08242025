@@ -38,36 +38,27 @@ public partial class TypingMinigame : CanvasLayer {
 					container.Visible = false;
 					EmitSignal(SignalName.OnWin);
 				} else {
-					input.Text = BuildTyped();
+					input.VisibleCharacters = currentIndex;
 				}
 			} else {
 				wrongAnimTime = 0;
 				input.Modulate = Colors.Red;
 				if (restartOnMistake) {
 					currentIndex = 0;
-					input.Text = BuildTyped();
+					input.VisibleCharacters = 0;
 				}
 			}
 		}
 	}
 
 	public void StartGame(WordList wordList) {
-		preview.Text = wordList.GetRandom().ToUpper();
-		input.Text = string.Empty;
+		input.Text = preview.Text = wordList.GetRandom().ToUpper();
+		input.VisibleCharacters = 0;
 		isPlaying = true;
 		isStarted = false;
 		currentIndex = 0;
 
 		container.Visible = true;
-	}
-
-	private string BuildTyped() {
-		StringBuilder sb = new StringBuilder();
-
-		if (currentIndex > 0) sb.Append(preview.Text.Substr(0, currentIndex));
-		sb.Append('_', preview.Text.Length - currentIndex);
-
-		return sb.ToString();
 	}
 
 	public override void _Process(double delta) {

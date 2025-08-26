@@ -26,6 +26,8 @@ public partial class Hook : Area2D {
 
 	private float timeRemaining;
 
+	public bool Pause { get; set; }
+
 	public override void _Ready() {
 		base._Ready();
 
@@ -40,6 +42,8 @@ public partial class Hook : Area2D {
 
 	public override void _PhysicsProcess(double delta) {
 		base._PhysicsProcess(delta);
+
+		if (Pause) return;
 
 		if (timeRemaining > 0) {
 			timeRemaining -= (float) delta;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bb4wwthbpaqtj"]
+[gd_scene load_steps=32 format=3 uid="uid://bb4wwthbpaqtj"]
 
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_x6js8"]
 [ext_resource type="LabelSettings" uid="uid://o4wqao5reunh" path="res://Assets/Themes/TypeSettings.tres" id="2_4bvgx"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://x4xqn1v2i2i" path="res://Scripts/UI/Menu/UIPauseMenu.cs" id="13_7rq2r"]
 [ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="13_f43ej"]
 [ext_resource type="FontFile" uid="uid://fa48b7ntl10o" path="res://Assets/Fonts/Action-Man/Action_Man.ttf" id="14_gipt1"]
+[ext_resource type="FontFile" uid="uid://b21unobkoi57b" path="res://Assets/Fonts/Action-Man/Action_Man_Bold.ttf" id="14_hgvmy"]
 [ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/Points/PointsLabel.cs" id="17_wukv0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lg2j6"]
@@ -34,6 +35,10 @@ width = 100
 height = 100
 fill_from = Vector2(0, 0.229358)
 fill_to = Vector2(0, 0.105505)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ebcm8"]
+font = ExtResource("14_hgvmy")
+font_size = 32
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vvcf"]
 atlas = ExtResource("7_xhjei")
@@ -89,8 +94,8 @@ autostart = true
 process_mode = 3
 script = ExtResource("4_x6js8")
 container = NodePath("Control")
-preview = NodePath("Control/Typed/ToType")
-input = NodePath("Control/Typed")
+preview = NodePath("Control/MarginContainer/Typed/ToType")
+input = NodePath("Control/MarginContainer/Typed")
 
 [node name="Control" type="Panel" parent="HUD"]
 visible = false
@@ -99,35 +104,65 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 64.0
 grow_horizontal = 2
+theme = ExtResource("13_f43ej")
 
-[node name="Typed" type="Label" parent="HUD/Control"]
-z_index = 1
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="Tutorial" type="Control" parent="HUD/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="TutorialLeft" type="Label" parent="HUD/Control/MarginContainer/Tutorial"]
+layout_mode = 2
+offset_top = 18.0
+offset_right = 1088.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Type what you see >>"
+label_settings = SubResource("LabelSettings_ebcm8")
+vertical_alignment = 1
+
+[node name="TutorialRight" type="Label" parent="HUD/Control/MarginContainer/Tutorial"]
+layout_mode = 2
+offset_top = 18.0
+offset_right = 1088.0
+offset_bottom = 46.0
+text = "<< Before you're caught!"
+label_settings = SubResource("LabelSettings_ebcm8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Typed" type="Label" parent="HUD/Control/MarginContainer"]
+z_index = 1
+layout_mode = 2
 text = "Te__"
 label_settings = ExtResource("2_4bvgx")
 horizontal_alignment = 1
 vertical_alignment = 2
+visible_characters_behavior = 1
 
-[node name="ToType" type="Label" parent="HUD/Control/Typed"]
+[node name="ToType" type="Label" parent="HUD/Control/MarginContainer/Typed"]
 self_modulate = Color(0.485703, 0.485704, 0.485703, 1)
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.25
-offset_right = -2.25
 grow_horizontal = 2
 grow_vertical = 2
 text = "Test"
 label_settings = ExtResource("2_4bvgx")
 horizontal_alignment = 1
 vertical_alignment = 2
+visible_characters_behavior = 1
 
 [node name="Depth" type="Control" parent="HUD"]
 custom_minimum_size = Vector2(48, 0)
@@ -277,6 +312,7 @@ text = "||"
 
 [connection signal="timeout" from="HookManager/Timer" to="HookManager" method="Spawn"]
 [connection signal="timeout" from="HookManager/PointsSpawner/Timer" to="HookManager/PointsSpawner" method="AttemptSpawn"]
+[connection signal="OnWin" from="HUD" to="HUD/Control/MarginContainer/Tutorial" method="hide"]
 [connection signal="pressed" from="PauseMenu/Panel/CenterContainer/HBoxContainer/Button" to="PauseMenu" method="UnPause"]
 [connection signal="pressed" from="PauseMenu/Panel/CenterContainer/HBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]
 [connection signal="pressed" from="PauseMenu/PauseButton/Button" to="PauseMenu" method="TogglePause"]

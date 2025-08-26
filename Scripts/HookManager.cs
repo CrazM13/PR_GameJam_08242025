@@ -25,6 +25,7 @@ public partial class HookManager : Node2D {
 
 	private void OnMinigameStart() {
 		hookWithFish.ConsumeHook();
+		hookWithFish.Pause = false;
 	}
 
 	private void Spawn() {
@@ -46,6 +47,7 @@ public partial class HookManager : Node2D {
 
 		this.fish = fish;
 		hookWithFish = hook;
+		hookWithFish.Pause = true;
 		minigame.StartGame(hook.WordList);
 	}
 
@@ -65,6 +67,7 @@ public partial class HookManager : Node2D {
 		if (fish == null) return;
 
 		pointSpawner.QueueSpawn(hookWithFish.GlobalPosition, hookWithFish.Value);
+		hookWithFish.Pause = false;
 		hookWithFish = null;
 		fish.SetAttractor(null);
 		fish.AllowInput = true;

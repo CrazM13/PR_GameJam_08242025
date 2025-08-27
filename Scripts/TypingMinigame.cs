@@ -25,7 +25,7 @@ public partial class TypingMinigame : CanvasLayer {
 		if (!isPlaying) return;
 
 		if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
-			if (keyEvent.AsTextKeyLabel() == preview.Text[currentIndex].ToString()) {
+			if (GetCharFromInput(keyEvent) == preview.Text[currentIndex]) {
 				currentIndex++;
 				if (!isStarted) {
 					EmitSignal(SignalName.OnStart);
@@ -73,9 +73,10 @@ public partial class TypingMinigame : CanvasLayer {
 				wrongAnimTime = -1;
 			}
 		}
+	}
 
-		
-
+	private static char GetCharFromInput(InputEventKey keyEvent) {
+		return ((char) keyEvent.Unicode).ToString().ToUpper()[0];
 	}
 
 }

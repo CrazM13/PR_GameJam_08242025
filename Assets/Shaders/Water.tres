@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=28 format=3 uid="uid://dgux8lmjqgvkm"]
+[gd_resource type="VisualShader" load_steps=29 format=3 uid="uid://dgux8lmjqgvkm"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_00gip"]
 input_name = "uv"
@@ -80,8 +80,12 @@ op_type = 0
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_nf467"]
 
-[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_4k5ly"]
-function = 0
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_00gip"]
+default_input_values = [0, false, 1, 0.0, 2, 0.0]
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_ify6q"]
+parameter_name = "seasickness"
+qualifier = 1
 
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_q0dko"]
 function = 0
@@ -97,6 +101,7 @@ output_port_for_preview = 0
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
+global uniform bool seasickness;
 
 
 
@@ -118,6 +123,10 @@ void fragment() {
 	float n_out21p1 = n_out22p0.y;
 
 
+// BooleanParameter:43
+	bool n_out43p0 = seasickness;
+
+
 // Input:38
 	float n_out38p0 = TIME;
 
@@ -125,6 +134,12 @@ void fragment() {
 // FloatOp:39
 	float n_in39p1 = 1.00000;
 	float n_out39p0 = n_out38p0 * n_in39p1;
+
+
+	float n_out42p0;
+// Switch:42
+	float n_in42p1 = 0.00000;
+	n_out42p0 = mix(n_out39p0, n_in42p1, float(n_out43p0));
 
 
 // Input:10
@@ -156,16 +171,16 @@ void fragment() {
 
 
 // FloatOp:41
-	float n_out41p0 = n_out39p0 + n_out32p0;
+	float n_out41p0 = n_out42p0 + n_out32p0;
 
 
-// FloatFunc:43
-	float n_out43p0 = sin(n_out41p0);
+// FloatFunc:5
+	float n_out5p0 = sin(n_out41p0);
 
 
 // FloatOp:31
 	float n_in31p1 = 0.01000;
-	float n_out31p0 = n_out43p0 * n_in31p1;
+	float n_out31p0 = n_out5p0 * n_in31p1;
 
 
 // FloatOp:30
@@ -188,10 +203,6 @@ void fragment() {
 
 // Mix:26
 	vec4 n_out26p0 = mix(n_out29p0, n_out27p0, vec4(n_out25p0));
-
-
-// FloatFunc:5
-	float n_out5p0 = sin(n_out41p0);
 
 
 // FloatOp:15
@@ -233,13 +244,14 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-2400.95, -232.515)
 mode = 1
 flags/light_only = false
-nodes/fragment/0/position = Vector2(740, 20)
+nodes/fragment/0/position = Vector2(1320, 60)
 nodes/fragment/4/node = SubResource("VisualShaderNodeVectorDecompose_oh2da")
 nodes/fragment/4/position = Vector2(-3000, 360)
 nodes/fragment/5/node = SubResource("VisualShaderNodeFloatFunc_q0dko")
-nodes/fragment/5/position = Vector2(-1060, 240)
+nodes/fragment/5/position = Vector2(-1260, 460)
 nodes/fragment/6/node = SubResource("VisualShaderNodeCompare_w0sad")
 nodes/fragment/6/position = Vector2(20, 300)
 nodes/fragment/9/node = SubResource("VisualShaderNodeSwitch_rsnbt")
@@ -283,11 +295,13 @@ nodes/fragment/31/position = Vector2(-620, -20)
 nodes/fragment/32/node = SubResource("VisualShaderNodeFloatOp_q0dko")
 nodes/fragment/32/position = Vector2(-1960, 420)
 nodes/fragment/38/node = SubResource("VisualShaderNodeInput_ify6q")
-nodes/fragment/38/position = Vector2(-2820, 80)
+nodes/fragment/38/position = Vector2(-3080, 140)
 nodes/fragment/39/node = SubResource("VisualShaderNodeFloatOp_t13j5")
-nodes/fragment/39/position = Vector2(-2440, 60)
+nodes/fragment/39/position = Vector2(-2740, 100)
 nodes/fragment/41/node = SubResource("VisualShaderNodeFloatOp_nf467")
-nodes/fragment/41/position = Vector2(-1480, 360)
-nodes/fragment/43/node = SubResource("VisualShaderNodeFloatFunc_4k5ly")
-nodes/fragment/43/position = Vector2(-1060, 80)
-nodes/fragment/connections = PackedInt32Array(9, 0, 0, 1, 6, 0, 9, 0, 10, 0, 4, 0, 12, 0, 6, 1, 13, 0, 6, 0, 15, 0, 13, 0, 16, 0, 12, 0, 19, 0, 18, 0, 18, 0, 20, 0, 22, 0, 21, 0, 24, 0, 23, 0, 23, 0, 25, 0, 26, 0, 0, 0, 27, 0, 26, 1, 29, 0, 26, 0, 30, 0, 24, 0, 25, 0, 26, 2, 31, 0, 30, 1, 21, 1, 30, 0, 38, 0, 39, 0, 4, 0, 19, 0, 5, 0, 15, 0, 32, 0, 41, 1, 39, 0, 41, 0, 41, 0, 5, 0, 43, 0, 31, 0, 20, 0, 32, 0, 41, 0, 43, 0)
+nodes/fragment/41/position = Vector2(-1560, 360)
+nodes/fragment/42/node = SubResource("VisualShaderNodeSwitch_00gip")
+nodes/fragment/42/position = Vector2(-2420, -140)
+nodes/fragment/43/node = SubResource("VisualShaderNodeBooleanParameter_ify6q")
+nodes/fragment/43/position = Vector2(-2800, -140)
+nodes/fragment/connections = PackedInt32Array(9, 0, 0, 1, 6, 0, 9, 0, 10, 0, 4, 0, 12, 0, 6, 1, 15, 0, 13, 0, 16, 0, 12, 0, 19, 0, 18, 0, 18, 0, 20, 0, 22, 0, 21, 0, 24, 0, 23, 0, 23, 0, 25, 0, 26, 0, 0, 0, 27, 0, 26, 1, 29, 0, 26, 0, 25, 0, 26, 2, 21, 1, 30, 0, 38, 0, 39, 0, 4, 0, 19, 0, 32, 0, 41, 1, 41, 0, 5, 0, 20, 0, 32, 0, 30, 0, 24, 0, 31, 0, 30, 1, 13, 0, 6, 0, 5, 0, 15, 0, 5, 0, 31, 0, 39, 0, 42, 2, 42, 0, 41, 0, 43, 0, 42, 0)

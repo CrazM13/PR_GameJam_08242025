@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://yrotnmi5qpo2"]
+[gd_scene load_steps=15 format=3 uid="uid://yrotnmi5qpo2"]
 
 [ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hg628"]
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_qqnya"]
@@ -6,8 +6,12 @@
 [ext_resource type="Script" uid="uid://dafuaau17ffiw" path="res://Scripts/UI/Menu/BetterButton.cs" id="4_6f4k2"]
 [ext_resource type="Script" uid="uid://3e674pml188a" path="res://Scripts/UI/Menu/VolumeSlider.cs" id="4_cja8r"]
 [ext_resource type="Resource" uid="uid://cqu6bcu3aq1io" path="res://Assets/Data/UI/ButtonClick.tres" id="5_bdxpv"]
+[ext_resource type="StyleBox" uid="uid://dx7syp0h85psw" path="res://Assets/Themes/ButtonToggleHover.tres" id="5_fry7h"]
+[ext_resource type="StyleBox" uid="uid://bk3b2ouw1bq15" path="res://Assets/Themes/ButtonToggled.tres" id="5_kfnrp"]
 [ext_resource type="Resource" uid="uid://sp5qrfpotvap" path="res://Assets/Data/UI/ButtonHover.tres" id="6_cja8r"]
+[ext_resource type="StyleBox" uid="uid://ce3vphwd5uehb" path="res://Assets/Themes/ButtonUntoggled.tres" id="6_tcskm"]
 [ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="7_bdxpv"]
+[ext_resource type="Script" uid="uid://b3wu68ja2me4k" path="res://Scripts/UI/Menu/ToggleGlobalShader.cs" id="7_tcskm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hg628"]
 shader = ExtResource("1_qqnya")
@@ -155,6 +159,59 @@ theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 16
 
 [node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2/Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer2/Panel2/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/normal_font_size = 32
+text = "Video"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2/Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Seasick Mode"
+label_settings = SubResource("LabelSettings_cbhj7")
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer2/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer2/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/hover_pressed = ExtResource("5_fry7h")
+theme_override_styles/hover = ExtResource("5_fry7h")
+theme_override_styles/pressed = ExtResource("5_kfnrp")
+theme_override_styles/normal = ExtResource("6_tcskm")
+toggle_mode = true
+script = ExtResource("7_tcskm")
+clickSFX = ExtResource("5_bdxpv")
+hoverSFX = ExtResource("6_cja8r")
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer2/Panel2/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]

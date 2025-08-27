@@ -28,6 +28,7 @@ public class GameManager {
 	public Array<string> UnlockedSkins { get; set; } = ["basic"];
 
 	public Dictionary<string, float> Volume { get; private set; } = new Dictionary<string, float>() { { "Master", 1f }, { "Music", 1f }, { "SFX", 1f } };
+	public bool SeasicknessMode { get; set; } = false;
 
 	public void SaveGame() {
 		Vault vault = VaultManager.GetVault(VAULT_NAME);
@@ -41,6 +42,8 @@ public class GameManager {
 		vault.SetValue("volume_master", Volume["Master"]);
 		vault.SetValue("volume_music", Volume["Music"]);
 		vault.SetValue("volume_sfx", Volume["SFX"]);
+
+		vault.SetValue("seasickness_mode", SeasicknessMode);
 
 		VaultManager.SaveVault(VAULT_NAME);
 	}
@@ -64,6 +67,9 @@ public class GameManager {
 			AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Music"), Mathf.LinearToDb(Volume["Music"]));
 			Volume["SFX"] = vault.GetValue("volume_sfx").As<float>();
 			AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("SFX"), Mathf.LinearToDb(Volume["SFX"]));
+
+			SeasicknessMode = vault.GetValue("seasickness_mode").AsBool();
+			RenderingServer.GlobalShaderParameterSet("seasickness", SeasicknessMode);
 		}
 
 	}

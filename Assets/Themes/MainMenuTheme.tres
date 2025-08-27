@@ -1,28 +1,37 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dkv4xbcah6ajw"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dkv4xbcah6ajw"]
 
 [ext_resource type="StyleBox" uid="uid://b8xfpppiolxke" path="res://Assets/Themes/ButtonNormal.tres" id="1_e6jl8"]
+[ext_resource type="StyleBox" uid="uid://bbmgnmcrrsie2" path="res://Assets/Themes/ButtonHover.tres" id="2_6ibe8"]
 [ext_resource type="FontFile" uid="uid://b21unobkoi57b" path="res://Assets/Fonts/Action-Man/Action_Man_Bold.ttf" id="2_sehqa"]
+[ext_resource type="StyleBox" uid="uid://cluqcy561ovtu" path="res://Assets/Themes/ButtonDisabled.tres" id="2_yl8v6"]
 [ext_resource type="Texture2D" uid="uid://0atnsvlekldx" path="res://Assets/UI/Depth/DepthGuageUI.png" id="3_r17ud"]
 [ext_resource type="StyleBox" uid="uid://c2bv3nxut7sou" path="res://Assets/Themes/PanelNormal.tres" id="4_q0gdb"]
+[ext_resource type="StyleBox" uid="uid://cqsnsfw5kbwx1" path="res://Assets/Themes/ButtonPressed.tres" id="4_yl8v6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r17ud"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6qs6"]
 bg_color = Color(0, 0.444333, 0.62, 0.501961)
-border_width_left = 8
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
+border_width_right = 8
+corner_radius_top_left = 32
+corner_radius_bottom_left = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sehqa"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hc16"]
 bg_color = Color(0.62, 0.848, 1, 1)
-border_width_left = 16
+border_width_right = 16
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
+corner_radius_top_left = 32
+corner_radius_bottom_left = 32
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6jl8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8yhw"]
+bg_color = Color(0.380392, 0.603922, 0.85098, 1)
+border_width_right = 8
+corner_radius_top_left = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uv23"]
 bg_color = Color(0.64, 0.738667, 0.8, 1)
-border_width_left = 8
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
+border_width_right = 8
+corner_radius_top_left = 32
+corner_radius_bottom_left = 32
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r17ud"]
 atlas = ExtResource("3_r17ud")
@@ -40,10 +49,14 @@ bg_color = Color(0.308, 0.4256, 0.56, 1)
 Button/constants/outline_size = 32
 Button/font_sizes/font_size = 64
 Button/fonts/font = ExtResource("2_sehqa")
-Button/styles/disabled = SubResource("StyleBoxFlat_r17ud")
-Button/styles/hover = SubResource("StyleBoxFlat_sehqa")
+Button/styles/disabled = ExtResource("2_yl8v6")
+Button/styles/disabled_mirrored = SubResource("StyleBoxFlat_s6qs6")
+Button/styles/hover = ExtResource("2_6ibe8")
+Button/styles/hover_mirrored = SubResource("StyleBoxFlat_4hc16")
 Button/styles/normal = ExtResource("1_e6jl8")
-Button/styles/pressed = SubResource("StyleBoxFlat_e6jl8")
+Button/styles/normal_mirrored = SubResource("StyleBoxFlat_f8yhw")
+Button/styles/pressed = ExtResource("4_yl8v6")
+Button/styles/pressed_mirrored = SubResource("StyleBoxFlat_8uv23")
 HSlider/icons/grabber = SubResource("AtlasTexture_r17ud")
 HSlider/icons/grabber_highlight = SubResource("AtlasTexture_r17ud")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_q0gdb")

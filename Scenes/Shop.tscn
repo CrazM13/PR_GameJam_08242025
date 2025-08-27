@@ -174,6 +174,8 @@ layout_mode = 2
 
 [node name="Shop Button11" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
+SkinID = "tuna"
+Price = 15
 
 [node name="Shop Button12" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2

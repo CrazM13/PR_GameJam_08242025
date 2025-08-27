@@ -8,11 +8,14 @@ public partial class VolumeSlider : HSlider {
 	public override void _Ready() {
 		base._Ready();
 
-		this.Value = Mathf.DbToLinear(AudioServer.GetBusVolumeDb(AudioServer.GetBusIndex(bus)));
+		this.Value = GameManager.Instance.Volume[bus];
 		this.ValueChanged += this.OnValueChange;
 	}
 
 	private void OnValueChange(double value) {
+		GameManager.Instance.Volume[bus] = (float) value;
+		GameManager.Instance.SaveGame();
+
 		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex(bus), Mathf.LinearToDb((float) value));
 	}
 }

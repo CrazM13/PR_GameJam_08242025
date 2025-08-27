@@ -158,9 +158,13 @@ Price = 65
 
 [node name="Shop Button7" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
+SkinID = "starfish"
+Price = 65
 
 [node name="Shop Button8" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
+SkinID = "blob"
+Price = 75
 
 [node name="Shop Button9" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
@@ -194,6 +198,8 @@ layout_mode = 2
 
 [node name="Shop Button19" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
+SkinID = "trash"
+Price = 100
 
 [node name="Shop Button20" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2

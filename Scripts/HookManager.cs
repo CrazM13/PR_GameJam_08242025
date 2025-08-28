@@ -20,7 +20,19 @@ public partial class HookManager : Node2D {
 
 		minigame.OnWin += OnMinigameWin;
 		minigame.OnStart += OnMinigameStart;
+		minigame.OnAbort += OnMinigameAborted;
 
+	}
+
+	private void OnMinigameAborted() {
+		if (fish == null) return;
+
+		hookWithFish.Pause = false;
+		hookWithFish = null;
+		fish.SetAttractor(null);
+		fish.AllowInput = true;
+
+		fish = null;
 	}
 
 	private void OnMinigameStart() {

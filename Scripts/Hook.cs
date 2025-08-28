@@ -87,8 +87,9 @@ public partial class Hook : Area2D {
 	}
 
 	private void OnBodyEnter(Node2D body) {
-		
-		if (body is AnimatableBody2D) {
+		if (body is BGFish) {
+			ConsumeHook();
+		} else if (body is AnimatableBody2D) {
 			foreach (Node node in body.GetChildren()) {
 				if (node is FishController controller) {
 					EmitSignal(SignalName.OnFishHooked, this, controller);

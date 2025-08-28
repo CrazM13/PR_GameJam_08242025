@@ -7,6 +7,7 @@ public partial class TypingMinigame : CanvasLayer {
 
 	[Signal] public delegate void OnStartEventHandler();
 	[Signal] public delegate void OnWinEventHandler();
+	[Signal] public delegate void OnAbortEventHandler();
 
 	[Export] private Control container;
 	[Export] private Label preview;
@@ -41,11 +42,18 @@ public partial class TypingMinigame : CanvasLayer {
 					input.VisibleCharacters = currentIndex;
 				}
 			} else {
-				wrongAnimTime = 0;
-				input.Modulate = Colors.Red;
-				if (restartOnMistake) {
-					currentIndex = 0;
-					input.VisibleCharacters = 0;
+
+				if (!isStarted) {
+					isPlaying = false;
+					container.Visible = false;
+					EmitSignal(SignalName.OnAbort);
+				} else {
+					wrongAnimTime = 0;
+					input.Modulate = Colors.Red;
+					if (restartOnMistake) {
+						currentIndex = 0;
+						input.VisibleCharacters = 0;
+					}
 				}
 			}
 		}

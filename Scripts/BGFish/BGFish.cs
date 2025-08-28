@@ -1,19 +1,22 @@
 using Godot;
 using System;
 
-public partial class BGFish : VisibleOnScreenNotifier2D {
+public partial class BGFish : AnimatableBody2D {
 
 	[Export] private AnimatedSprite2D sprite;
+	[Export] private VisibleOnScreenNotifier2D detection;
 
 	private Vector2 velocity;
 
 	private bool active = false;
 
+	public bool IsSwimming { get; set; } = true;
+
 	public override void _Ready() {
 		base._Ready();
 
-		this.ScreenEntered += this.OnEnterScreen;
-		this.ScreenExited += this.OnExitScreen;
+		detection.ScreenEntered += this.OnEnterScreen;
+		detection.ScreenExited += this.OnExitScreen;
 
 		sprite.FlipH = velocity.X < 0;
 
@@ -22,7 +25,9 @@ public partial class BGFish : VisibleOnScreenNotifier2D {
 	public override void _Process(double delta) {
 		base._Process(delta);
 
-		this.GlobalPosition += velocity * (float) delta;
+		if (IsSwimming) {
+			this.GlobalPosition += velocity * (float) delta;
+		}
 
 	}
 

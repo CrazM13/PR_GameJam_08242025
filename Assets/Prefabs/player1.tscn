@@ -54,6 +54,7 @@ script = ExtResource("2_s5xoi")
 speed = 1000.0
 fish = NodePath("..")
 sprite = NodePath("../Sprite2D")
+playArea = Rect2(32, 150, 1088, 488)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 z_index = -2

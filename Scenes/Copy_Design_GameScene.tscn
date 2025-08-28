@@ -21,7 +21,7 @@
 [ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/Points/PointsLabel.cs" id="19_mw4fo"]
 [ext_resource type="PackedScene" uid="uid://iguuwg4jm1m7" path="res://Assets/Prefabs/player1.tscn" id="20_r0dvr"]
 [ext_resource type="AudioStream" uid="uid://cixnvunrjdmxg" path="res://Assets/Audio/Music/Underwater.wav" id="21_tusmy"]
-[ext_resource type="PackedScene" path="res://Assets/Prefabs/scene_manager.tscn" id="22_g3ar6"]
+[ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="22_g3ar6"]
 [ext_resource type="Script" uid="uid://x4xqn1v2i2i" path="res://Scripts/UI/Menu/UIPauseMenu.cs" id="23_0oxau"]
 [ext_resource type="Script" uid="uid://bonqfdk4eqo42" path="res://Scripts/BGFish/BGFishSpawner.cs" id="24_b6t37"]
 [ext_resource type="PackedScene" uid="uid://23h3vua0awup" path="res://Assets/Prefabs/bg_fish.tscn" id="25_5ywga"]

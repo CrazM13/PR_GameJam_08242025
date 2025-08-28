@@ -173,6 +173,8 @@ Price = 90
 
 [node name="Shop Button10" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
+SkinID = "turtle"
+Price = 95
 
 [node name="Shop Button11" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2

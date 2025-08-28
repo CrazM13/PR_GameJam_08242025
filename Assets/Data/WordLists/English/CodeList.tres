@@ -1,7 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cb2kebfg133oi"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://pmxvx13hf44n"]
 
 [ext_resource type="Script" uid="uid://dcerjrlssao3f" path="res://Scripts/WordList.cs" id="1_u0jl7"]
 
 [resource]
 script = ExtResource("1_u0jl7")
-words = PackedStringArray("ABSTRACT", "PROTECTED", "THROW", "DOUBLE", "INT", "PUBLIC", "TRUE", "BASE", "ELSE", "INTERFACE", "READONLY", "TRY", "BOOL", "ENUM", "INTERNAL", "REF", "TYPEOF", "BREAK", "EVENT", "RETURN", "UINT", "BYTE", "EXPLICIT", "LOCK", "SBYTE", "ULONG", "CASE", "EXTERN", "LONG", "SEALED", "UNCHECKED", "CATCH", "FALSE", "NAMESPACE", "SHORT", "UNSAFE", "CHAR", "FINALLY", "NEW", "SIZEOF", "USHORT", "CHECKED", "FIXED", "NULL", "STACKALLOC", "USING", "CLASS", "FLOAT", "OBJECT", "STATIC", "USING STATIC", "CONST", "FOR", "OPERATOR", "STRING", "VIRTUAL", "CONTINUE", "FOREACH", "OUT", "STRUCT", "VOID", "DECIMAL", "GOTO", "OVERRIDE", "SWITCH", "VOLATILE", "DEFAULT", "PARAMS", "THIS", "WHILE", "DELEGATE", "IMPLICIT", "PRIVATE", "ALGORITHM", "BUG", "ERROR", "FUNCTION", "STACK", "QUEUE", "HEAP")
+words = PackedStringArray("ABSTRACT", "PROTECTED", "THROW", "DOUBLE", "INT", "PUBLIC", "TRUE", "BASE", "ELSE", "INTERFACE", "READONLY", "TRY", "BOOL", "ENUM", "INTERNAL", "REF", "TYPEOF", "BREAK", "EVENT", "RETURN", "UINT", "BYTE", "EXPLICIT", "LOCK", "SBYTE", "ULONG", "CASE", "EXTERN", "LONG", "SEALED", "UNCHECKED", "CATCH", "FALSE", "NAMESPACE", "SHORT", "UNSAFE", "CHAR", "FINALLY", "NEW", "SIZEOF", "USHORT", "CHECKED", "FIXED", "NULL", "STACKALLOC", "USING", "CLASS", "FLOAT", "OBJECT", "STATIC", "USING", "STATIC", "CONST", "FOR", "OPERATOR", "STRING", "VIRTUAL", "CONTINUE", "FOREACH", "OUT", "STRUCT", "VOID", "DECIMAL", "GOTO", "OVERRIDE", "SWITCH", "VOLATILE", "DEFAULT", "PARAMS", "THIS", "WHILE", "DELEGATE", "IMPLICIT", "PRIVATE", "ALGORITHM", "BUG", "ERROR", "FUNCTION", "STACK", "QUEUE", "HEAP")

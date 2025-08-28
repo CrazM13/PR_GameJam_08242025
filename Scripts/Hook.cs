@@ -38,6 +38,8 @@ public partial class Hook : Area2D {
 
 		startPos = GlobalPosition;
 		GlobalPosition = startPos + (Vector2.Down * extend);
+
+		this.Monitorable = this.Monitoring = false;
 	}
 
 	public override void _PhysicsProcess(double delta) {
@@ -68,6 +70,7 @@ public partial class Hook : Area2D {
 
 			if (extend >= maxExtend) {
 				reelSound.Stop();
+				this.Monitorable = this.Monitoring = true;
 			}
 		} else if (retracting && extend > 0) {
 			extend -= ((float) delta) * speed;
@@ -79,6 +82,9 @@ public partial class Hook : Area2D {
 			}
 		} else if (retracting) {
 			extend -= ((float) delta) * speed;
+
+			GlobalPosition = startPos + (Vector2.Down * extend);
+
 			if (extend < -100) {
 				QueueFree();
 			}

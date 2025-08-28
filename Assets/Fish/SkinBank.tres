@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=52 format=3 uid="uid://vb2ubapfgmx3"]
+[gd_resource type="SpriteFrames" load_steps=56 format=3 uid="uid://vb2ubapfgmx3"]
 
 [ext_resource type="Texture2D" uid="uid://pewtnbcfr0j8" path="res://Assets/Fish/Player_Fish1.png" id="1_idaw7"]
 [ext_resource type="Texture2D" uid="uid://bga4armj30nm7" path="res://Assets/Fish/angler.png" id="1_juer8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dt3fu0dgr1pq7" path="res://Assets/Fish/blob.png" id="4_pt3ou"]
 [ext_resource type="Texture2D" uid="uid://4jfslpagdg20" path="res://Assets/Fish/jelly.png" id="6_4j1ra"]
 [ext_resource type="Texture2D" uid="uid://yme74cm7wy6y" path="res://Assets/Fish/scuba.png" id="7_pt3ou"]
+[ext_resource type="Texture2D" uid="uid://du684ssgvm1rb" path="res://Assets/Fish/squid.png" id="9_akv3p"]
 [ext_resource type="Texture2D" uid="uid://c6pg753cxyyvw" path="res://Assets/Fish/starfish.png" id="9_ouo5s"]
 [ext_resource type="Texture2D" uid="uid://cvgv7i8i20oip" path="res://Assets/Fish/trash.png" id="10_akv3p"]
 [ext_resource type="Texture2D" uid="uid://cotlwjhqowis1" path="res://Assets/Fish/tuna.png" id="11_ouo5s"]
@@ -131,6 +132,18 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_372si"]
 atlas = ExtResource("7_pt3ou")
 region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pcgq"]
+atlas = ExtResource("9_akv3p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwx8b"]
+atlas = ExtResource("9_akv3p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aewkw"]
+atlas = ExtResource("9_akv3p")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a1yse"]
 atlas = ExtResource("9_ouo5s")
@@ -302,6 +315,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"scuba",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pcgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwx8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aewkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwx8b")
+}],
+"loop": true,
+"name": &"squid",
 "speed": 5.0
 }, {
 "frames": [{

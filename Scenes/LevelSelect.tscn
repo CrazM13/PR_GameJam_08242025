@@ -1,0 +1,200 @@
+[gd_scene load_steps=13 format=3 uid="uid://ch1oqi6pk6es3"]
+
+[ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_fo23m"]
+[ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_v7iwv"]
+[ext_resource type="Script" uid="uid://dafuaau17ffiw" path="res://Scripts/UI/Menu/BetterButton.cs" id="3_b56eh"]
+[ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="3_rhsa1"]
+[ext_resource type="StyleBox" uid="uid://dx7syp0h85psw" path="res://Assets/Themes/ButtonToggleHover.tres" id="4_anenh"]
+[ext_resource type="Resource" uid="uid://cqu6bcu3aq1io" path="res://Assets/Data/UI/ButtonClick.tres" id="4_qwtt3"]
+[ext_resource type="StyleBox" uid="uid://bk3b2ouw1bq15" path="res://Assets/Themes/ButtonToggled.tres" id="5_hryoq"]
+[ext_resource type="Resource" uid="uid://sp5qrfpotvap" path="res://Assets/Data/UI/ButtonHover.tres" id="5_rhsa1"]
+[ext_resource type="StyleBox" uid="uid://ce3vphwd5uehb" path="res://Assets/Themes/ButtonUntoggled.tres" id="6_vpu1a"]
+[ext_resource type="Texture2D" uid="uid://b14uxh51622qp" path="res://icon.svg" id="7_pnwuy"]
+[ext_resource type="Texture2D" uid="uid://cpm1eobfkqel1" path="res://Assets/UI/Menu/PreviewTyping.png" id="7_pp72x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1qomi"]
+shader = ExtResource("1_fo23m")
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_v7iwv")
+
+[node name="BG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_1qomi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SceneManager" parent="." instance=ExtResource("3_rhsa1")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/normal_font_size = 64
+text = " Choose Game "
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="Audio" type="Panel" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 64
+columns = 2
+
+[node name="Typing" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer"]
+z_index = 5
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 2
+theme_override_styles/hover = ExtResource("4_anenh")
+theme_override_styles/pressed = ExtResource("5_hryoq")
+theme_override_styles/normal = ExtResource("6_vpu1a")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer/Typing"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_pp72x")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer/Typing"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave]Typing"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Typing2" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer"]
+z_index = 5
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 2
+theme_override_styles/hover = ExtResource("4_anenh")
+theme_override_styles/pressed = ExtResource("5_hryoq")
+theme_override_styles/normal = ExtResource("6_vpu1a")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer/Typing2"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_pnwuy")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer/Typing2"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave]???"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 92)
+layout_mode = 2
+text = "Back"
+script = ExtResource("3_b56eh")
+clickSFX = ExtResource("4_qwtt3")
+hoverSFX = ExtResource("5_rhsa1")
+clickDisabledSFX = ExtResource("4_qwtt3")
+hoverDisabledSFX = ExtResource("5_rhsa1")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer/Typing" to="SceneManager" method="LoadScene" binds= ["res://Scenes/GameScene.tscn"]]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]

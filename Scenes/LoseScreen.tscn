@@ -494,7 +494,7 @@ volume_db = -10.0
 autoplay = true
 bus = &"Music"
 
-[connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/GameScene.tscn"]]
+[connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/LevelSelect.tscn"]]
 [connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button2" to="SceneManager" method="LoadScene" binds= ["res://Scenes/Options.tscn"]]
 [connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button3" to="SceneManager" method="LoadScene" binds= ["res://Scenes/Shop.tscn"]]
 [connection signal="pressed" from="HBoxContainer/CenterContainer2/Panel/MarginContainer/VBoxContainer/Button4" to="SceneManager" method="Quit"]

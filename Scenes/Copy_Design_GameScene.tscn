@@ -1,0 +1,859 @@
+[gd_scene load_steps=47 format=3 uid="uid://du3sv5ktjxbv0"]
+
+[ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_ebfjf"]
+[ext_resource type="Script" uid="uid://rxx8dksa6yql" path="res://Scripts/HookManager.cs" id="2_awkla"]
+[ext_resource type="PackedScene" uid="uid://caw76l0fe5jgy" path="res://Assets/Prefabs/hook.tscn" id="3_l0hwv"]
+[ext_resource type="PackedScene" uid="uid://ddwjaxq02kltx" path="res://Assets/Prefabs/hard_hook.tscn" id="4_4ytmt"]
+[ext_resource type="PackedScene" uid="uid://cky8cc7gcueag" path="res://Assets/Prefabs/flower_hook.tscn" id="5_88e0p"]
+[ext_resource type="PackedScene" uid="uid://bmyoyjf2gctt3" path="res://Assets/Prefabs/fish_hook.tscn" id="6_f1hao"]
+[ext_resource type="PackedScene" uid="uid://cu2jrhw5o3v7m" path="res://Assets/Prefabs/bug_hook.tscn" id="7_yr2rh"]
+[ext_resource type="PackedScene" uid="uid://bc1fuj8rxlqvu" path="res://Assets/Prefabs/coding_hook.tscn" id="8_15gyw"]
+[ext_resource type="Script" uid="uid://c2tovs843lih6" path="res://Scripts/UI/Points/PointsSpawner.cs" id="9_g66jv"]
+[ext_resource type="PackedScene" uid="uid://cwqn0ma42jdvi" path="res://Assets/Prefabs/point_effect.tscn" id="10_qxxu5"]
+[ext_resource type="Script" uid="uid://is3m4i2a0g8t" path="res://Scripts/TypingMinigame.cs" id="11_u542q"]
+[ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="12_5dpgc"]
+[ext_resource type="FontFile" uid="uid://b21unobkoi57b" path="res://Assets/Fonts/Action-Man/Action_Man_Bold.ttf" id="13_ym5fq"]
+[ext_resource type="LabelSettings" uid="uid://o4wqao5reunh" path="res://Assets/Themes/TypeSettings.tres" id="14_o15f0"]
+[ext_resource type="Texture2D" uid="uid://0atnsvlekldx" path="res://Assets/UI/Depth/DepthGuageUI.png" id="15_7lw8e"]
+[ext_resource type="Script" uid="uid://chpuhk3eypsi" path="res://Scripts/DepthGuage.cs" id="16_k74g7"]
+[ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="17_ot8hg"]
+[ext_resource type="FontFile" uid="uid://fa48b7ntl10o" path="res://Assets/Fonts/Action-Man/Action_Man.ttf" id="18_tuve1"]
+[ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/Points/PointsLabel.cs" id="19_mw4fo"]
+[ext_resource type="PackedScene" uid="uid://iguuwg4jm1m7" path="res://Assets/Prefabs/player1.tscn" id="20_r0dvr"]
+[ext_resource type="AudioStream" uid="uid://cixnvunrjdmxg" path="res://Assets/Audio/Music/Underwater.wav" id="21_tusmy"]
+[ext_resource type="PackedScene" path="res://Assets/Prefabs/scene_manager.tscn" id="22_g3ar6"]
+[ext_resource type="Script" uid="uid://x4xqn1v2i2i" path="res://Scripts/UI/Menu/UIPauseMenu.cs" id="23_0oxau"]
+[ext_resource type="Script" uid="uid://bonqfdk4eqo42" path="res://Scripts/BGFish/BGFishSpawner.cs" id="24_b6t37"]
+[ext_resource type="PackedScene" uid="uid://23h3vua0awup" path="res://Assets/Prefabs/bg_fish.tscn" id="25_5ywga"]
+[ext_resource type="Texture2D" uid="uid://c7y5g466jlg3g" path="res://Assets/BG/Rock V3.png" id="26_88e0p"]
+[ext_resource type="Texture2D" uid="uid://ekastqc6s1vf" path="res://Assets/BG/Sand Gradient.png" id="26_l0hwv"]
+[ext_resource type="Texture2D" uid="uid://gdbml8mfgpha" path="res://Assets/BG/Boat.png" id="27_4ytmt"]
+[ext_resource type="Texture2D" uid="uid://dm8jn1ikl4hkp" path="res://Assets/BG/Sand Hill Round.png" id="28_f1hao"]
+[ext_resource type="Texture2D" uid="uid://r4jsx10chnap" path="res://Assets/BG/Sand Hill Triangle.png" id="29_yr2rh"]
+[ext_resource type="Texture2D" uid="uid://c0hl8p8j0ecyg" path="res://Assets/BG/Rock V2.png" id="30_o15f0"]
+[ext_resource type="Texture2D" uid="uid://crpr4r4fyhge" path="res://Assets/BG/Rock V1.png" id="31_7lw8e"]
+[ext_resource type="Texture2D" uid="uid://der64y1qiec6w" path="res://Assets/BG/Red Sea Whip V2.png" id="32_k74g7"]
+[ext_resource type="Texture2D" uid="uid://uy0jl8pmxwxv" path="res://Assets/BG/Red Sea Whip V1.png" id="33_ot8hg"]
+[ext_resource type="Texture2D" uid="uid://dd32e8ql82w3v" path="res://Assets/BG/Kelp V1.png" id="34_tuve1"]
+[ext_resource type="Texture2D" uid="uid://c6xt3dsyf6ubj" path="res://Assets/BG/Kelp V2.png" id="35_mw4fo"]
+[ext_resource type="Texture2D" uid="uid://b4pxvemxkwdlo" path="res://Assets/BG/Kelp V3.png" id="36_r0dvr"]
+[ext_resource type="Texture2D" uid="uid://cb313lu3eef6v" path="res://Assets/BG/Anemone V1.png" id="38_tusmy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lg2j6"]
+shader = ExtResource("1_ebfjf")
+
+[sub_resource type="Gradient" id="Gradient_x6js8"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lg2j6"]
+gradient = SubResource("Gradient_x6js8")
+width = 100
+height = 100
+fill_from = Vector2(0, 0.229358)
+fill_to = Vector2(0, 0.105505)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ebcm8"]
+font = ExtResource("13_ym5fq")
+font_size = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vvcf"]
+atlas = ExtResource("15_7lw8e")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr6v8"]
+atlas = ExtResource("15_7lw8e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhjei"]
+atlas = ExtResource("15_7lw8e")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pgw7i"]
+font = ExtResource("18_tuve1")
+font_size = 48
+
+[node name="GameScene" type="Node2D"]
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -100
+follow_viewport_enabled = true
+
+[node name="Water" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_lg2j6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lg2j6")
+metadata/_edit_lock_ = true
+
+[node name="HookManager" type="Node2D" parent="." node_paths=PackedStringArray("pointSpawner", "minigame", "sceneManager")]
+script = ExtResource("2_awkla")
+spawnArea = Rect2(32, 0, 1088, 64)
+hookPrefabs = Array[PackedScene]([ExtResource("3_l0hwv"), ExtResource("4_4ytmt"), ExtResource("5_88e0p"), ExtResource("6_f1hao"), ExtResource("7_yr2rh"), ExtResource("8_15gyw")])
+pointSpawner = NodePath("PointsSpawner")
+minigame = NodePath("../HUD")
+sceneManager = NodePath("../SceneManager")
+
+[node name="Timer" type="Timer" parent="HookManager"]
+autostart = true
+
+[node name="PointsSpawner" type="Node2D" parent="HookManager"]
+script = ExtResource("9_g66jv")
+prefab = ExtResource("10_qxxu5")
+
+[node name="Timer" type="Timer" parent="HookManager/PointsSpawner"]
+wait_time = 0.1
+autostart = true
+
+[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("container", "preview", "input")]
+process_mode = 3
+script = ExtResource("11_u542q")
+container = NodePath("Control")
+preview = NodePath("Control/MarginContainer/Typed/ToType")
+input = NodePath("Control/MarginContainer/Typed")
+
+[node name="Control" type="Panel" parent="HUD"]
+visible = false
+custom_minimum_size = Vector2(0, 64)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme = ExtResource("12_5dpgc")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="Tutorial" type="Control" parent="HUD/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="TutorialLeft" type="Label" parent="HUD/Control/MarginContainer/Tutorial"]
+layout_mode = 2
+offset_top = 18.0
+offset_right = 1088.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Type what you see >>"
+label_settings = SubResource("LabelSettings_ebcm8")
+vertical_alignment = 1
+
+[node name="TutorialRight" type="Label" parent="HUD/Control/MarginContainer/Tutorial"]
+layout_mode = 2
+offset_top = 18.0
+offset_right = 1088.0
+offset_bottom = 46.0
+text = "<< Don't get fished!!"
+label_settings = SubResource("LabelSettings_ebcm8")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Typed" type="Label" parent="HUD/Control/MarginContainer"]
+z_index = 1
+layout_mode = 2
+text = "Te__"
+label_settings = ExtResource("14_o15f0")
+horizontal_alignment = 1
+vertical_alignment = 2
+visible_characters_behavior = 1
+
+[node name="ToType" type="Label" parent="HUD/Control/MarginContainer/Typed"]
+self_modulate = Color(0.485703, 0.485704, 0.485703, 1)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Test"
+label_settings = ExtResource("14_o15f0")
+horizontal_alignment = 1
+vertical_alignment = 2
+visible_characters_behavior = 1
+
+[node name="Depth" type="Control" parent="HUD"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD/Depth"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Depth/CenterContainer"]
+custom_minimum_size = Vector2(48, 512)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="BG" type="NinePatchRect" parent="HUD/Depth/CenterContainer/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6vvcf")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Border" type="NinePatchRect" parent="HUD/Depth/CenterContainer/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_cr6v8")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Fish" type="TextureRect" parent="HUD/Depth" node_paths=PackedStringArray("guage", "target")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -647.0
+offset_right = 15.0
+offset_bottom = -615.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_xhjei")
+stretch_mode = 2
+script = ExtResource("16_k74g7")
+guage = NodePath("../CenterContainer/MarginContainer/BG")
+target = NodePath("../../../Player")
+minY = 133.0
+maxY = 600.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("17_ot8hg")
+expand_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="HUD/HBoxContainer"]
+layout_mode = 2
+text = "X0"
+label_settings = SubResource("LabelSettings_pgw7i")
+script = ExtResource("19_mw4fo")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("20_r0dvr")]
+position = Vector2(516, 514)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_tusmy")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[node name="SceneManager" parent="." instance=ExtResource("22_g3ar6")]
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("23_0oxau")
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+custom_minimum_size = Vector2(0, 128)
+anchors_preset = -1
+anchor_left = -0.1
+anchor_top = 0.5
+anchor_right = 1.1
+anchor_bottom = 0.5
+theme = ExtResource("12_5dpgc")
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PauseMenu/Panel/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "Quit"
+
+[node name="Control" type="Control" parent="PauseMenu/Panel/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu/Panel/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+bbcode_enabled = true
+text = "[wave freq=4 apm=10]paused[/wave]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="PauseButton" type="CanvasLayer" parent="PauseMenu"]
+
+[node name="Button" type="Button" parent="PauseMenu/PauseButton"]
+custom_minimum_size = Vector2(96, 96)
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("12_5dpgc")
+text = "||"
+
+[node name="BGFish" type="CanvasGroup" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+
+[node name="Spawner1" type="Node2D" parent="BGFish"]
+position = Vector2(-433, 238)
+script = ExtResource("24_b6t37")
+fishPrefab = ExtResource("25_5ywga")
+velocity = Vector2(1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner1"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner1"]
+wait_time = 29.0
+autostart = true
+
+[node name="Spawner2" type="Node2D" parent="BGFish"]
+position = Vector2(-552, 494)
+script = ExtResource("24_b6t37")
+fishPrefab = ExtResource("25_5ywga")
+velocity = Vector2(1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner2"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner2"]
+wait_time = 37.0
+autostart = true
+
+[node name="Spawner3" type="Node2D" parent="BGFish"]
+position = Vector2(-581, 330)
+script = ExtResource("24_b6t37")
+fishPrefab = ExtResource("25_5ywga")
+velocity = Vector2(1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner3"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner3"]
+wait_time = 17.0
+autostart = true
+
+[node name="Spawner4" type="Node2D" parent="BGFish"]
+position = Vector2(1416, 259)
+script = ExtResource("24_b6t37")
+fishPrefab = ExtResource("25_5ywga")
+velocity = Vector2(-1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner4"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner4"]
+wait_time = 47.0
+autostart = true
+
+[node name="Spawner5" type="Node2D" parent="BGFish"]
+position = Vector2(1549, 305)
+script = ExtResource("24_b6t37")
+fishPrefab = ExtResource("25_5ywga")
+velocity = Vector2(-1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner5"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner5"]
+wait_time = 23.0
+autostart = true
+
+[node name="Spawner6" type="Node2D" parent="BGFish"]
+position = Vector2(1417, 472)
+script = ExtResource("24_b6t37")
+fishPrefab = ExtResource("25_5ywga")
+velocity = Vector2(-1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner6"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner6"]
+wait_time = 29.0
+autostart = true
+
+[node name="Spawner7" type="Node2D" parent="BGFish"]
+position = Vector2(1602, 427)
+script = ExtResource("24_b6t37")
+fishPrefab = ExtResource("25_5ywga")
+velocity = Vector2(-1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner7"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner7"]
+wait_time = 37.0
+autostart = true
+
+[node name="Sea Floor Design and Boats" type="Node2D" parent="."]
+
+[node name="SandGradient" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -2
+position = Vector2(588.5, 776)
+scale = Vector2(11.9961, 1)
+texture = ExtResource("26_l0hwv")
+metadata/_edit_lock_ = true
+
+[node name="SandHillRound" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -2
+position = Vector2(128, 522)
+texture = ExtResource("28_f1hao")
+metadata/_edit_lock_ = true
+
+[node name="SandHillTriangle" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -2
+position = Vector2(-50, 531)
+texture = ExtResource("29_yr2rh")
+metadata/_edit_lock_ = true
+
+[node name="SandHillTriangle2" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -2
+position = Vector2(961, 525)
+texture = ExtResource("29_yr2rh")
+metadata/_edit_lock_ = true
+
+[node name="SandHillRound2" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -2
+position = Vector2(331, 529)
+texture = ExtResource("28_f1hao")
+metadata/_edit_lock_ = true
+
+[node name="SandHillRound3" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -2
+position = Vector2(817, 526)
+texture = ExtResource("28_f1hao")
+metadata/_edit_lock_ = true
+
+[node name="SandHillTriangle3" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -2
+position = Vector2(493, 532)
+texture = ExtResource("29_yr2rh")
+metadata/_edit_lock_ = true
+
+[node name="SandHillRound4" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -2
+position = Vector2(1160, 528)
+texture = ExtResource("28_f1hao")
+metadata/_edit_lock_ = true
+
+[node name="SandHillTriangle4" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -2
+position = Vector2(1359, 525)
+texture = ExtResource("29_yr2rh")
+metadata/_edit_lock_ = true
+
+[node name="SandHillRound5" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -2
+position = Vector2(1484, 523)
+texture = ExtResource("28_f1hao")
+metadata/_edit_lock_ = true
+
+[node name="SandHillTriangle5" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -2
+position = Vector2(642, 532)
+texture = ExtResource("29_yr2rh")
+metadata/_edit_lock_ = true
+
+[node name="SandHillRound6" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(-216, 523)
+texture = ExtResource("28_f1hao")
+
+[node name="SandHillRound7" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(-472, 538)
+texture = ExtResource("28_f1hao")
+
+[node name="Boat" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -1
+position = Vector2(122, 120)
+texture = ExtResource("27_4ytmt")
+
+[node name="Boat2" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -1
+position = Vector2(487, 115)
+texture = ExtResource("27_4ytmt")
+
+[node name="Boat3" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -1
+position = Vector2(880, 117)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("27_4ytmt")
+
+[node name="RockV3" type="Sprite2D" parent="Sea Floor Design and Boats"]
+z_index = -1
+position = Vector2(1107, 618)
+scale = Vector2(0.433594, 0.431288)
+texture = ExtResource("26_88e0p")
+
+[node name="RockV2" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1046, 644)
+scale = Vector2(0.472656, 0.483448)
+texture = ExtResource("30_o15f0")
+
+[node name="RockV1" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(607, 710)
+scale = Vector2(0.566406, 0.563394)
+texture = ExtResource("31_7lw8e")
+
+[node name="RedSeaWhipV2" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(235, 585)
+scale = Vector2(0.412109, 0.409917)
+texture = ExtResource("32_k74g7")
+
+[node name="RedSeaWhipV1" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(59, 596)
+scale = Vector2(0.398438, 0.396318)
+texture = ExtResource("33_ot8hg")
+
+[node name="KelpV1" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(628, 591)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("34_tuve1")
+
+[node name="KelpV2" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(667, 617)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("35_mw4fo")
+
+[node name="KelpV3" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(701, 602)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("36_r0dvr")
+
+[node name="AnemoneV1" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(463, 617)
+scale = Vector2(0.492188, 0.48957)
+texture = ExtResource("38_tusmy")
+
+[node name="RockV4" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(156.563, 623.376)
+rotation = 1.55509
+scale = Vector2(0.387256, 0.40457)
+texture = ExtResource("26_88e0p")
+
+[node name="RockV5" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(131.563, 684.376)
+rotation = 0.414575
+scale = Vector2(0.53161, 0.470947)
+texture = ExtResource("31_7lw8e")
+
+[node name="RockV6" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(644, 730)
+rotation = -1.67028
+scale = Vector2(0.367386, 0.568661)
+texture = ExtResource("30_o15f0")
+
+[node name="RockV7" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(722, 721)
+scale = Vector2(0.361729, 0.46617)
+texture = ExtResource("26_88e0p")
+
+[node name="KelpV4" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(564, 619)
+rotation = 2.90248
+scale = Vector2(0.31421, -0.297812)
+texture = ExtResource("36_r0dvr")
+
+[node name="KelpV5" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(605, 641)
+scale = Vector2(0.316407, 0.314724)
+texture = ExtResource("34_tuve1")
+
+[node name="KelpV6" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(733.895, 633.127)
+rotation = 3.14159
+scale = Vector2(0.246351, -0.307692)
+texture = ExtResource("35_mw4fo")
+
+[node name="AnemoneV2" type="Sprite2D" parent="Sea Floor Design and Boats"]
+modulate = Color(0.266667, 0.945098, 1, 1)
+position = Vector2(1098, 589)
+rotation = -0.331653
+scale = Vector2(0.287508, 0.285979)
+texture = ExtResource("38_tusmy")
+
+[node name="RockV8" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(985, 687)
+scale = Vector2(0.425781, 0.418475)
+texture = ExtResource("26_88e0p")
+
+[node name="RockV9" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(881, 715)
+rotation = 3.12466
+scale = Vector2(0.701529, 0.580986)
+texture = ExtResource("31_7lw8e")
+
+[node name="KelpV7" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(675, 652)
+rotation = 0.270173
+scale = Vector2(0.2476, 0.2476)
+texture = ExtResource("36_r0dvr")
+
+[node name="RedSeaWhipV3" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(335.25, 585.25)
+scale = Vector2(0.361328, 0.361328)
+texture = ExtResource("32_k74g7")
+
+[node name="RedSeaWhipV4" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(324.5, 593)
+scale = Vector2(0.402344, 0.402344)
+texture = ExtResource("32_k74g7")
+
+[node name="RedSeaWhipV5" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(335.5, 595)
+rotation = 3.14159
+scale = Vector2(0.423242, -0.423242)
+texture = ExtResource("32_k74g7")
+
+[node name="RockV10" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(272, 664)
+rotation = 3.0306
+scale = Vector2(0.404656, -0.32)
+texture = ExtResource("26_88e0p")
+
+[node name="RockV11" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(334, 681)
+rotation = -1.05163
+scale = Vector2(0.408335, 0.408335)
+texture = ExtResource("30_o15f0")
+
+[node name="RockV12" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(404, 685)
+rotation = 0.233154
+scale = Vector2(0.498047, 0.498047)
+texture = ExtResource("31_7lw8e")
+
+[node name="RedSeaWhipV6" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(-140, 570.469)
+scale = Vector2(0.412109, 0.409917)
+texture = ExtResource("32_k74g7")
+
+[node name="RedSeaWhipV7" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(-316, 581.469)
+scale = Vector2(0.398438, 0.396318)
+texture = ExtResource("33_ot8hg")
+
+[node name="RockV13" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(-218.437, 608.846)
+rotation = 1.55509
+scale = Vector2(0.387256, 0.40457)
+texture = ExtResource("26_88e0p")
+
+[node name="RockV14" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(-243.437, 669.846)
+rotation = 0.414575
+scale = Vector2(0.53161, 0.470947)
+texture = ExtResource("31_7lw8e")
+
+[node name="RedSeaWhipV8" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(-39.75, 570.719)
+scale = Vector2(0.361328, 0.361328)
+texture = ExtResource("32_k74g7")
+
+[node name="RedSeaWhipV9" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(-50.5, 578.469)
+scale = Vector2(0.402344, 0.402344)
+texture = ExtResource("32_k74g7")
+
+[node name="RockV15" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(-103, 649.469)
+rotation = 3.0306
+scale = Vector2(0.404656, -0.32)
+texture = ExtResource("26_88e0p")
+
+[node name="RockV16" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(-41, 666.469)
+rotation = -1.05163
+scale = Vector2(0.408335, 0.408335)
+texture = ExtResource("30_o15f0")
+
+[node name="RockV17" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(29, 670.469)
+rotation = 0.233154
+scale = Vector2(0.498047, 0.498047)
+texture = ExtResource("31_7lw8e")
+
+[node name="AnemoneV3" type="Sprite2D" parent="Sea Floor Design and Boats"]
+modulate = Color(0.983333, 1, 0, 1)
+position = Vector2(908, 657)
+rotation = 3.14159
+scale = Vector2(0.439716, -0.242)
+texture = ExtResource("38_tusmy")
+
+[node name="AnemoneV4" type="Sprite2D" parent="Sea Floor Design and Boats"]
+modulate = Color(0.21, 1, 0.433833, 1)
+position = Vector2(990, 655)
+rotation = -0.13502
+scale = Vector2(0.148438, 0.123698)
+texture = ExtResource("38_tusmy")
+
+[node name="AnemoneV5" type="Sprite2D" parent="Sea Floor Design and Boats"]
+modulate = Color(0.4815, 1, 0.39, 1)
+position = Vector2(1031, 623)
+rotation = -0.766288
+scale = Vector2(0.132813, 0.132813)
+texture = ExtResource("38_tusmy")
+
+[node name="KelpV8" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(777, 600)
+scale = Vector2(0.283203, 0.283203)
+texture = ExtResource("34_tuve1")
+
+[node name="KelpV9" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(818, 622)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("36_r0dvr")
+
+[node name="KelpV10" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(786, 676)
+rotation = 2.97371
+scale = Vector2(0.283, -0.283)
+texture = ExtResource("34_tuve1")
+
+[node name="RockV18" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1222.1, 701)
+scale = Vector2(0.566406, 0.563394)
+texture = ExtResource("31_7lw8e")
+
+[node name="KelpV11" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1243.1, 582)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("34_tuve1")
+
+[node name="KelpV12" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1282.1, 608)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("35_mw4fo")
+
+[node name="KelpV13" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1316.1, 593)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("36_r0dvr")
+
+[node name="RockV19" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1259.1, 721)
+rotation = -1.67028
+scale = Vector2(0.367386, 0.568661)
+texture = ExtResource("30_o15f0")
+
+[node name="RockV20" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1337.1, 712)
+scale = Vector2(0.361729, 0.46617)
+texture = ExtResource("26_88e0p")
+
+[node name="KelpV14" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1179.1, 610)
+rotation = 2.90248
+scale = Vector2(0.31421, -0.297812)
+texture = ExtResource("36_r0dvr")
+
+[node name="KelpV15" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1220.1, 632)
+scale = Vector2(0.316407, 0.314724)
+texture = ExtResource("34_tuve1")
+
+[node name="KelpV16" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1349, 624.127)
+rotation = 3.14159
+scale = Vector2(0.246351, -0.307692)
+texture = ExtResource("35_mw4fo")
+
+[node name="KelpV17" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1290.1, 643)
+rotation = 0.270173
+scale = Vector2(0.2476, 0.2476)
+texture = ExtResource("36_r0dvr")
+
+[node name="KelpV18" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1392.1, 591)
+scale = Vector2(0.283203, 0.283203)
+texture = ExtResource("34_tuve1")
+
+[node name="KelpV19" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1433.1, 613)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("36_r0dvr")
+
+[node name="KelpV20" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(1401.1, 667)
+rotation = 2.97371
+scale = Vector2(0.283, -0.283)
+texture = ExtResource("34_tuve1")
+
+[node name="RockV21" type="Sprite2D" parent="Sea Floor Design and Boats"]
+position = Vector2(-24, 661)
+scale = Vector2(0.426758, 0.442383)
+texture = ExtResource("26_88e0p")
+
+[connection signal="timeout" from="HookManager/Timer" to="HookManager" method="Spawn"]
+[connection signal="timeout" from="HookManager/PointsSpawner/Timer" to="HookManager/PointsSpawner" method="AttemptSpawn"]
+[connection signal="OnWin" from="HUD" to="HUD/Control/MarginContainer/Tutorial" method="hide"]
+[connection signal="pressed" from="PauseMenu/Panel/CenterContainer/HBoxContainer/Button" to="PauseMenu" method="UnPause"]
+[connection signal="pressed" from="PauseMenu/Panel/CenterContainer/HBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]
+[connection signal="pressed" from="PauseMenu/PauseButton/Button" to="PauseMenu" method="TogglePause"]
+[connection signal="timeout" from="BGFish/Spawner1/SolitaryTimer" to="BGFish/Spawner1" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner1/SchoolTimer" to="BGFish/Spawner1" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner2/SolitaryTimer" to="BGFish/Spawner2" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner2/SchoolTimer" to="BGFish/Spawner2" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner3/SolitaryTimer" to="BGFish/Spawner3" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner3/SchoolTimer" to="BGFish/Spawner3" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner4/SolitaryTimer" to="BGFish/Spawner4" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner4/SchoolTimer" to="BGFish/Spawner4" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner5/SolitaryTimer" to="BGFish/Spawner5" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner5/SchoolTimer" to="BGFish/Spawner5" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner6/SolitaryTimer" to="BGFish/Spawner6" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner6/SchoolTimer" to="BGFish/Spawner6" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner7/SolitaryTimer" to="BGFish/Spawner7" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner7/SchoolTimer" to="BGFish/Spawner7" method="SpawnSchool"]

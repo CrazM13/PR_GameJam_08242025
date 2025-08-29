@@ -1,0 +1,366 @@
+[gd_scene load_steps=34 format=3 uid="uid://ckbc0klieqwd2"]
+
+[ext_resource type="Script" uid="uid://cpysfamsv6smo" path="res://Scripts/RhythmGame.cs" id="1_f5itv"]
+[ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_xtjai"]
+[ext_resource type="AudioStream" uid="uid://cixnvunrjdmxg" path="res://Assets/Audio/Music/Underwater.wav" id="2_6b502"]
+[ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="3_a7g3l"]
+[ext_resource type="Script" uid="uid://x4xqn1v2i2i" path="res://Scripts/UI/Menu/UIPauseMenu.cs" id="4_j83cf"]
+[ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="5_1b0jr"]
+[ext_resource type="Texture2D" uid="uid://cl0tyr4cq8sqg" path="res://Assets/Hooks/Hook1.png" id="6_xl7ul"]
+[ext_resource type="AudioStream" uid="uid://coewbr12q6y3d" path="res://Assets/Audio/SFX/ReelSFX.wav" id="7_r8xlj"]
+[ext_resource type="AudioStream" uid="uid://1bqpu2vrpg4c" path="res://Assets/Audio/SFX/BiteSFX.wav" id="8_carox"]
+[ext_resource type="PackedScene" uid="uid://c55aw0isqkayr" path="res://Assets/Particle_Effects/water_splash_effect.tscn" id="9_daobp"]
+[ext_resource type="SpriteFrames" uid="uid://vb2ubapfgmx3" path="res://Assets/Fish/SkinBank.tres" id="10_f5itv"]
+[ext_resource type="Script" uid="uid://cvv4bu7e2chl7" path="res://Scripts/SetPlayerSkin.cs" id="11_ma6gd"]
+[ext_resource type="Texture2D" uid="uid://c7u5opgog2sf2" path="res://Assets/Particle_Effects/Bubble.png" id="12_x7kst"]
+[ext_resource type="Texture2D" uid="uid://0atnsvlekldx" path="res://Assets/UI/Depth/DepthGuageUI.png" id="13_r8xlj"]
+[ext_resource type="Script" uid="uid://chpuhk3eypsi" path="res://Scripts/UI/DepthGuage.cs" id="14_carox"]
+[ext_resource type="Texture2D" uid="uid://b3b2y4ftyfddj" path="res://Assets/UI/Depth/DistanceMarker.png" id="14_daobp"]
+[ext_resource type="Texture2D" uid="uid://reanjxx0o2bi" path="res://Assets/UI/circle.png" id="17_ma6gd"]
+[ext_resource type="Script" uid="uid://buuecjoky1kt4" path="res://Scripts/UI/RhythmDisplay.cs" id="17_x7kst"]
+[ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="19_05775"]
+[ext_resource type="FontFile" uid="uid://fa48b7ntl10o" path="res://Assets/Fonts/Action-Man/Action_Man.ttf" id="20_fonh8"]
+[ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/Points/PointsLabel.cs" id="21_i728f"]
+[ext_resource type="Script" uid="uid://c2tovs843lih6" path="res://Scripts/UI/Points/PointsSpawner.cs" id="22_fonh8"]
+[ext_resource type="PackedScene" uid="uid://cwqn0ma42jdvi" path="res://Assets/Prefabs/point_effect.tscn" id="23_i728f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qu5li"]
+shader = ExtResource("1_xtjai")
+
+[sub_resource type="Gradient" id="Gradient_x6js8"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ygt1t"]
+gradient = SubResource("Gradient_x6js8")
+width = 100
+height = 100
+fill_from = Vector2(0, 0.229358)
+fill_to = Vector2(0, 0.105505)
+
+[sub_resource type="Curve" id="Curve_s5xoi"]
+_data = [Vector2(0, 0.52809), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_hl7u2"]
+curve = SubResource("Curve_s5xoi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x5fe2"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -10, 0)
+scale_min = 0.25
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_hl7u2")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daobp"]
+atlas = ExtResource("13_r8xlj")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5itv"]
+atlas = ExtResource("13_r8xlj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma6gd"]
+atlas = ExtResource("13_r8xlj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3sisi"]
+font = ExtResource("20_fonh8")
+font_size = 48
+
+[node name="RhythmGameScene" type="Node2D" node_paths=PackedStringArray("fish", "rhythm", "pointSpawner", "sceneManager")]
+script = ExtResource("1_f5itv")
+fish = NodePath("Player")
+rhythm = NodePath("HUD/Rhythm")
+pointSpawner = NodePath("PointsSpawner")
+sceneManager = NodePath("SceneManager")
+passiveReelSpeed = 0.025
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -100
+follow_viewport_enabled = true
+
+[node name="Water" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_qu5li")
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ygt1t")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6b502")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[node name="SceneManager" parent="." instance=ExtResource("3_a7g3l")]
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("4_j83cf")
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+custom_minimum_size = Vector2(0, 128)
+anchors_preset = -1
+anchor_left = -0.1
+anchor_top = 0.5
+anchor_right = 1.1
+anchor_bottom = 0.5
+theme = ExtResource("5_1b0jr")
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PauseMenu/Panel/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "Quit"
+
+[node name="Control" type="Control" parent="PauseMenu/Panel/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenu/Panel/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+bbcode_enabled = true
+text = "[wave freq=4 apm=10]paused[/wave]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="PauseButton" type="CanvasLayer" parent="PauseMenu"]
+
+[node name="Button" type="Button" parent="PauseMenu/PauseButton"]
+custom_minimum_size = Vector2(96, 96)
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("5_1b0jr")
+text = "||"
+
+[node name="Player" type="Node2D" parent="."]
+z_index = 5
+position = Vector2(221, 539)
+
+[node name="Hook" type="Node2D" parent="Player"]
+position = Vector2(-16, -8)
+rotation = -0.785398
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Hook"]
+texture = ExtResource("6_xl7ul")
+
+[node name="Line2D" type="Line2D" parent="Player/Hook"]
+position = Vector2(-1, -11)
+points = PackedVector2Array(0, 0, 0, -1000)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Audio" type="Node2D" parent="Player/Hook"]
+
+[node name="Reel" type="AudioStreamPlayer2D" parent="Player/Hook/Audio"]
+stream = ExtResource("7_r8xlj")
+volume_db = -10.0
+autoplay = true
+attenuation = 2.0
+bus = &"SFX"
+
+[node name="Bite" type="AudioStreamPlayer2D" parent="Player/Hook/Audio"]
+stream = ExtResource("8_carox")
+autoplay = true
+bus = &"SFX"
+
+[node name="Water_Splash_Effect" parent="Player/Hook" instance=ExtResource("9_daobp")]
+position = Vector2(0, 16)
+emitting = false
+one_shot = true
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = ExtResource("10_f5itv")
+animation = &"basic"
+flip_h = true
+script = ExtResource("11_ma6gd")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.5
+drag_top_margin = 0.5
+drag_right_margin = 0.5
+drag_bottom_margin = 0.5
+editor_draw_drag_margin = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Player"]
+z_index = -2
+amount = 2
+texture = ExtResource("12_x7kst")
+lifetime = 4.0
+explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_x5fe2")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Depth" type="Control" parent="HUD"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD/Depth"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Depth/CenterContainer"]
+custom_minimum_size = Vector2(512, 48)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="BG" type="NinePatchRect" parent="HUD/Depth/CenterContainer/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_daobp")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Border" type="NinePatchRect" parent="HUD/Depth/CenterContainer/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_f5itv")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Fish" type="TextureRect" parent="HUD/Depth" node_paths=PackedStringArray("guage", "target")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 418.0
+offset_top = -64.0
+offset_right = 450.0
+offset_bottom = -32.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+texture = ExtResource("14_daobp")
+stretch_mode = 2
+script = ExtResource("14_carox")
+guage = NodePath("../CenterContainer/MarginContainer/BG")
+target = NodePath("../../../Player")
+horizontal = true
+min = 300.0
+max = 1100.0
+
+[node name="Rhythm" type="Control" parent="HUD" node_paths=PackedStringArray("display", "marker")]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("17_x7kst")
+display = NodePath("CenterContainer/MarginContainer/TextureProgressBar")
+marker = NodePath("TextureRect")
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD/Rhythm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Rhythm/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD/Rhythm/CenterContainer/MarginContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.64
+fill_mode = 4
+radial_initial_angle = 90.0
+nine_patch_stretch = true
+texture_under = ExtResource("17_ma6gd")
+texture_progress = ExtResource("17_ma6gd")
+tint_under = Color(0.462745, 0, 0, 1)
+tint_progress = Color(0, 0.823529, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Rhythm/CenterContainer/MarginContainer/TextureProgressBar"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_ma6gd")
+
+[node name="TextureRect" type="TextureRect" parent="HUD/Rhythm"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_ma6gd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("19_05775")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="HUD/HBoxContainer"]
+layout_mode = 2
+text = "X0"
+label_settings = SubResource("LabelSettings_3sisi")
+script = ExtResource("21_i728f")
+
+[node name="PointsSpawner" type="Node2D" parent="."]
+script = ExtResource("22_fonh8")
+prefab = ExtResource("23_i728f")
+
+[connection signal="pressed" from="PauseMenu/Panel/CenterContainer/HBoxContainer/Button" to="PauseMenu" method="UnPause"]
+[connection signal="pressed" from="PauseMenu/PauseButton/Button" to="PauseMenu" method="TogglePause"]

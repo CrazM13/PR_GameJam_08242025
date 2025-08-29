@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="6_x6js8"]
 [ext_resource type="Texture2D" uid="uid://0atnsvlekldx" path="res://Assets/UI/Depth/DepthGuageUI.png" id="7_xhjei"]
 [ext_resource type="PackedScene" uid="uid://cu2jrhw5o3v7m" path="res://Assets/Prefabs/bug_hook.tscn" id="7_yhlfj"]
-[ext_resource type="Script" uid="uid://chpuhk3eypsi" path="res://Scripts/DepthGuage.cs" id="8_6vvcf"]
+[ext_resource type="Script" uid="uid://chpuhk3eypsi" path="res://Scripts/UI/DepthGuage.cs" id="8_6vvcf"]
 [ext_resource type="PackedScene" uid="uid://bc1fuj8rxlqvu" path="res://Assets/Prefabs/coding_hook.tscn" id="8_ry528"]
 [ext_resource type="PackedScene" uid="uid://iguuwg4jm1m7" path="res://Assets/Prefabs/player1.tscn" id="9_f43ej"]
 [ext_resource type="Script" uid="uid://c2tovs843lih6" path="res://Scripts/UI/Points/PointsSpawner.cs" id="9_v7xhk"]
@@ -29,10 +29,10 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lg2j6"]
 shader = ExtResource("1_x6js8")
 
-[sub_resource type="Gradient" id="Gradient_x6js8"]
+[sub_resource type="Gradient" id="Gradient_4v654"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lg2j6"]
-gradient = SubResource("Gradient_x6js8")
+gradient = SubResource("Gradient_4v654")
 width = 100
 height = 100
 fill_from = Vector2(0, 0.229358)
@@ -226,8 +226,6 @@ stretch_mode = 2
 script = ExtResource("8_6vvcf")
 guage = NodePath("../CenterContainer/MarginContainer/BG")
 target = NodePath("../../../Player")
-minY = 133.0
-maxY = 600.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
 anchors_preset = 2

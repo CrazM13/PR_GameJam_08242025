@@ -9,8 +9,8 @@
 [ext_resource type="StyleBox" uid="uid://bk3b2ouw1bq15" path="res://Assets/Themes/ButtonToggled.tres" id="5_hryoq"]
 [ext_resource type="Resource" uid="uid://sp5qrfpotvap" path="res://Assets/Data/UI/ButtonHover.tres" id="5_rhsa1"]
 [ext_resource type="StyleBox" uid="uid://ce3vphwd5uehb" path="res://Assets/Themes/ButtonUntoggled.tres" id="6_vpu1a"]
-[ext_resource type="Texture2D" uid="uid://b14uxh51622qp" path="res://icon.svg" id="7_pnwuy"]
 [ext_resource type="Texture2D" uid="uid://cpm1eobfkqel1" path="res://Assets/UI/Menu/PreviewTyping.png" id="7_pp72x"]
+[ext_resource type="Texture2D" uid="uid://xlvk7x1t6e6s" path="res://Assets/UI/Menu/PreviewRhythm.png" id="8_pp72x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1qomi"]
 shader = ExtResource("1_fo23m")
@@ -157,7 +157,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_pnwuy")
+texture = ExtResource("8_pp72x")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer/Typing2"]
 custom_minimum_size = Vector2(0, 52)
@@ -172,7 +172,7 @@ mouse_filter = 1
 theme_override_constants/outline_size = 32
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = "[wave]???"
+text = "[wave]Rhythm"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
@@ -199,4 +199,5 @@ clickDisabledSFX = ExtResource("4_qwtt3")
 hoverDisabledSFX = ExtResource("5_rhsa1")
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer/Typing" to="SceneManager" method="LoadScene" binds= ["res://Scenes/GameScene.tscn"]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer/Typing2" to="SceneManager" method="LoadScene" binds= ["res://Scenes/RhythmGameScene.tscn"]]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]

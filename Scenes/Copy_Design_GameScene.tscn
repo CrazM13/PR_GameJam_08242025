@@ -15,7 +15,7 @@
 [ext_resource type="FontFile" uid="uid://b21unobkoi57b" path="res://Assets/Fonts/Action-Man/Action_Man_Bold.ttf" id="13_ym5fq"]
 [ext_resource type="LabelSettings" uid="uid://o4wqao5reunh" path="res://Assets/Themes/TypeSettings.tres" id="14_o15f0"]
 [ext_resource type="Texture2D" uid="uid://0atnsvlekldx" path="res://Assets/UI/Depth/DepthGuageUI.png" id="15_7lw8e"]
-[ext_resource type="Script" uid="uid://chpuhk3eypsi" path="res://Scripts/DepthGuage.cs" id="16_k74g7"]
+[ext_resource type="Script" uid="uid://chpuhk3eypsi" path="res://Scripts/UI/DepthGuage.cs" id="16_k74g7"]
 [ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="17_ot8hg"]
 [ext_resource type="FontFile" uid="uid://fa48b7ntl10o" path="res://Assets/Fonts/Action-Man/Action_Man.ttf" id="18_tuve1"]
 [ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/Points/PointsLabel.cs" id="19_mw4fo"]

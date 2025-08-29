@@ -12,6 +12,8 @@ public partial class TypingMinigame : CanvasLayer {
 	[Export] private Control container;
 	[Export] private Label preview;
 	[Export] private Label input;
+	[Export] private AudioStreamPlayer goodInputSFX;
+	[Export] private AudioStreamPlayer badInputSFX;
 	[Export] private bool restartOnMistake;
 
 	private int currentIndex = 0;
@@ -27,6 +29,7 @@ public partial class TypingMinigame : CanvasLayer {
 
 		if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
 			if (GetCharFromInput(keyEvent) == preview.Text[currentIndex]) {
+				goodInputSFX.Play();
 				currentIndex++;
 				if (!isStarted) {
 					EmitSignal(SignalName.OnStart);
@@ -42,12 +45,12 @@ public partial class TypingMinigame : CanvasLayer {
 					input.VisibleCharacters = currentIndex;
 				}
 			} else {
-
 				if (!isStarted) {
 					isPlaying = false;
 					container.Visible = false;
 					EmitSignal(SignalName.OnAbort);
 				} else {
+					badInputSFX.Play();
 					wrongAnimTime = 0;
 					input.Modulate = Colors.Red;
 					if (restartOnMistake) {

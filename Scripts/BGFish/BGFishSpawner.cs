@@ -15,11 +15,11 @@ public partial class BGFishSpawner : Node2D {
 
 		BGFish newFish = fishPrefab.Instantiate<BGFish>();
 
-		newFish.GlobalPosition = this.GlobalPosition;
 		newFish.SetSkin(skin);
 		newFish.SetVelocity(velocity * speedModifier);
 
 		AddChild(newFish);
+		newFish.GlobalPosition = this.GlobalPosition;
 	}
 
 	public void SpawnSchool() {
@@ -28,11 +28,11 @@ public partial class BGFishSpawner : Node2D {
 		for (int i = 0; i < rng.RandiRange(3, 9); i++) {
 			BGFish newFish = fishPrefab.Instantiate<BGFish>();
 
-			newFish.GlobalPosition = this.GlobalPosition + (GetSpiralPoint(i) * 16);
 			newFish.SetSkin(skin);
 			newFish.SetVelocity(velocity * speedModifier);
 
 			AddChild(newFish);
+			newFish.GlobalPosition = this.GlobalPosition + (GetSpiralPoint(i) * 16);
 		}
 
 	}

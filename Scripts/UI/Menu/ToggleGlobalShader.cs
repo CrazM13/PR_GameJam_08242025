@@ -7,6 +7,7 @@ public partial class ToggleGlobalShader : BetterButton {
 	public override void _Ready() {
 		base._Ready();
 
+		this.ButtonPressed = GameManager.Instance.SeasicknessMode;
 		this.Toggled += this.OnToggle;
 
 	}

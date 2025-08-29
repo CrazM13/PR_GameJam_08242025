@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bb4wwthbpaqtj"]
+[gd_scene load_steps=36 format=3 uid="uid://bb4wwthbpaqtj"]
 
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_x6js8"]
 [ext_resource type="LabelSettings" uid="uid://o4wqao5reunh" path="res://Assets/Themes/TypeSettings.tres" id="2_4bvgx"]
@@ -22,6 +22,8 @@
 [ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="13_f43ej"]
 [ext_resource type="FontFile" uid="uid://fa48b7ntl10o" path="res://Assets/Fonts/Action-Man/Action_Man.ttf" id="14_gipt1"]
 [ext_resource type="FontFile" uid="uid://b21unobkoi57b" path="res://Assets/Fonts/Action-Man/Action_Man_Bold.ttf" id="14_hgvmy"]
+[ext_resource type="AudioStream" uid="uid://bsbwdv45t6b7i" path="res://Assets/Audio/SFX/KeyPress.wav" id="15_wp4mh"]
+[ext_resource type="AudioStream" uid="uid://dppu611bdlrqm" path="res://Assets/Audio/SFX/BadKeyPress.wav" id="16_y0yaw"]
 [ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/Points/PointsLabel.cs" id="17_wukv0"]
 [ext_resource type="Script" uid="uid://bonqfdk4eqo42" path="res://Scripts/BGFish/BGFishSpawner.cs" id="24_4v654"]
 [ext_resource type="PackedScene" uid="uid://23h3vua0awup" path="res://Assets/Prefabs/bg_fish.tscn" id="25_leul7"]
@@ -92,12 +94,14 @@ prefab = ExtResource("10_wukv0")
 wait_time = 0.1
 autostart = true
 
-[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("container", "preview", "input")]
+[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("container", "preview", "input", "goodInputSFX", "badInputSFX")]
 process_mode = 3
 script = ExtResource("4_x6js8")
 container = NodePath("Control")
 preview = NodePath("Control/MarginContainer/Typed/ToType")
 input = NodePath("Control/MarginContainer/Typed")
+goodInputSFX = NodePath("Control/Audio/GoodHit")
+badInputSFX = NodePath("Control/Audio/BadHit")
 
 [node name="Control" type="Panel" parent="HUD"]
 visible = false
@@ -165,6 +169,16 @@ label_settings = ExtResource("2_4bvgx")
 horizontal_alignment = 1
 vertical_alignment = 2
 visible_characters_behavior = 1
+
+[node name="Audio" type="Node" parent="HUD/Control"]
+
+[node name="GoodHit" type="AudioStreamPlayer" parent="HUD/Control/Audio"]
+stream = ExtResource("15_wp4mh")
+bus = &"SFX"
+
+[node name="BadHit" type="AudioStreamPlayer" parent="HUD/Control/Audio"]
+stream = ExtResource("16_y0yaw")
+bus = &"SFX"
 
 [node name="Depth" type="Control" parent="HUD"]
 custom_minimum_size = Vector2(48, 0)

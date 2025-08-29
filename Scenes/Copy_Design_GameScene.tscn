@@ -240,8 +240,6 @@ stretch_mode = 2
 script = ExtResource("16_k74g7")
 guage = NodePath("../CenterContainer/MarginContainer/BG")
 target = NodePath("../../../Player")
-minY = 133.0
-maxY = 600.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
 anchors_preset = 2

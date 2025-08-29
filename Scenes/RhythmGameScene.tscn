@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ckbc0klieqwd2"]
+[gd_scene load_steps=38 format=3 uid="uid://ckbc0klieqwd2"]
 
 [ext_resource type="Script" uid="uid://cpysfamsv6smo" path="res://Scripts/RhythmGame.cs" id="1_f5itv"]
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_xtjai"]
@@ -18,11 +18,15 @@
 [ext_resource type="Texture2D" uid="uid://b3b2y4ftyfddj" path="res://Assets/UI/Depth/DistanceMarker.png" id="14_daobp"]
 [ext_resource type="Texture2D" uid="uid://reanjxx0o2bi" path="res://Assets/UI/circle.png" id="17_ma6gd"]
 [ext_resource type="Script" uid="uid://buuecjoky1kt4" path="res://Scripts/UI/RhythmDisplay.cs" id="17_x7kst"]
+[ext_resource type="AudioStream" uid="uid://bsbwdv45t6b7i" path="res://Assets/Audio/SFX/KeyPress.wav" id="19_0kl4f"]
 [ext_resource type="Texture2D" uid="uid://lii0cwjpeevx" path="res://Assets/Bait/Worm.png" id="19_05775"]
 [ext_resource type="FontFile" uid="uid://fa48b7ntl10o" path="res://Assets/Fonts/Action-Man/Action_Man.ttf" id="20_fonh8"]
+[ext_resource type="AudioStream" uid="uid://dppu611bdlrqm" path="res://Assets/Audio/SFX/BadKeyPress.wav" id="20_tj6hk"]
 [ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/Points/PointsLabel.cs" id="21_i728f"]
 [ext_resource type="Script" uid="uid://c2tovs843lih6" path="res://Scripts/UI/Points/PointsSpawner.cs" id="22_fonh8"]
 [ext_resource type="PackedScene" uid="uid://cwqn0ma42jdvi" path="res://Assets/Prefabs/point_effect.tscn" id="23_i728f"]
+[ext_resource type="Script" uid="uid://bonqfdk4eqo42" path="res://Scripts/BGFish/BGFishSpawner.cs" id="26_6n2bu"]
+[ext_resource type="PackedScene" uid="uid://23h3vua0awup" path="res://Assets/Prefabs/bg_fish.tscn" id="27_7b5c4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qu5li"]
 shader = ExtResource("1_xtjai")
@@ -101,6 +105,7 @@ bus = &"Music"
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3
+layer = 100
 visible = false
 script = ExtResource("4_j83cf")
 
@@ -144,6 +149,7 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="PauseButton" type="CanvasLayer" parent="PauseMenu"]
+layer = 128
 
 [node name="Button" type="Button" parent="PauseMenu/PauseButton"]
 custom_minimum_size = Vector2(96, 96)
@@ -223,6 +229,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="HUD/Depth"]
 layout_mode = 1
@@ -284,6 +291,7 @@ layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+mouse_filter = 2
 script = ExtResource("17_x7kst")
 display = NodePath("CenterContainer/MarginContainer/TextureProgressBar")
 marker = NodePath("TextureRect")
@@ -339,6 +347,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("AtlasTexture_ma6gd")
 
+[node name="Audio" type="Node" parent="HUD/Rhythm"]
+
+[node name="GoodHit" type="AudioStreamPlayer" parent="HUD/Rhythm/Audio"]
+stream = ExtResource("19_0kl4f")
+bus = &"SFX"
+
+[node name="BadHit" type="AudioStreamPlayer" parent="HUD/Rhythm/Audio"]
+stream = ExtResource("20_tj6hk")
+bus = &"SFX"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
 anchors_preset = 2
 anchor_top = 1.0
@@ -362,5 +380,79 @@ script = ExtResource("21_i728f")
 script = ExtResource("22_fonh8")
 prefab = ExtResource("23_i728f")
 
+[node name="BGFish" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+
+[node name="Spawner1" type="Node2D" parent="BGFish"]
+position = Vector2(-433, 522)
+script = ExtResource("26_6n2bu")
+fishPrefab = ExtResource("27_7b5c4")
+velocity = Vector2(1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner1"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner1"]
+wait_time = 29.0
+autostart = true
+
+[node name="Spawner3" type="Node2D" parent="BGFish"]
+position = Vector2(-581, 566)
+script = ExtResource("26_6n2bu")
+fishPrefab = ExtResource("27_7b5c4")
+velocity = Vector2(1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner3"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner3"]
+wait_time = 17.0
+autostart = true
+
+[node name="Spawner4" type="Node2D" parent="BGFish"]
+position = Vector2(1253, 526)
+script = ExtResource("26_6n2bu")
+fishPrefab = ExtResource("27_7b5c4")
+velocity = Vector2(-1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner4"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner4"]
+wait_time = 47.0
+autostart = true
+
+[node name="Spawner5" type="Node2D" parent="BGFish"]
+position = Vector2(1386, 572)
+script = ExtResource("26_6n2bu")
+fishPrefab = ExtResource("27_7b5c4")
+velocity = Vector2(-1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner5"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner5"]
+wait_time = 23.0
+autostart = true
+
 [connection signal="pressed" from="PauseMenu/Panel/CenterContainer/HBoxContainer/Button" to="PauseMenu" method="UnPause"]
+[connection signal="pressed" from="PauseMenu/Panel/CenterContainer/HBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]
 [connection signal="pressed" from="PauseMenu/PauseButton/Button" to="PauseMenu" method="TogglePause"]
+[connection signal="OnRhythmHit" from="HUD/Rhythm" to="HUD/Rhythm/Audio/GoodHit" method="play" binds= [0.0]]
+[connection signal="OnRhythmMiss" from="HUD/Rhythm" to="HUD/Rhythm/Audio/BadHit" method="play" binds= [0.0]]
+[connection signal="timeout" from="BGFish/Spawner1/SolitaryTimer" to="BGFish/Spawner1" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner1/SchoolTimer" to="BGFish/Spawner1" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner3/SolitaryTimer" to="BGFish/Spawner3" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner3/SchoolTimer" to="BGFish/Spawner3" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner4/SolitaryTimer" to="BGFish/Spawner4" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner4/SchoolTimer" to="BGFish/Spawner4" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner5/SolitaryTimer" to="BGFish/Spawner5" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner5/SchoolTimer" to="BGFish/Spawner5" method="SpawnSchool"]

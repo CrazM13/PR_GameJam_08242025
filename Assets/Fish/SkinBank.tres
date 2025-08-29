@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=66 format=3 uid="uid://vb2ubapfgmx3"]
+[gd_resource type="SpriteFrames" load_steps=71 format=3 uid="uid://vb2ubapfgmx3"]
 
 [ext_resource type="Texture2D" uid="uid://pewtnbcfr0j8" path="res://Assets/Fish/Player_Fish1.png" id="1_idaw7"]
 [ext_resource type="Texture2D" uid="uid://bga4armj30nm7" path="res://Assets/Fish/angler.png" id="1_juer8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://4jfslpagdg20" path="res://Assets/Fish/jelly.png" id="6_4j1ra"]
 [ext_resource type="Texture2D" uid="uid://yme74cm7wy6y" path="res://Assets/Fish/scuba.png" id="7_pt3ou"]
 [ext_resource type="Texture2D" uid="uid://du684ssgvm1rb" path="res://Assets/Fish/squid.png" id="9_akv3p"]
+[ext_resource type="Texture2D" uid="uid://cahq0s72fv28f" path="res://Assets/Fish/sing.png" id="9_ccnsb"]
 [ext_resource type="Texture2D" uid="uid://c6pg753cxyyvw" path="res://Assets/Fish/starfish.png" id="9_ouo5s"]
 [ext_resource type="Texture2D" uid="uid://cvgv7i8i20oip" path="res://Assets/Fish/trash.png" id="10_akv3p"]
 [ext_resource type="Texture2D" uid="uid://c3wb4w8ooqhde" path="res://Assets/Fish/sub.png" id="11_5e3vl"]
@@ -133,6 +134,22 @@ region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_372si"]
 atlas = ExtResource("7_pt3ou")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt5ga"]
+atlas = ExtResource("9_ccnsb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os1o3"]
+atlas = ExtResource("9_ccnsb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adu1t"]
+atlas = ExtResource("9_ccnsb")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jku13"]
+atlas = ExtResource("9_ccnsb")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3pcgq"]
@@ -349,6 +366,41 @@ animations = [{
 }],
 "loop": true,
 "name": &"scuba",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt5ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os1o3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adu1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jku13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adu1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jku13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adu1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jku13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adu1t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os1o3")
+}],
+"loop": true,
+"name": &"sing",
 "speed": 5.0
 }, {
 "frames": [{

@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="PR_GameJam_08242025"
+config/name="Takin' the Bait"
+config/description="Risk it all by taking the bait straight off those fisherman's hooks!"
+config/version="1.0"
 run/main_scene="uid://d4ktvx2mpg8qp"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://j5tctn0sj0kw"
 
 [audio]
 

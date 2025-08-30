@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dwmbssw65iqaw"]
+[gd_scene load_steps=22 format=3 uid="uid://dwmbssw65iqaw"]
 
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_kjfcx"]
 [ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_wndna"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bd3ca1ynm0vxo" path="res://Assets/Prefabs/shop_button.tscn" id="6_1mgah"]
 [ext_resource type="SpriteFrames" uid="uid://vb2ubapfgmx3" path="res://Assets/Fish/SkinBank.tres" id="6_ccd4q"]
 [ext_resource type="Script" uid="uid://d8yxpko306a5" path="res://Scripts/UI/Menu/SkinPreview.cs" id="12_gufdo"]
+[ext_resource type="Script" uid="uid://d0trkucjm2ky5" path="res://Scripts/UI/ShopLabel.cs" id="13_estnu"]
 [ext_resource type="Script" uid="uid://cvv4bu7e2chl7" path="res://Scripts/SetPlayerSkin.cs" id="14_ox0pj"]
 [ext_resource type="AudioStream" uid="uid://d01rwsygaxo23" path="res://Assets/Audio/Music/HarborV2.wav" id="16_ox0pj"]
 [ext_resource type="Script" uid="uid://btkiil7yp3eki" path="res://Scripts/BGM.cs" id="17_wvogg"]
@@ -24,6 +25,10 @@ shader = ExtResource("1_kjfcx")
 [sub_resource type="LabelSettings" id="LabelSettings_r8bg4"]
 font = ExtResource("4_ccd4q")
 font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_wvogg"]
+font = ExtResource("4_ccd4q")
+font_size = 76
 
 [node name="Shop" type="Control" node_paths=PackedStringArray("pointsSpawnPos", "container", "skinPreview")]
 layout_mode = 3
@@ -266,6 +271,19 @@ waypointEnd = NodePath("Control2")
 fishBox = NodePath("MovingBox")
 fish = NodePath("MovingBox/AnimatedSprite2D")
 speed = 0.25
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Fish"
+label_settings = SubResource("LabelSettings_wvogg")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_estnu")
 
 [node name="MovingBox" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Panel2"]
 custom_minimum_size = Vector2(64, 64)

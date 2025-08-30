@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4ktvx2mpg8qp"]
+[gd_scene load_steps=12 format=3 uid="uid://d4ktvx2mpg8qp"]
 
 [ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_tt5f1"]
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="2_853f1"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://d01rwsygaxo23" path="res://Assets/Audio/Music/HarborV2.wav" id="6_8um5k"]
 [ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="7_xim88"]
 [ext_resource type="Script" uid="uid://c80nxy8fnqnn4" path="res://Scripts/UI/Menu/LoadGame.cs" id="8_koqhg"]
+[ext_resource type="Script" uid="uid://bonqfdk4eqo42" path="res://Scripts/BGFish/BGFishSpawner.cs" id="9_loo7a"]
+[ext_resource type="PackedScene" uid="uid://23h3vua0awup" path="res://Assets/Prefabs/bg_fish.tscn" id="10_if7li"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8saeu"]
 shader = ExtResource("2_853f1")
@@ -22,6 +24,8 @@ grow_vertical = 2
 theme = ExtResource("1_tt5f1")
 
 [node name="BG" type="ColorRect" parent="."]
+z_index = -100
+z_as_relative = false
 material = SubResource("ShaderMaterial_8saeu")
 layout_mode = 1
 anchors_preset = 15
@@ -170,7 +174,129 @@ bus = &"Music"
 [node name="Loading" type="Node" parent="."]
 script = ExtResource("8_koqhg")
 
+[node name="BGFish" type="CanvasGroup" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+
+[node name="Spawner1" type="Node2D" parent="BGFish"]
+position = Vector2(-433, 238)
+script = ExtResource("9_loo7a")
+fishPrefab = ExtResource("10_if7li")
+velocity = Vector2(1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner1"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner1"]
+wait_time = 29.0
+autostart = true
+
+[node name="Spawner2" type="Node2D" parent="BGFish"]
+position = Vector2(-552, 494)
+script = ExtResource("9_loo7a")
+fishPrefab = ExtResource("10_if7li")
+velocity = Vector2(1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner2"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner2"]
+wait_time = 37.0
+autostart = true
+
+[node name="Spawner3" type="Node2D" parent="BGFish"]
+position = Vector2(-581, 330)
+script = ExtResource("9_loo7a")
+fishPrefab = ExtResource("10_if7li")
+velocity = Vector2(1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner3"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner3"]
+wait_time = 17.0
+autostart = true
+
+[node name="Spawner4" type="Node2D" parent="BGFish"]
+position = Vector2(1416, 259)
+script = ExtResource("9_loo7a")
+fishPrefab = ExtResource("10_if7li")
+velocity = Vector2(-1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner4"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner4"]
+wait_time = 47.0
+autostart = true
+
+[node name="Spawner5" type="Node2D" parent="BGFish"]
+position = Vector2(1549, 305)
+script = ExtResource("9_loo7a")
+fishPrefab = ExtResource("10_if7li")
+velocity = Vector2(-1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner5"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner5"]
+wait_time = 23.0
+autostart = true
+
+[node name="Spawner6" type="Node2D" parent="BGFish"]
+position = Vector2(1417, 472)
+script = ExtResource("9_loo7a")
+fishPrefab = ExtResource("10_if7li")
+velocity = Vector2(-1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner6"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner6"]
+wait_time = 29.0
+autostart = true
+
+[node name="Spawner7" type="Node2D" parent="BGFish"]
+position = Vector2(1602, 427)
+script = ExtResource("9_loo7a")
+fishPrefab = ExtResource("10_if7li")
+velocity = Vector2(-1, 0)
+speedModifier = 50.0
+
+[node name="SolitaryTimer" type="Timer" parent="BGFish/Spawner7"]
+wait_time = 7.0
+autostart = true
+
+[node name="SchoolTimer" type="Timer" parent="BGFish/Spawner7"]
+wait_time = 37.0
+autostart = true
+
 [connection signal="pressed" from="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/LevelSelect.tscn"]]
 [connection signal="pressed" from="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer/Button2" to="SceneManager" method="LoadScene" binds= ["res://Scenes/Options.tscn"]]
 [connection signal="pressed" from="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer/Button3" to="SceneManager" method="LoadScene" binds= ["res://Scenes/Shop.tscn"]]
 [connection signal="pressed" from="HBoxContainer/CenterContainer/Panel/MarginContainer/VBoxContainer/Button4" to="SceneManager" method="Quit"]
+[connection signal="timeout" from="BGFish/Spawner1/SolitaryTimer" to="BGFish/Spawner1" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner1/SchoolTimer" to="BGFish/Spawner1" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner2/SolitaryTimer" to="BGFish/Spawner2" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner2/SchoolTimer" to="BGFish/Spawner2" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner3/SolitaryTimer" to="BGFish/Spawner3" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner3/SchoolTimer" to="BGFish/Spawner3" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner4/SolitaryTimer" to="BGFish/Spawner4" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner4/SchoolTimer" to="BGFish/Spawner4" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner5/SolitaryTimer" to="BGFish/Spawner5" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner5/SchoolTimer" to="BGFish/Spawner5" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner6/SolitaryTimer" to="BGFish/Spawner6" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner6/SchoolTimer" to="BGFish/Spawner6" method="SpawnSchool"]
+[connection signal="timeout" from="BGFish/Spawner7/SolitaryTimer" to="BGFish/Spawner7" method="SpawnSolitary"]
+[connection signal="timeout" from="BGFish/Spawner7/SchoolTimer" to="BGFish/Spawner7" method="SpawnSchool"]

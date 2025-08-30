@@ -46,25 +46,37 @@ public partial class RhythmDisplay : Control {
 		if (@event is InputEventKey keyEvent) {
 
 			if (keyEvent.Pressed && !wasPressed) {
-				float targetAngle = markerPos;
-				if (targetAngle < targetOffset) {
-					targetAngle += 1;
-				}
-
-				if (targetAngle <= targetRange + targetOffset && targetAngle >= targetOffset) {
-					EmitSignal(SignalName.OnRhythmHit);
-					marker.SelfModulate = Colors.Green;
-				} else {
-					EmitSignal(SignalName.OnRhythmMiss);
-					marker.SelfModulate = Colors.Red;
-				}
+				OnHit();
 
 				wasPressed = true;
 			} else if (!keyEvent.Pressed) {
 				wasPressed = false;
 			}
+		} else if (@event is InputEventMouseButton mouseEvent) {
+			if (mouseEvent.Pressed && !wasPressed) {
+				OnHit();
+
+				wasPressed = true;
+			} else if (!mouseEvent.Pressed) {
+				wasPressed = false;
+			}
 		}
 
+	}
+
+	private void OnHit() {
+		float targetAngle = markerPos;
+		if (targetAngle < targetOffset) {
+			targetAngle += 1;
+		}
+
+		if (targetAngle <= targetRange + targetOffset && targetAngle >= targetOffset) {
+			EmitSignal(SignalName.OnRhythmHit);
+			marker.SelfModulate = Colors.Green;
+		} else {
+			EmitSignal(SignalName.OnRhythmMiss);
+			marker.SelfModulate = Colors.Red;
+		}
 	}
 
 	public void SetTarget(float difficulty) {

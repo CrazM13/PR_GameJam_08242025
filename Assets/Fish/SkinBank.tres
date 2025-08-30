@@ -1,18 +1,23 @@
-[gd_resource type="SpriteFrames" load_steps=71 format=3 uid="uid://vb2ubapfgmx3"]
+[gd_resource type="SpriteFrames" load_steps=89 format=3 uid="uid://vb2ubapfgmx3"]
 
 [ext_resource type="Texture2D" uid="uid://pewtnbcfr0j8" path="res://Assets/Fish/Player_Fish1.png" id="1_idaw7"]
 [ext_resource type="Texture2D" uid="uid://bga4armj30nm7" path="res://Assets/Fish/angler.png" id="1_juer8"]
 [ext_resource type="Texture2D" uid="uid://dalb0gvetr7mr" path="res://Assets/Fish/cichlid.png" id="2_a6pmj"]
+[ext_resource type="Texture2D" uid="uid://dof6v6pmb8rme" path="res://Assets/Fish/anura.png" id="2_fr71r"]
 [ext_resource type="Texture2D" uid="uid://cm6lxxxcexrct" path="res://Assets/Fish/clown.png" id="3_iaw4d"]
 [ext_resource type="Texture2D" uid="uid://bjy7n8jcuwgdx" path="res://Assets/Fish/bivalve.png" id="3_typ1l"]
 [ext_resource type="Texture2D" uid="uid://dt3fu0dgr1pq7" path="res://Assets/Fish/blob.png" id="4_pt3ou"]
 [ext_resource type="Texture2D" uid="uid://4jfslpagdg20" path="res://Assets/Fish/jelly.png" id="6_4j1ra"]
 [ext_resource type="Texture2D" uid="uid://yme74cm7wy6y" path="res://Assets/Fish/scuba.png" id="7_pt3ou"]
+[ext_resource type="Texture2D" uid="uid://cs2id30183l7h" path="res://Assets/Fish/dumbo.png" id="7_ukbbd"]
+[ext_resource type="Texture2D" uid="uid://bod3oirpt8drv" path="res://Assets/Fish/goldy.png" id="8_fr71r"]
+[ext_resource type="Texture2D" uid="uid://dw345otv3r80l" path="res://Assets/Fish/fossil.png" id="9_21m0r"]
 [ext_resource type="Texture2D" uid="uid://du684ssgvm1rb" path="res://Assets/Fish/squid.png" id="9_akv3p"]
 [ext_resource type="Texture2D" uid="uid://cahq0s72fv28f" path="res://Assets/Fish/sing.png" id="9_ccnsb"]
 [ext_resource type="Texture2D" uid="uid://c6pg753cxyyvw" path="res://Assets/Fish/starfish.png" id="9_ouo5s"]
 [ext_resource type="Texture2D" uid="uid://cvgv7i8i20oip" path="res://Assets/Fish/trash.png" id="10_akv3p"]
 [ext_resource type="Texture2D" uid="uid://c3wb4w8ooqhde" path="res://Assets/Fish/sub.png" id="11_5e3vl"]
+[ext_resource type="Texture2D" uid="uid://dvacrcmbxywrp" path="res://Assets/Fish/sheep.png" id="11_21m0r"]
 [ext_resource type="Texture2D" uid="uid://cotlwjhqowis1" path="res://Assets/Fish/tuna.png" id="11_ouo5s"]
 [ext_resource type="Texture2D" uid="uid://cuhp8wjm7pfkv" path="res://Assets/Fish/turtle.png" id="13_053s4"]
 
@@ -31,6 +36,18 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5e3vl"]
 atlas = ExtResource("1_juer8")
 region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br01h"]
+atlas = ExtResource("2_fr71r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syott"]
+atlas = ExtResource("2_fr71r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j55r"]
+atlas = ExtResource("2_fr71r")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjp4w"]
 atlas = ExtResource("1_idaw7")
@@ -104,6 +121,38 @@ region = Rect2(0, 32, 32, 32)
 atlas = ExtResource("3_iaw4d")
 region = Rect2(32, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3gdp"]
+atlas = ExtResource("7_ukbbd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awby1"]
+atlas = ExtResource("7_ukbbd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gojh"]
+atlas = ExtResource("7_ukbbd")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tgbn"]
+atlas = ExtResource("7_ukbbd")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3sh2"]
+atlas = ExtResource("9_21m0r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kbse"]
+atlas = ExtResource("9_21m0r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8d6c"]
+atlas = ExtResource("8_fr71r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkgb8"]
+atlas = ExtResource("8_fr71r")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_86c3l"]
 atlas = ExtResource("6_4j1ra")
 region = Rect2(0, 0, 32, 32)
@@ -135,6 +184,14 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_372si"]
 atlas = ExtResource("7_pt3ou")
 region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufgnq"]
+atlas = ExtResource("11_21m0r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5au8o"]
+atlas = ExtResource("11_21m0r")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wt5ga"]
 atlas = ExtResource("9_ccnsb")
@@ -257,6 +314,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_br01h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syott")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j55r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syott")
+}],
+"loop": true,
+"name": &"anura",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qjp4w")
 }, {
 "duration": 1.0,
@@ -336,6 +410,45 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_d3gdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awby1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gojh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tgbn")
+}],
+"loop": true,
+"name": &"dumbo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3sh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kbse")
+}],
+"loop": true,
+"name": &"fossil",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8d6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkgb8")
+}],
+"loop": true,
+"name": &"goldy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_86c3l")
 }, {
 "duration": 1.0,
@@ -366,6 +479,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"scuba",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufgnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5au8o")
+}],
+"loop": true,
+"name": &"sheep",
 "speed": 5.0
 }, {
 "frames": [{

@@ -139,82 +139,92 @@ Price = 5
 [node name="Shop Button3" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "cichlid"
-Price = 25
+Price = 10
 
 [node name="Shop Button4" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "angler"
-Price = 50
+Price = 15
 
 [node name="Shop Button5" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "jelly"
-Price = 50
+Price = 20
 
 [node name="Shop Button6" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "bivalve"
-Price = 65
+Price = 25
 
 [node name="Shop Button7" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "starfish"
-Price = 65
+Price = 30
 
 [node name="Shop Button8" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "blob"
-Price = 75
+Price = 35
 
 [node name="Shop Button9" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "squid"
-Price = 90
+Price = 40
 
 [node name="Shop Button10" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "turtle"
-Price = 95
+Price = 45
+
+[node name="Shop Button14" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+SkinID = "dumbo"
+Price = 50
+
+[node name="Shop Button15" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+SkinID = "sheep"
+Price = 55
 
 [node name="Shop Button11" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "tuna"
 Price = 15
 
+[node name="Shop Button19" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+SkinID = "trash"
+Price = 25
+
 [node name="Shop Button12" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "sing"
-Price = 25
+Price = 35
 
 [node name="Shop Button13" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
-
-[node name="Shop Button14" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
-layout_mode = 2
-
-[node name="Shop Button15" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
-layout_mode = 2
-
-[node name="Shop Button16" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
-layout_mode = 2
+SkinID = "goldy"
+Price = 45
 
 [node name="Shop Button17" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
+SkinID = "fossil"
+Price = 55
 
 [node name="Shop Button18" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "sub"
-Price = 75
-
-[node name="Shop Button19" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
-layout_mode = 2
-SkinID = "trash"
-Price = 100
+Price = 65
 
 [node name="Shop Button20" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
 layout_mode = 2
 SkinID = "scuba"
-Price = 100
+Price = 75
+
+[node name="Shop Button16" parent="VBoxContainer/HBoxContainer/MarginContainer/Audio/MarginContainer/GridContainer" instance=ExtResource("6_1mgah")]
+layout_mode = 2
+SkinID = "anura"
+Price = 85
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2

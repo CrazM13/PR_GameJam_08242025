@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dwmbssw65iqaw"]
+[gd_scene load_steps=20 format=3 uid="uid://dwmbssw65iqaw"]
 
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_kjfcx"]
 [ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_wndna"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://d8yxpko306a5" path="res://Scripts/UI/Menu/SkinPreview.cs" id="12_gufdo"]
 [ext_resource type="Script" uid="uid://cvv4bu7e2chl7" path="res://Scripts/SetPlayerSkin.cs" id="14_ox0pj"]
 [ext_resource type="AudioStream" uid="uid://d01rwsygaxo23" path="res://Assets/Audio/Music/HarborV2.wav" id="16_ox0pj"]
+[ext_resource type="Script" uid="uid://btkiil7yp3eki" path="res://Scripts/BGM.cs" id="17_wvogg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iidq5"]
 shader = ExtResource("1_kjfcx")
@@ -317,5 +318,6 @@ stream = ExtResource("16_ox0pj")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
+script = ExtResource("17_wvogg")
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]

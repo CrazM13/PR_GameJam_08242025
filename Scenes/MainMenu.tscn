@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4ktvx2mpg8qp"]
+[gd_scene load_steps=13 format=3 uid="uid://d4ktvx2mpg8qp"]
 
 [ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_tt5f1"]
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="2_853f1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://cqu6bcu3aq1io" path="res://Assets/Data/UI/ButtonClick.tres" id="4_df05h"]
 [ext_resource type="Resource" uid="uid://sp5qrfpotvap" path="res://Assets/Data/UI/ButtonHover.tres" id="5_8um5k"]
 [ext_resource type="AudioStream" uid="uid://d01rwsygaxo23" path="res://Assets/Audio/Music/HarborV2.wav" id="6_8um5k"]
+[ext_resource type="Script" uid="uid://btkiil7yp3eki" path="res://Scripts/BGM.cs" id="7_if7li"]
 [ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="7_xim88"]
 [ext_resource type="Script" uid="uid://c80nxy8fnqnn4" path="res://Scripts/UI/Menu/LoadGame.cs" id="8_koqhg"]
 [ext_resource type="Script" uid="uid://bonqfdk4eqo42" path="res://Scripts/BGFish/BGFishSpawner.cs" id="9_loo7a"]
@@ -168,6 +169,7 @@ stream = ExtResource("6_8um5k")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
+script = ExtResource("7_if7li")
 
 [node name="SceneManager" parent="." instance=ExtResource("7_xim88")]
 

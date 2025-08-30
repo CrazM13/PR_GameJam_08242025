@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://yrotnmi5qpo2"]
+[gd_scene load_steps=17 format=3 uid="uid://yrotnmi5qpo2"]
 
 [ext_resource type="Theme" uid="uid://dkv4xbcah6ajw" path="res://Assets/Themes/MainMenuTheme.tres" id="1_hg628"]
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_qqnya"]
@@ -12,6 +12,8 @@
 [ext_resource type="StyleBox" uid="uid://ce3vphwd5uehb" path="res://Assets/Themes/ButtonUntoggled.tres" id="6_tcskm"]
 [ext_resource type="PackedScene" uid="uid://bdp3txe12w2mm" path="res://Assets/Prefabs/scene_manager.tscn" id="7_bdxpv"]
 [ext_resource type="Script" uid="uid://b3wu68ja2me4k" path="res://Scripts/UI/Menu/ToggleGlobalShader.cs" id="7_tcskm"]
+[ext_resource type="AudioStream" uid="uid://d01rwsygaxo23" path="res://Assets/Audio/Music/HarborV2.wav" id="13_ksf6h"]
+[ext_resource type="Script" uid="uid://btkiil7yp3eki" path="res://Scripts/BGM.cs" id="14_34to5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hg628"]
 shader = ExtResource("1_qqnya")
@@ -235,5 +237,12 @@ clickDisabledSFX = ExtResource("5_bdxpv")
 hoverDisabledSFX = ExtResource("6_cja8r")
 
 [node name="SceneManager" parent="." instance=ExtResource("7_bdxpv")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ksf6h")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("14_34to5")
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]

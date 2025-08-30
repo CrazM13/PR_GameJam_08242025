@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb313lu3eef6v"
-path="res://.godot/imported/Anemone V1.png-19a94dc2876d17e8911cdef176e248fd.ctex"
+uid="uid://c6xt3dsyf6ubj"
+path="res://.godot/imported/Kelp V2.png-d23bb5f5b882b5b36f52c9bdbfead1dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BG/Anemone V1.png"
-dest_files=["res://.godot/imported/Anemone V1.png-19a94dc2876d17e8911cdef176e248fd.ctex"]
+source_file="res://Assets/BG/Old/Kelp V2.png"
+dest_files=["res://.godot/imported/Kelp V2.png-d23bb5f5b882b5b36f52c9bdbfead1dc.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://der64y1qiec6w"
-path="res://.godot/imported/Red Sea Whip V2.png-037867204f00459ccdec7cafc5807e21.ctex"
+uid="uid://0pojpx77kqty"
+path="res://.godot/imported/Kelp-3V.png-cb8c33ff1eccbf5cab14682bd15e9125.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BG/Red Sea Whip V2.png"
-dest_files=["res://.godot/imported/Red Sea Whip V2.png-037867204f00459ccdec7cafc5807e21.ctex"]
+source_file="res://Assets/BG/Kelp-3V.png"
+dest_files=["res://.godot/imported/Kelp-3V.png-cb8c33ff1eccbf5cab14682bd15e9125.ctex"]
 
 [params]
 

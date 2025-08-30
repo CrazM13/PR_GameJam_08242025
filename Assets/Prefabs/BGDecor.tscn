@@ -1,0 +1,475 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckt3lws0wl7fv"]
+
+[ext_resource type="Texture2D" uid="uid://ekastqc6s1vf" path="res://Assets/BG/Sand Gradient.png" id="1_exdms"]
+[ext_resource type="Texture2D" uid="uid://dm8jn1ikl4hkp" path="res://Assets/BG/Sand Hill Round.png" id="2_t6wl1"]
+[ext_resource type="Texture2D" uid="uid://r4jsx10chnap" path="res://Assets/BG/Sand Hill Triangle.png" id="3_o0cee"]
+[ext_resource type="Texture2D" uid="uid://gdbml8mfgpha" path="res://Assets/BG/Boat.png" id="4_yai0f"]
+[ext_resource type="Texture2D" uid="uid://c7y5g466jlg3g" path="res://Assets/BG/Rock V3.png" id="5_htfdv"]
+[ext_resource type="Texture2D" uid="uid://c0hl8p8j0ecyg" path="res://Assets/BG/Rock V2.png" id="6_58tnb"]
+[ext_resource type="Texture2D" uid="uid://crpr4r4fyhge" path="res://Assets/BG/Rock V1.png" id="7_hi8c4"]
+[ext_resource type="SpriteFrames" uid="uid://cyyu0t6ubaka1" path="res://Assets/BG/AnimPlant.tres" id="8_h7w1e"]
+
+[node name="BgDecor" type="Node2D"]
+
+[node name="SandGradient" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(588.5, 776)
+scale = Vector2(11.9961, 1)
+texture = ExtResource("1_exdms")
+
+[node name="SandHillRound" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(128, 522)
+texture = ExtResource("2_t6wl1")
+
+[node name="SandHillTriangle" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-50, 531)
+texture = ExtResource("3_o0cee")
+
+[node name="SandHillTriangle2" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(961, 525)
+texture = ExtResource("3_o0cee")
+
+[node name="SandHillRound2" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(331, 529)
+texture = ExtResource("2_t6wl1")
+
+[node name="SandHillRound3" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(817, 526)
+texture = ExtResource("2_t6wl1")
+
+[node name="SandHillTriangle3" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(493, 532)
+texture = ExtResource("3_o0cee")
+
+[node name="SandHillRound4" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(1160, 528)
+texture = ExtResource("2_t6wl1")
+
+[node name="SandHillTriangle4" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(1359, 525)
+texture = ExtResource("3_o0cee")
+
+[node name="SandHillRound5" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(1484, 523)
+texture = ExtResource("2_t6wl1")
+
+[node name="SandHillTriangle5" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(642, 532)
+texture = ExtResource("3_o0cee")
+
+[node name="SandHillRound6" type="Sprite2D" parent="."]
+position = Vector2(-216, 523)
+texture = ExtResource("2_t6wl1")
+
+[node name="SandHillRound7" type="Sprite2D" parent="."]
+position = Vector2(-472, 538)
+texture = ExtResource("2_t6wl1")
+
+[node name="Boat" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(122, 120)
+texture = ExtResource("4_yai0f")
+
+[node name="Boat2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(487, 115)
+texture = ExtResource("4_yai0f")
+
+[node name="Boat3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(880, 117)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("4_yai0f")
+
+[node name="RockV3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1107, 618)
+scale = Vector2(0.433594, 0.431288)
+texture = ExtResource("5_htfdv")
+
+[node name="RockV2" type="Sprite2D" parent="."]
+position = Vector2(1046, 644)
+scale = Vector2(0.472656, 0.483448)
+texture = ExtResource("6_58tnb")
+
+[node name="RockV1" type="Sprite2D" parent="."]
+position = Vector2(607, 710)
+scale = Vector2(0.566406, 0.563394)
+texture = ExtResource("7_hi8c4")
+
+[node name="RedSeaWhipV2" type="AnimatedSprite2D" parent="."]
+z_index = 75
+z_as_relative = false
+position = Vector2(235, 585)
+scale = Vector2(3.29689, 3.27935)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"red2"
+autoplay = "red2"
+
+[node name="RedSeaWhipV1" type="AnimatedSprite2D" parent="."]
+z_index = 75
+z_as_relative = false
+position = Vector2(59, 596)
+scale = Vector2(3.18752, 3.17056)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"red1"
+autoplay = "red1"
+
+[node name="KelpV1" type="AnimatedSprite2D" parent="."]
+position = Vector2(628, 591)
+scale = Vector2(2.00001, 2.00001)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp1"
+autoplay = "kelp1"
+
+[node name="KelpV2" type="AnimatedSprite2D" parent="."]
+position = Vector2(667, 617)
+scale = Vector2(2.00001, 2.00001)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp2"
+autoplay = "kelp2"
+
+[node name="KelpV3" type="AnimatedSprite2D" parent="."]
+position = Vector2(701, 602)
+scale = Vector2(2.00001, 2.00001)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp3"
+autoplay = "kelp3"
+
+[node name="AnemoneV1" type="AnimatedSprite2D" parent="."]
+position = Vector2(463, 617)
+scale = Vector2(3.93752, 3.91658)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"anemone"
+autoplay = "anemone"
+
+[node name="RockV4" type="Sprite2D" parent="."]
+position = Vector2(156.563, 623.376)
+rotation = 1.55509
+scale = Vector2(0.387256, 0.40457)
+texture = ExtResource("5_htfdv")
+
+[node name="RockV5" type="Sprite2D" parent="."]
+position = Vector2(131.563, 684.376)
+rotation = 0.414575
+scale = Vector2(0.53161, 0.470947)
+texture = ExtResource("7_hi8c4")
+
+[node name="RockV6" type="Sprite2D" parent="."]
+position = Vector2(644, 730)
+rotation = -1.67028
+scale = Vector2(0.367386, 0.568661)
+texture = ExtResource("6_58tnb")
+
+[node name="RockV7" type="Sprite2D" parent="."]
+position = Vector2(722, 721)
+scale = Vector2(0.361729, 0.46617)
+texture = ExtResource("5_htfdv")
+
+[node name="KelpV4" type="AnimatedSprite2D" parent="."]
+position = Vector2(564, 619)
+rotation = 2.90248
+scale = Vector2(2.51369, -2.38251)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp1"
+autoplay = "kelp1"
+
+[node name="KelpV5" type="AnimatedSprite2D" parent="."]
+position = Vector2(605, 641)
+scale = Vector2(2.53128, 2.51781)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp2"
+autoplay = "kelp2"
+
+[node name="KelpV6" type="AnimatedSprite2D" parent="."]
+position = Vector2(733.895, 633.127)
+rotation = 3.14159
+scale = Vector2(1.97082, -2.46155)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp3"
+autoplay = "kelp3"
+
+[node name="AnemoneV2" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.266667, 0.945098, 1, 1)
+position = Vector2(1098, 589)
+rotation = -0.331653
+scale = Vector2(2.30009, 2.28785)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"anemone"
+autoplay = "anemone"
+
+[node name="RockV8" type="Sprite2D" parent="."]
+position = Vector2(985, 687)
+scale = Vector2(0.425781, 0.418475)
+texture = ExtResource("5_htfdv")
+
+[node name="RockV9" type="Sprite2D" parent="."]
+position = Vector2(881, 715)
+rotation = 3.12466
+scale = Vector2(0.701529, 0.580986)
+texture = ExtResource("7_hi8c4")
+
+[node name="KelpV7" type="AnimatedSprite2D" parent="."]
+position = Vector2(675, 652)
+rotation = 0.270173
+scale = Vector2(1.98083, 1.98083)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp1"
+autoplay = "kelp1"
+
+[node name="RedSeaWhipV3" type="AnimatedSprite2D" parent="."]
+z_index = 75
+z_as_relative = false
+position = Vector2(334, 593)
+scale = Vector2(2.89064, 2.89064)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"red1"
+autoplay = "red1"
+
+[node name="RedSeaWhipV4" type="AnimatedSprite2D" parent="."]
+z_index = 75
+z_as_relative = false
+position = Vector2(408, 604)
+scale = Vector2(3.21877, 3.21877)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"red2"
+autoplay = "red2"
+
+[node name="RockV10" type="Sprite2D" parent="."]
+position = Vector2(272, 664)
+rotation = 3.0306
+scale = Vector2(0.404656, -0.32)
+texture = ExtResource("5_htfdv")
+
+[node name="RockV11" type="Sprite2D" parent="."]
+position = Vector2(334, 681)
+rotation = -1.05163
+scale = Vector2(0.408335, 0.408335)
+texture = ExtResource("6_58tnb")
+
+[node name="RockV12" type="Sprite2D" parent="."]
+position = Vector2(404, 685)
+rotation = 0.233154
+scale = Vector2(0.498047, 0.498047)
+texture = ExtResource("7_hi8c4")
+
+[node name="RedSeaWhipV6" type="AnimatedSprite2D" parent="."]
+z_index = 75
+z_as_relative = false
+position = Vector2(-140, 570.469)
+scale = Vector2(3.29689, 3.27935)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"red2"
+autoplay = "red2"
+
+[node name="RedSeaWhipV7" type="AnimatedSprite2D" parent="."]
+z_index = 75
+z_as_relative = false
+position = Vector2(-316, 581.469)
+scale = Vector2(3.18752, 3.17056)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"red1"
+autoplay = "red1"
+
+[node name="RockV13" type="Sprite2D" parent="."]
+position = Vector2(-218.437, 608.846)
+rotation = 1.55509
+scale = Vector2(0.387256, 0.40457)
+texture = ExtResource("5_htfdv")
+
+[node name="RockV14" type="Sprite2D" parent="."]
+position = Vector2(-243.437, 669.846)
+rotation = 0.414575
+scale = Vector2(0.53161, 0.470947)
+texture = ExtResource("7_hi8c4")
+
+[node name="RedSeaWhipV8" type="AnimatedSprite2D" parent="."]
+z_index = 75
+z_as_relative = false
+position = Vector2(-39.75, 570.719)
+scale = Vector2(2.89064, 2.89064)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"red2"
+autoplay = "red2"
+
+[node name="RedSeaWhipV9" type="AnimatedSprite2D" parent="."]
+z_index = 75
+z_as_relative = false
+position = Vector2(530, 612)
+scale = Vector2(3.21877, 3.21877)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"red1"
+autoplay = "red1"
+
+[node name="RockV15" type="Sprite2D" parent="."]
+position = Vector2(-103, 649.469)
+rotation = 3.0306
+scale = Vector2(0.404656, -0.32)
+texture = ExtResource("5_htfdv")
+
+[node name="RockV16" type="Sprite2D" parent="."]
+position = Vector2(-41, 666.469)
+rotation = -1.05163
+scale = Vector2(0.408335, 0.408335)
+texture = ExtResource("6_58tnb")
+
+[node name="RockV17" type="Sprite2D" parent="."]
+position = Vector2(29, 670.469)
+rotation = 0.233154
+scale = Vector2(0.498047, 0.498047)
+texture = ExtResource("7_hi8c4")
+
+[node name="AnemoneV3" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.983333, 1, 0, 1)
+position = Vector2(908, 657)
+rotation = 3.14159
+scale = Vector2(3.51773, -1.936)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"anemone"
+autoplay = "anemone"
+
+[node name="AnemoneV4" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.21, 1, 0.433833, 1)
+position = Vector2(990, 655)
+rotation = -0.13502
+scale = Vector2(1.18751, 0.989588)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"anemone"
+autoplay = "anemone"
+
+[node name="AnemoneV5" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.4815, 1, 0.39, 1)
+position = Vector2(1031, 623)
+rotation = -0.766288
+scale = Vector2(1.06251, 1.06251)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"anemone"
+autoplay = "anemone"
+
+[node name="KelpV8" type="AnimatedSprite2D" parent="."]
+position = Vector2(777, 600)
+scale = Vector2(2.26564, 2.26564)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp2"
+autoplay = "kelp2"
+
+[node name="KelpV9" type="AnimatedSprite2D" parent="."]
+position = Vector2(818, 622)
+scale = Vector2(2.25002, 2.25002)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp3"
+autoplay = "kelp3"
+
+[node name="KelpV10" type="AnimatedSprite2D" parent="."]
+position = Vector2(786, 676)
+rotation = 2.97371
+scale = Vector2(2.26401, -2.26401)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp1"
+autoplay = "kelp1"
+
+[node name="RockV18" type="Sprite2D" parent="."]
+position = Vector2(1222.1, 701)
+scale = Vector2(0.566406, 0.563394)
+texture = ExtResource("7_hi8c4")
+
+[node name="KelpV11" type="AnimatedSprite2D" parent="."]
+position = Vector2(1243.1, 582)
+scale = Vector2(2.00001, 2.00001)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp2"
+autoplay = "kelp2"
+
+[node name="KelpV12" type="AnimatedSprite2D" parent="."]
+position = Vector2(1282.1, 608)
+scale = Vector2(2.00001, 2.00001)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp3"
+autoplay = "kelp3"
+
+[node name="KelpV13" type="AnimatedSprite2D" parent="."]
+position = Vector2(1316.1, 593)
+scale = Vector2(2.00001, 2.00001)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp1"
+autoplay = "kelp1"
+
+[node name="RockV19" type="Sprite2D" parent="."]
+position = Vector2(1259.1, 721)
+rotation = -1.67028
+scale = Vector2(0.367386, 0.568661)
+texture = ExtResource("6_58tnb")
+
+[node name="RockV20" type="Sprite2D" parent="."]
+position = Vector2(1337.1, 712)
+scale = Vector2(0.361729, 0.46617)
+texture = ExtResource("5_htfdv")
+
+[node name="KelpV14" type="AnimatedSprite2D" parent="."]
+position = Vector2(1179.1, 610)
+rotation = 2.90248
+scale = Vector2(2.51369, -2.38251)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp2"
+autoplay = "kelp2"
+
+[node name="KelpV15" type="AnimatedSprite2D" parent="."]
+position = Vector2(1220.1, 632)
+scale = Vector2(2.53128, 2.51782)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp3"
+autoplay = "kelp3"
+
+[node name="KelpV16" type="AnimatedSprite2D" parent="."]
+position = Vector2(1349, 624.127)
+rotation = 3.14159
+scale = Vector2(1.97082, -2.46155)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp1"
+autoplay = "kelp1"
+
+[node name="KelpV17" type="AnimatedSprite2D" parent="."]
+position = Vector2(1290.1, 643)
+rotation = 0.270173
+scale = Vector2(1.98083, 1.98083)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp2"
+autoplay = "kelp2"
+
+[node name="KelpV18" type="AnimatedSprite2D" parent="."]
+position = Vector2(1392.1, 591)
+scale = Vector2(2.26564, 2.26564)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp3"
+autoplay = "kelp3"
+
+[node name="KelpV19" type="AnimatedSprite2D" parent="."]
+position = Vector2(1433.1, 613)
+scale = Vector2(2.25002, 2.25002)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp1"
+autoplay = "kelp1"
+
+[node name="KelpV20" type="AnimatedSprite2D" parent="."]
+position = Vector2(1401.1, 667)
+rotation = 2.97371
+scale = Vector2(2.26402, -2.26402)
+sprite_frames = ExtResource("8_h7w1e")
+animation = &"kelp2"
+autoplay = "kelp2"
+
+[node name="RockV21" type="Sprite2D" parent="."]
+position = Vector2(-24, 661)
+scale = Vector2(0.426758, 0.442383)
+texture = ExtResource("5_htfdv")

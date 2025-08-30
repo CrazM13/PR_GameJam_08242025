@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bb4wwthbpaqtj"]
+[gd_scene load_steps=37 format=3 uid="uid://bb4wwthbpaqtj"]
 
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_x6js8"]
 [ext_resource type="LabelSettings" uid="uid://o4wqao5reunh" path="res://Assets/Themes/TypeSettings.tres" id="2_4bvgx"]
@@ -27,14 +27,15 @@
 [ext_resource type="Script" uid="uid://dysptkqae3w2i" path="res://Scripts/UI/Points/PointsLabel.cs" id="17_wukv0"]
 [ext_resource type="Script" uid="uid://bonqfdk4eqo42" path="res://Scripts/BGFish/BGFishSpawner.cs" id="24_4v654"]
 [ext_resource type="PackedScene" uid="uid://23h3vua0awup" path="res://Assets/Prefabs/bg_fish.tscn" id="25_leul7"]
+[ext_resource type="PackedScene" uid="uid://ckt3lws0wl7fv" path="res://Assets/Prefabs/BGDecor.tscn" id="28_y0yaw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lg2j6"]
 shader = ExtResource("1_x6js8")
 
-[sub_resource type="Gradient" id="Gradient_4v654"]
+[sub_resource type="Gradient" id="Gradient_y0yaw"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lg2j6"]
-gradient = SubResource("Gradient_4v654")
+gradient = SubResource("Gradient_y0yaw")
 width = 100
 height = 100
 fill_from = Vector2(0, 0.229358)
@@ -66,10 +67,39 @@ font_size = 48
 layer = -100
 follow_viewport_enabled = true
 
+[node name="Sky" type="ColorRect" parent="BG"]
+anchors_preset = -1
+anchor_left = -1.0
+anchor_top = -1.0
+anchor_right = 2.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.68, 0.829333, 1, 1)
+
 [node name="Water" type="TextureRect" parent="BG"]
 material = SubResource("ShaderMaterial_lg2j6")
 anchors_preset = 15
 anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lg2j6")
+
+[node name="Water2" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_lg2j6")
+anchors_preset = -1
+anchor_left = -1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lg2j6")
+
+[node name="Water3" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_lg2j6")
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 2.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -431,6 +461,8 @@ autostart = true
 [node name="SchoolTimer" type="Timer" parent="BGFish/Spawner7"]
 wait_time = 37.0
 autostart = true
+
+[node name="BgDecor" parent="." instance=ExtResource("28_y0yaw")]
 
 [connection signal="timeout" from="HookManager/Timer" to="HookManager" method="Spawn"]
 [connection signal="timeout" from="HookManager/PointsSpawner/Timer" to="HookManager/PointsSpawner" method="AttemptSpawn"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ckbc0klieqwd2"]
+[gd_scene load_steps=39 format=3 uid="uid://ckbc0klieqwd2"]
 
 [ext_resource type="Script" uid="uid://cpysfamsv6smo" path="res://Scripts/RhythmGame.cs" id="1_f5itv"]
 [ext_resource type="Shader" uid="uid://dgux8lmjqgvkm" path="res://Assets/Shaders/Water.tres" id="1_xtjai"]
@@ -27,14 +27,15 @@
 [ext_resource type="PackedScene" uid="uid://cwqn0ma42jdvi" path="res://Assets/Prefabs/point_effect.tscn" id="23_i728f"]
 [ext_resource type="Script" uid="uid://bonqfdk4eqo42" path="res://Scripts/BGFish/BGFishSpawner.cs" id="26_6n2bu"]
 [ext_resource type="PackedScene" uid="uid://23h3vua0awup" path="res://Assets/Prefabs/bg_fish.tscn" id="27_7b5c4"]
+[ext_resource type="PackedScene" uid="uid://ckt3lws0wl7fv" path="res://Assets/Prefabs/BGDecor.tscn" id="28_7b5c4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qu5li"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6n2bu"]
 shader = ExtResource("1_xtjai")
 
-[sub_resource type="Gradient" id="Gradient_x6js8"]
+[sub_resource type="Gradient" id="Gradient_4v654"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ygt1t"]
-gradient = SubResource("Gradient_x6js8")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7b5c4"]
+gradient = SubResource("Gradient_4v654")
 width = 100
 height = 100
 fill_from = Vector2(0, 0.229358)
@@ -81,19 +82,47 @@ pointSpawner = NodePath("PointsSpawner")
 sceneManager = NodePath("SceneManager")
 passiveReelSpeed = 0.025
 
-[node name="BG" type="CanvasLayer" parent="."]
+[node name="BG2" type="CanvasLayer" parent="."]
 layer = -100
 follow_viewport_enabled = true
 
-[node name="Water" type="TextureRect" parent="BG"]
-material = SubResource("ShaderMaterial_qu5li")
+[node name="Sky" type="ColorRect" parent="BG2"]
 anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.5
+anchor_left = -1.0
+anchor_top = -1.0
+anchor_right = 2.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_ygt1t")
+color = Color(0.68, 0.829333, 1, 1)
+
+[node name="Water" type="TextureRect" parent="BG2"]
+material = SubResource("ShaderMaterial_6n2bu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_7b5c4")
+
+[node name="Water2" type="TextureRect" parent="BG2"]
+material = SubResource("ShaderMaterial_6n2bu")
+anchors_preset = -1
+anchor_left = -1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_7b5c4")
+
+[node name="Water3" type="TextureRect" parent="BG2"]
+material = SubResource("ShaderMaterial_6n2bu")
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 2.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_7b5c4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_6b502")
@@ -442,6 +471,8 @@ autostart = true
 [node name="SchoolTimer" type="Timer" parent="BGFish/Spawner5"]
 wait_time = 23.0
 autostart = true
+
+[node name="BgDecor" parent="." instance=ExtResource("28_7b5c4")]
 
 [connection signal="pressed" from="PauseMenu/Panel/CenterContainer/HBoxContainer/Button" to="PauseMenu" method="UnPause"]
 [connection signal="pressed" from="PauseMenu/Panel/CenterContainer/HBoxContainer/Button" to="SceneManager" method="LoadScene" binds= ["res://Scenes/MainMenu.tscn"]]

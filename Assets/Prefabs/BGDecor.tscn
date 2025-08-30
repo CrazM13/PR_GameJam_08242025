@@ -1,13 +1,42 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckt3lws0wl7fv"]
+[gd_scene load_steps=13 format=3 uid="uid://ckt3lws0wl7fv"]
 
 [ext_resource type="Texture2D" uid="uid://ekastqc6s1vf" path="res://Assets/BG/Sand Gradient.png" id="1_exdms"]
 [ext_resource type="Texture2D" uid="uid://dm8jn1ikl4hkp" path="res://Assets/BG/Sand Hill Round.png" id="2_t6wl1"]
 [ext_resource type="Texture2D" uid="uid://r4jsx10chnap" path="res://Assets/BG/Sand Hill Triangle.png" id="3_o0cee"]
-[ext_resource type="Texture2D" uid="uid://gdbml8mfgpha" path="res://Assets/BG/Boat.png" id="4_yai0f"]
+[ext_resource type="Texture2D" uid="uid://dhg65e1ak456a" path="res://Assets/BG/Animated/boat.png" id="4_h7w1e"]
 [ext_resource type="Texture2D" uid="uid://c7y5g466jlg3g" path="res://Assets/BG/Rock V3.png" id="5_htfdv"]
 [ext_resource type="Texture2D" uid="uid://c0hl8p8j0ecyg" path="res://Assets/BG/Rock V2.png" id="6_58tnb"]
 [ext_resource type="Texture2D" uid="uid://crpr4r4fyhge" path="res://Assets/BG/Rock V1.png" id="7_hi8c4"]
 [ext_resource type="SpriteFrames" uid="uid://cyyu0t6ubaka1" path="res://Assets/BG/AnimPlant.tres" id="8_h7w1e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7wt3"]
+atlas = ExtResource("4_h7w1e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_io41n"]
+atlas = ExtResource("4_h7w1e")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l0rm"]
+atlas = ExtResource("4_h7w1e")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5mhua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7wt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_io41n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l0rm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="BgDecor" type="Node2D"]
 
@@ -75,22 +104,30 @@ texture = ExtResource("2_t6wl1")
 position = Vector2(-472, 538)
 texture = ExtResource("2_t6wl1")
 
-[node name="Boat" type="Sprite2D" parent="."]
+[node name="Boat" type="AnimatedSprite2D" parent="."]
 z_index = -1
 position = Vector2(122, 120)
-texture = ExtResource("4_yai0f")
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_5mhua")
+autoplay = "default"
+frame_progress = 0.3834
 
-[node name="Boat2" type="Sprite2D" parent="."]
+[node name="Boat2" type="AnimatedSprite2D" parent="."]
 z_index = -1
 position = Vector2(487, 115)
-texture = ExtResource("4_yai0f")
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_5mhua")
+autoplay = "default"
 
-[node name="Boat3" type="Sprite2D" parent="."]
+[node name="Boat3" type="AnimatedSprite2D" parent="."]
 z_index = -1
 position = Vector2(880, 117)
-rotation = 3.14159
-scale = Vector2(1, -1)
-texture = ExtResource("4_yai0f")
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_5mhua")
+autoplay = "default"
+frame_progress = 0.34874
+speed_scale = -1.0
+flip_h = true
 
 [node name="RockV3" type="Sprite2D" parent="."]
 z_index = -1
